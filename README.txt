@@ -1,4 +1,4 @@
-MakerShape v2.7
+MakerShape v3.9
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -23,7 +23,11 @@ Trackpad
   Click empty space ....... deselect       Shift-click a shape ....... add/remove it
   White corner squares .... resize         Dark top square ........... height
   Dark cone above shape ... lift up/down   Shift while resizing ...... keep proportions
-  Curved arrows (hover) ... rotate: inside the shaded band = 22.5° steps, outer circle = free
+  Curved arrows (hover) ... rotate: the flat one right above the top turns it round Z (on the
+                            workplane); the tall ")" beside the right or left side tips it
+                            front to back (round X). Pointing at one says what it does;
+                            inside the shaded band = 22.5° steps, outer circle = free.
+                            (To turn round Y, type it in the panel's Rotation Y°.)
 
 Mouse: scroll wheel zooms, right-drag orbits, middle-drag or ⌘-drag pans.
 
@@ -31,6 +35,7 @@ Keys
   ⌘Z / ⇧⌘Z undo / redo     ⌘D duplicate     ⌫ delete       ⌘A select all
   ⌘G group  ⇧⌘G ungroup    H solid/hole     E edges (round / chamfer)
   R rotate                 L align          F zoom to selection
+  K sketch                 U push / pull
   D drop onto whatever is below (another shape or the workplane)
   Arrows nudge by the Snap Grid amount (0.1 mm when snap is Off)
   Shift+arrows = 10x the snap, Alt+↑/↓ = up/down   Esc cancel / deselect
@@ -44,6 +49,66 @@ Edges (E): click edges, choose Round or Chamfer, Apply. Each Apply is a step in 
 - Edit changes an earlier step (its edges and size) - the shape shows how it was before that
   step while you edit. × removes a step. Later steps are rebuilt on top.
 - Twisted corner? Round the edges that meet there in one step, or use a smaller radius.
+
+Size boxes: click a corner handle (or drag it) and the width and depth show on the workplane
+along the two edges that meet there; the top handle shows the height. Click a box, type a size
+(sums and, in parametric mode, formulas work) and press Enter - the shape changes from that
+handle, so the opposite corner (or the base) stays put. Tab moves between boxes, Esc hides them.
+Shapes whose size comes from their settings (threads, generators, Gridfinity) show it read-only.
+
+Toolbar order: New · Open · Save | Import · Trace photo · Sketch | Undo · Redo | Duplicate · Delete |
+Rotate · Align | Push/Pull · Edges | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
+photo, Picture on a face, or Reference photo. Bin labels are with the Gridfinity shapes. The side panel's
+Steps section lists everything done to a shape after it was made (rounded / chamfered edges, push/pulls,
+Gridfinity grids) with Edit and ×, and has the Edges, Push/Pull and Grid buttons.
+
+Toolbar: when the window is too narrow for every tool on one line, the tools move to a second
+line under the logo, name and Export (the labels go only if even that line is too narrow).
+
+Sketch (K, or the toolbar button): click the workplane or a flat face of a shape - the view turns to
+look straight at it. Draw with the tools in the bar:
+  V Select (click a line or shape to see and change its measurements in the side panel; drag it
+    to move it; ⌫ deletes it)    L Line - click point after point, click back on the first point
+    to close the outline (click the same point twice or press Enter to stop)
+  R Rectangle (Corners or Centre)   C Circle   A Arc (start, end, then a point on the arc)
+  S Slot (the two round ends, then its width)   G Polygon (set the number of sides in the bar)
+Points snap to the grid, to ends, middles and centres, and line up square with the last point;
+hold Shift for 0.1 mm steps. While drawing, just type a number for an exact size (length and
+angle, width and height, radius…) - Tab moves to the next box, Enter places it.
+Closed outlines become faces (shaded); an outline inside another is a hole. Lines that don't close
+are shown red and left out. There's no constraint solver: lines that share an end stay joined when
+you change a line's length or angle in the panel, but other shapes don't follow.
+In parametric mode the measurements in the panel can be formulas using your variables, and the
+sketch rebuilds when a variable changes (its plane stays put).
+Finish (Enter) makes the solid at the Height in the panel and goes straight into Push/Pull with
+its top face picked: drag the arrow to set the height. (When a sketch has several separate top
+faces - an island inside a hole, or two outlines - each face is pushed or pulled on its own; use
+H to change the whole sketch's height.) On a face, tick "Cut into the face" (or push
+the top face down through its plane) to make it a hole going into the shape - then group it with
+the shape (⌘G) to cut the pocket. Edit later with a double-click, K, or "Edit sketch" in the panel
+(also from a group that holds the sketch); any steps on it are rebuilt on top.
+
+Reference photo (Trace photo ▸ Reference photo…, or Photo… in the sketch bar): straighten the sheet
+of paper the photo was taken on (A4 / A5 / A3 / Letter / other) and it is laid flat at its true
+size, faded, on the workplane (or the plane you're sketching on). No sheet? Place it as it is and
+set the scale: click two points on it and type how far apart they really are. The side panel
+(nothing selected, or while sketching) moves, turns, fades, hides, locks it, sets its scale again
+or puts it on a shape's face. Locked photos can't be clicked; unlocked ones can be dragged. Photos
+are saved with the design but never exported.
+
+Push/Pull (U, or the toolbar button): click a flat face of the selected shape, then drag its arrow
+out to pull (adds material) or in to push (takes it away) - or type the distance in the bar (minus
+pushes) and press Enter. Choose the direction in the bar: Square to face (N), or along the
+workplane's X, Y or Z (pull a roof's slope along Z and the walls rise straight up under it). Grid
+snap applies; hold Shift for 0.1 mm steps. Each push/pull is a step in the Steps list (Edit
+changes its distance or direction) and stays on when you change the shape's size. Works on flat
+faces of solid shapes, merged groups, STEP parts and generator parts - not on imported meshes,
+threads, text or inlay groups.
+Curved faces too: the side of a cylinder or cone, a sketched arc or circle, the wall of a round hole,
+a rounded edge. A curved face moves square to itself everywhere (pull a cylinder's side out 3 mm and
+it's 3 mm bigger all round; pull a hole's wall in and the hole gets smaller), so X / Y / Z are greyed
+out for it. Rounded edges work but leave small steps where they meet the next faces; a sphere can't
+be pushed or pulled (resize it instead).
 
 Placing: click on another shape to put the new shape on that surface
 (hold Alt to place on the workplane only).
@@ -60,7 +125,7 @@ Turned shapes keep their resize squares and dashed box square to the workplane.
 A shape turned in 90° steps stretches exactly along them; one turned at another
 angle grows or shrinks evenly (type W/D/H to change one size).
 
-Generators (left panel, under Gridfinity):
+Generators (left panel, under Gridfinity) - the Thread is here too (bolts, rods, nuts, holes):
   Snap-lock case - a hinged case of any size using the SnapLock box's own hinge and latch
     design (from the STEP file): width, depth, height, lid height (at least 20 mm, and the base
     at least 20 mm), walls, corner radius; 1-4 latches and 1-3 hinges (or Auto). Latch fit:
@@ -71,6 +136,32 @@ Generators (left panel, under Gridfinity):
     the front edge beside the latch lugs can't be (the app tells you rather than making a
     broken lid). Options: recessed label panel on the front, grip ribs on the sides, dividers,
     or sized for Gridfinity bins with a baseplate in the floor.
+    Edges: Square, Chamfer or Rounded (up to 3 mm) on the lid's top edge and the base's bottom
+    edge. The front latch lugs stop where the lid's edge starts - that part of the lug is above
+    the latch, so the latch works exactly the same.
+    Gridfinity feet: the base gets standard Gridfinity feet so the case drops into a baseplate.
+    They're worked out from the case's size: the 42 mm squares line up with the front of the
+    latches and the left grip ribs, so the whole case (latches and hinges included) fits inside
+    the grid, but the feet themselves are only under the base - cut short wherever its walls end
+    partway through a square (slivers under 8 mm are left flat). The summary shows how many
+    whole feet there are and how many squares the case takes up.
+    Sized for Gridfinity bins: the tallest bins that fit are cut into the inside of the back
+    wall, e.g. "9U · 8U+LIP" (9U bins, or 8U with a stacking lip), and shown in the summary. Gridfinity grid on the lid: a baseplate grid on top of the lid for bins to sit
+    on (it adds 4.65 mm; the feet add 4.75 mm - the summary shows the total height). The lid's grid
+    covers the lid itself, so it has fewer squares than a footprint that includes the latches.
+    Padlock tabs: a flat tab on the lid and one on the base at the seam, shaped like a tab design
+    that's known to work: closed, the lid's tab sits on the base's and the holes line up for a
+    padlock shackle (hole 4-10 mm, 7 mm by default; 45° underneath so both print without
+    supports). They sit in the widest free stretch of the front (two latches move out towards
+    the corners to make room).
+    Card box: tick "Make it a card box", choose one deck or two, the card width and length (poker
+    63.5 x 88.9 mm by default), the deck's height and the card clearance. The case is sized
+    round a card tray (0.7 mm round the tray, 1.3 mm above it): one deck lies lengthwise, two
+    decks stand side by side. The tray has tapered corner posts with a slanted lead-in, a
+    window to push the deck up through and a thumb notch to lift it out (the plate is flat
+    between the posts); ribs inside the lid
+    rest just above the deck so the cards can't rattle (the case is at least 40 mm tall for the
+    latches, so on a thin deck the tray's plate is raised a little too).
     Solid base / Solid lid: the inside is filled in (walls, rim, hinges and latches unchanged,
     so it still closes), ready for tool-shaped pockets. "Space above" leaves open room over the
     base's fill. Cut pockets with Photo Tracer: select the base (or the lid, laid out upside
@@ -137,6 +228,9 @@ colours share the same edge. Edge smoothing rounds them more; Smallest detail gi
 thin to print to the colour next to them. The preview shows the shapes that will be made.
 Brush, Bucket and Lasso recolour or cut away parts. On a face each colour becomes its own
 part - Inlay (flush) or Raised - ready for the AMS; the panel counts the filaments you'll need.
+Pictures on flat faces are built as exact outline shapes (lighter and much faster than before).
+If the 3D engine ever runs out of memory on something very detailed, the change is undone and the
+engine restarts by itself - try fewer colours or a higher "Smallest detail".
 Colour relief: on a Raised picture, tick "Colour relief" and each colour gets its own height:
 "Biggest lowest", "Darkest on top" or "Lightest on top" set them in steps (Step size), then
 fine-tune any colour's Height in the list.
