@@ -1,4 +1,4 @@
-MakerShape v3.9
+MakerShape v5.7
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -40,6 +40,56 @@ Keys
   Arrows nudge by the Snap Grid amount (0.1 mm when snap is Off)
   Shift+arrows = 10x the snap, Alt+↑/↓ = up/down   Esc cancel / deselect
 
+Heraldry - build a coat of arms to print face up, flat back on the bed, multi-colour on the AMS. Everything
+is in one place: Generators > Coat of arms opens a picker with 1 Shield, 2 Divisions, 3 Ordinaries,
+4 Charges and 5 Helm, crest and motto (and the Make coat of arms button).
+- Shield: Heater, French, Spanish, Swiss, Kite, Round or Lozenge. Face: Flat, Curved (side to side) or
+  Domed, with Curve = how much higher the middle is. Rim width / Rim up (0 = no rim). Hanging: a hole,
+  a keyhole slot in the back (for a screw head up to 9 mm) or two pockets for 8 x 3 mm magnets.
+  In a coat of arms the keyhole (and the magnet pockets and hole) go through everything behind
+  the shield too - mantling, scroll - so nothing fills them. The keyhole: push the screw head into the
+  round hole, then let the shield drop so the head slides up behind the 1.6 mm lip (screw up to
+  4.6 mm, head up to 9 mm across and 2.2 mm thick).
+- Division (per pale, per fess, per bend, per bend sinister, per chevron, per saltire, quarterly) and
+  Ordinary (chief, fess, pale, bend, bend sinister, chevron, cross, saltire, bordure, canton, pile,
+  rim colour): select the shield, then click it in the picker or pick one under "Add to this shield". Lines:
+  straight, wavy, indented, embattled, engrailed, invected. They stay on their shield - move, resize
+  or reshape the shield and they follow. Each is a skin of colour (Depth, 1 mm) over the shield, so the
+  AMS only swaps colours near the top; ordinaries stand 0.6 mm proud (Raised).
+- Charges: lion rampant, mullet, estoile, crescent, roundel, annulet, lozenge, mascle, billet, cross
+  couped, cross crosslet, cross patee, cross flory, fleur-de-lis, heart, key, tower, crown. Click one,
+  then click on the shield: it sinks in just enough to sit snugly on the curve. They are sculpted
+  (rounded over at the top in steps that match the print's layers). Facing: dexter or sinister.
+  The lion's mane, fur and claws are engraved lines (Engraving depth, 0 = smooth).
+- Counterchange: select a charge lying on a divided shield and press Counterchange. It is split along
+  the division and each half takes the tincture of the other side (e.g. a lion per fess sable and
+  argent on a field per fess argent and sable). The halves move and resize together and follow the
+  shield; Undo counterchange puts it back. (No need to stack two copies of a charge in groups.)
+- Helm: great helm, close helm, open helm and crowned helm, drawn as smooth curves after reference
+  pictures: skull, visor, bevor and neck plates as separate raised layers, eye slits, visor bars and
+  breathing holes cut in, and gold trim, rosettes, fleurs and scrollwork standing just proud of the steel.
+  Two-tone (steel + gold, each its own shape) or Single colour (one piece; the trim still stands out in
+  relief): pick in the Coat of arms picker before placing, or switch on a helm's panel.
+- Crest, added separately: red plume, blue & white plume (two colours), dragon crest (with its crown),
+  cloth mantle (red with gold embroidery) and torse. Drop one on a helm and it goes where it belongs on
+  that helm (and is sized to suit it). Plumes and the cloth sit behind the helm.
+- Mantling: four red-and-gold designs (each colour its own part - recolour them freely); they sit
+  behind the shield and helm. Each prints as one piece: a 0.8 mm base of the first colour runs under
+  the whole mantling (filling gaps up to 3 mm), and the lining colour sits on it, meeting the first
+  colour with no gap - so no part of it can come off the print on its own.
+- Motto scrolls: rolled ends, looped ends, swallowtails and curled tails (plus the simple one), drawn
+  as smooth curves: the front ribbon with a rim line along both edges, and the rolls, folds and tails as
+  layers in front of or behind it. The motto is its own Text shape locked to the ribbon's curve: type
+  any words and they follow it (long words shrink to stay on the scroll). Select it to change the words,
+  font, letter size or curve.
+- Colours: the panel offers the heraldic tinctures (Or, Argent, Gules, Azure, Vert, Purpure, Sable)
+  and picks a contrasting one for each new part (metal on colour, colour on metal).
+- Make coat of arms (on the shield's panel) groups the shield, its divisions and ordinaries and the
+  charges, helm, crest and motto around it into one Inlay group: each tincture is one colour part.
+The lion rampant is traced from "lion rampant" by szquirrel (Openclipart, public domain). The helms and
+scrolls are drawn after, and the crest pieces and mantlings traced from, reference pictures supplied for
+MakerShape.
+
 Open-source parts (licences in the 'licenses' folder): OpenCascade (LGPL-2.1)
 via replicad, three.js, opentype.js, and the Inter font (SIL OFL).
 
@@ -55,6 +105,16 @@ along the two edges that meet there; the top handle shows the height. Click a bo
 (sums and, in parametric mode, formulas work) and press Enter - the shape changes from that
 handle, so the opposite corner (or the base) stays put. Tab moves between boxes, Esc hides them.
 Shapes whose size comes from their settings (threads, generators, Gridfinity) show it read-only.
+Several shapes selected: one dashed box goes round them all, with corner squares, a top square and the lift
+cone. Dragging resizes the selection as if it were one shape (⇧ keeps proportions): every shape grows or
+shrinks by the same amount and keeps its place relative to the others; text letters grow too, and shapes
+that can't change size (threads, generated parts) just move. The side panel has Size and Position boxes
+for the whole selection (with Keep proportions).
+
+New shapes: Wedge (a ramp, high at the back), Star and Star pyramid (a star rising to a point) - set
+the number of Points (3-24) and the Inner ratio (inner ÷ outer radius: 0.1 is spiky, 0.95 almost
+round; both can be formulas in parametric mode) - and Heart. All resize, stretch, become holes,
+group, round / chamfer and push / pull like the other shapes (the heart's curved sides too).
 
 Toolbar order: New · Open · Save | Import · Trace photo · Sketch | Undo · Redo | Duplicate · Delete |
 Rotate · Align | Push/Pull · Edges | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
@@ -154,6 +214,45 @@ Generators (left panel, under Gridfinity) - the Thread is here too (bolts, rods,
     padlock shackle (hole 4-10 mm, 7 mm by default; 45° underneath so both print without
     supports). They sit in the widest free stretch of the front (two latches move out towards
     the corners to make room).
+    Compartments: Dividers (equal parts across and deep), Bento walls built in (walls printed as
+    part of the base), or Bento insert (a separate tray that drops into the base, 0.4 mm clear of
+    the walls, up to just below the rim unless you set its height). Both bento choices use the
+    compartments editor (see Bento tray), with divider thickness, how much lower the dividers are
+    than the walls, and finger notches; the insert also has its own walls, floor and scoop.
+    Size: Outside size (width, depth, height) or Room inside - type the space you need inside
+    (height = floor to the inside of the lid) and the outside is worked out from it.
+    Gasket seal: the base's lip gets wider (inwards, with a 45° ledge under it so it prints) and a
+    groove along its top; a separate ring, printed in TPU (85A-95A), presses into the groove, and
+    the lid's ceiling squeezes it when the latches close. No claim of waterproof - it keeps dust
+    and spills out. Gridfinity cases get 2.8 mm wider so the bins still fit.
+    Folding lid handle: a recess in the lid shaped round the handle (a U-shaped channel, the lid
+    left solid in the middle - so printing the lid upside down only bridges narrow strips, with no
+    supports), with a finger notch in front of the grip; lift the
+    handle to carry, fold it flat to stack. Printed in place (the default): the handle is part of
+    the lid - it lies in the recess, flush with the lid's top, with pins on its arm ends in holes in
+    the recess's end walls, 0.4-0.5 mm clear all round, so it prints with the lid (upside down)
+    and comes off the printer already fitted. The inside of the lid is printed as a bridge over
+    it, so slow bridges down (about 10 mm/s) and raise the bridge flow in the slicer; work the
+    handle up and down a few times afterwards to free it. Or Separate, clicks on: a flat U printed
+    on its own that presses down into the recess until its arm ends click onto a ball on each end
+    wall. Not with the Gridfinity grid on the lid or lid feet.
+    Stacking: L-shaped seats in the four corners under the base and on top of the lid, with 45°
+    lead-ins; four small feet (chamfered at the ends) are glued into the base's seats and drop
+    into the lid seats of the case below, so stacked cases can't slide off. (Not with Gridfinity
+    feet or the lid grid - those stack already.)
+    Lid feet for Gridfinity bins: with "Sized for Gridfinity bins", tick "Feet under the lid" and
+    the lid gets a grid of Gridfinity feet that drop into the stacking lips of the bins, closing
+    each bin so nothing spills from one to the next. The lid is set for the tallest bins with a
+    stacking lip that fit (shown in the summary and marked inside the back wall); the summary
+    says how much lower or taller to make the case to avoid filling the lid in.
+    Carry handle: on the front (in the free stretch between the latches - two latches move out to
+    the corners to make room; needs a wider case, about 160 mm+) or one on each end (in place of the
+    grip ribs). The handle is one smooth rounded U. It clips on like the latches: two rounded lugs on
+    the base each have a small ball on the outside, and each arm end has a dimple inside - push the
+    handle down over the lugs (a shallow channel in each arm guides the ball) until the balls click
+    into the dimples; it pivots on them. Folded down flat against the wall a smaller bump clicks
+    into a second dimple, so it stays put. It prints flat on its outer face, no supports. Grip length (0 = as long as fits),
+    rounded grip, finger grooves. The summary says if there isn't room and why.
     Card box: tick "Make it a card box", choose one deck or two, the card width and length (poker
     63.5 x 88.9 mm by default), the deck's height and the card clearance. The case is sized
     round a card tray (0.7 mm round the tray, 1.3 mm above it): one deck lies lengthwise, two
@@ -172,6 +271,17 @@ Generators (left panel, under Gridfinity) - the Thread is here too (bolts, rods,
     and latches are laid out for printing; "Show assembled" puts it together and "Edit..."
     changes any setting later. (Check the SnapLock design's licence on MakerWorld before
     sharing or selling cases made with it.)
+  Press-fit box - a plain box with a flat lid that pushes on and clicks shut. Under the lid is a
+    plug, a band about 4 mm wide that fits just inside the walls; pockets in it leave thin spring
+    arms along its edge, each joined at one end, that bend sideways in the plane of the lid (along
+    the printed layers, so they're strong). Near each arm's tip is a wedge-shaped ridge: as the lid
+    goes on the arms bend in, then the ridges click into a groove round the inside of the walls.
+    Size: outside (height includes the lid) or room inside; walls (1.7-1.9 mm or more, for the
+    groove), floor, corners, lid thickness, fit (the gap round the plug, 0.15 mm) and grip (Light
+    / Normal / Firm - how far the ridges stand out; the dialog shows an arm from below and a cut
+    through the joint). Optional thumb dip in the front rim to lift the lid. Prints without
+    supports: the box upright, the lid upside down. Too tight or too loose? Change the grip or the
+    fit and print just the lid again.
   Threaded jar - diameter, height, walls, thread length, pitch, 1 or 2 starts (2 = fewer turns
     to close) and fit; grip grooves on the lid, a recessed label band, stackable (the bottom
     screws onto the jar below) or a Gridfinity base. The lid prints upside down.
@@ -192,6 +302,16 @@ Generators (left panel, under Gridfinity) - the Thread is here too (bolts, rods,
     thinnest and thickest (light parts thin, dark parts thick; Negative swaps them), a separate
     stand with a slot, or a hanging tab with a hole; Draft / Normal / Fine detail. The preview
     shows roughly how it will look lit up. Print it standing up, in white, at 100% infill.
+  Bento tray - a tray, or a Gridfinity bin (width × depth in grid units, height in U, stacking
+    lip, magnet holes), split into compartments. The editor shows the inside from above: click a
+    compartment to pick it - the + on its right edge splits it side by side, the + on its bottom
+    edge splits it front to back, the bin removes it (its neighbour takes the room). Click a size
+    (↔ width, ↕ depth) to type it exactly - the compartments beside it share what's left, the
+    outside stays the same. Drag a divider to move it (0.5 mm steps, Shift = 0.1 mm). Give the
+    picked compartment a label (sunk into its floor). Reset goes back to one compartment.
+    Settings: walls, dividers, floor, outside corners, inside corners, scoop (the floor curves up
+    into the walls so small parts slide out), dividers lower than the walls, finger notches in the
+    dividers, and a lift-off lid whose rim pushes into the top (or into a Gridfinity bin's lip).
   Bin label - labels that sit on the label tab of a Gridfinity bin: bin width in units,
     compartments, the text (or one label per line for several), inlaid or raised. Change a
     label's words later in the panel like any text on a surface.
@@ -229,6 +349,25 @@ thin to print to the colour next to them. The preview shows the shapes that will
 Brush, Bucket and Lasso recolour or cut away parts. On a face each colour becomes its own
 part - Inlay (flush) or Raised - ready for the AMS; the panel counts the filaments you'll need.
 Pictures on flat faces are built as exact outline shapes (lighter and much faster than before).
+Exporting shapes that aren't grouped: shapes that touch or sit in each other (a lion on a shield, a
+motto on its scroll) go into the 3MF as parts of one object, so the slicer keeps them where they were
+instead of dropping each onto the plate. Pieces behind (mantling, plumes) are listed first and smaller
+pieces after bigger ones, so where they overlap the piece in front keeps its colour. Shapes standing
+apart stay separate objects.
+
+All the heavy 3D work - shields, charges, helms, groups, rounded edges, text on a curve,
+generator parts, and making the triangles for an export - is done by a second copy of the 3D engine
+running in the background. The page only draws and listens to you, so it stays responsive: while
+something builds you see "Building…" (or the preview appears a moment later when placing a detailed
+shape), but the page never freezes or asks to close. Simple shapes (boxes, cylinders and the like) are
+still built straight away on the page, as they're instant. The background engine also pre-builds each
+new shape while you work, so combining them later only has the combining left to do.
+
+If opening your last design ever freezes MakerShape, the next start offers to start with an empty
+design instead, and a link saves that last design as a file (open it again later with Open). If
+building it at start-up takes very long, the same choice appears after 20 seconds. The background
+engine gives up on any single build after 4 minutes and says so, rather than leaving you waiting.
+
 If the 3D engine ever runs out of memory on something very detailed, the change is undone and the
 engine restarts by itself - try fewer colours or a higher "Smallest detail".
 Colour relief: on a Raised picture, tick "Colour relief" and each colour gets its own height:
@@ -244,12 +383,35 @@ Click the workplane instead to get the picture on its own white plate.
 Picture (left panel): trace a logo or drawing (no sheet needed - you set its width), then
 click a face to put it on: Raised, Inlay (own colour, flush) or Engraved, like text. It
 follows curved faces too. Clicking the workplane makes it a flat picture shape.
+Covering a whole face: on the picture's panel, "Cover face" stretches the picture to
+fill the face it's on, and "Fit to face" makes it as big as it goes keeping its shape.
+- Flat face: sized to the face and trimmed to the face's outline (a round top stays round),
+  0.4 mm in from the edges.
+- Cylinder (or another curved outline, like an oval): right round, top to bottom; Fit fills the
+  height and goes as far round as its shape allows.
+- Sphere: right round like a map of the world (squeezed towards the top and bottom).
+- Half-sphere: Cover wraps it right round the dome; Fit lays it over the dome as seen from above.
+Once stretched, the panel shows its height too (Tall), and Unstretch puts it back to its own
+proportions. A picture over a whole curved face is combined as triangles (fast), so rounded or
+chamfered edges can't go on that group.
 Tip: dark objects on white paper trace best; avoid strong shadows (light from above or
 use a lightbox). iPhone HEIC photos: share or export them as JPG first.
 
 Combine modes for groups: Merge (one solid) or Inlay (each shape stays its own
 colour part; smaller shapes cut their space out of bigger ones) - Inlay exports
 to 3MF as one object made of coloured parts, ready for multi-colour printing.
+Engrave (coats of arms): a group with a shield can also be set to Engrave. On the shield, one tincture
+(chosen on the group's panel - the lightest, e.g. Argent, to start with) is cut into the shield's face
+as deep as Depth, and everything in the other tinctures - field, divisions, ordinaries, charges - sits
+flat at the face: the shield becomes one solid in one colour, to print in one colour and paint or fill
+the recesses. The helm, mantling, motto and the rest stay as in Inlay.
+Engrave the motto into the scroll (a tick box on an Inlay or Engrave group with a motto scroll): the
+words are cut into the scroll's ribbon as deep as Depth, instead of standing on it - the scroll and its
+motto print as one piece in the scroll's colour.
+Grouping shapes of different colours makes an Inlay group by default (pick Merge on the
+group's panel to fuse them into one solid instead). Merge checks every join: where the 3D
+engine would quietly lose a piece (detailed shapes that only just touch), the pieces are
+kept side by side instead, so nothing disappears.
 
 Part colours: select a group with text, a picture or other inlaid parts and the panel lists
 each part - Body, each Text, each picture colour - with its own colours. Changes show at
@@ -267,6 +429,12 @@ Paint (toolbar button or P): a small pane to colour the surface.
   Pick - eyedropper: click the shape to take its colour.
   Clear paint removes it from the selected shapes; ⌘Z undoes a stroke or fill. Keys: B brush,
   G bucket, I pick, Esc to finish. Drag empty space to turn the view while painting.
+  Select (S) - Lasso, Box or Line. Drag around an area (or a box over it) and everything inside,
+    as you see it, takes the colour: the surfaces facing you, on the selected shapes, or on every
+    shape under the drawing if none are selected. Line: drag a line across a shape, then click the
+    side to colour. "Colour right through" colours back and hidden surfaces too. Alt puts the
+    part's own colour back; Esc cancels a drawing. (With Select, use a two-finger swipe to turn
+    the view.) The surface is divided finer along the outline, so the colour edge is crisp.
 Paint is colour only (the shape doesn't change); it moves, turns and stretches with the shape.
 It exports to the Bambu 3MF as Bambu Studio paint (multi-colour on the A1), to the other 3MF
 as coloured triangles, and to OBJ; STL stays one colour. Detail finer than the 0.4 mm nozzle
@@ -289,6 +457,10 @@ a stretched copy without pickable edges, and a message says which shape is why.
 Threads inside a resized group are stretched with it, so they may no longer fit
 a standard bolt or nut - the panel warns you when that applies.
 
+Bent text: a Text shape's Bend (mm) curves the words along an arc - how much higher the ends sit
+than the middle (minus arches them the other way; 0 = straight). A motto on a scroll has a Curve
+(radius, mm) instead, so any words follow the scroll.
+
 Text on shapes: drop Text onto a shape and it follows the surface - wrapping around
 any curve: cylinders, cones, spheres, ovals, rounded corners and other extruded
 curves follow the surface exactly; free-form shapes (e.g. a squashed sphere) get
@@ -300,6 +472,20 @@ Engrave (cut in), and adjust size, depth, spacing, Around and Up/down.
 The text is grouped with its shape; Ungroup to detach it.
 
 Import (top bar, or drop a file on the workplane):
+(Models whose surface has gaps or tangles - common with 3D scans and sculpts - are repaired as they're
+imported: holes filled, twisted and doubled triangles sorted out, touching corners pulled apart - so they
+can be grouped, cut and split. The import message says how many holes were filled. Models already in a
+design are repaired the same way when you group or split them.)
+(Very detailed models - over 800,000 triangles, like 3D scans and sculpts - get a choice on import:
+simplify to 500k triangles (recommended: it looks the same - the summary says how far the surface moved,
+usually well under 0.1 mm), to 250k or to 1 million, or keep them all (up to 2 million). It's done in the
+background in a few seconds, even for a 3-million-triangle file.)
+(Groups with an imported STL/3MF model in them are combined as triangles, by a separate mesh engine
+(Manifold), instead of being turned into exact solids first - so even detailed models (tens of thousands
+of triangles, like a coat of arms exported earlier) group, merge or inlay in seconds rather than
+freezing. Merge, Inlay, holes, colours, resizing and export all work the same; rounded edges and
+Push/Pull aren't available on such a group. The model has to be closed (watertight): if it isn't, the
+app says so - repair it in your slicer and import it again.)
 - STL and 3MF (including Bambu Studio projects - each part comes in with its colour).
   These are triangle meshes: move, resize, colour, group them or cut holes in them.
   Their edges can't be rounded, and very detailed models are slow to combine.
@@ -319,7 +505,7 @@ best - on curves, test-scan before printing.
 Gridfinity (left panel):
 - Drawer grid: enter the inside size of your drawer and a gap. Choose full (42 mm),
   half (21 mm) or full + half cells at the edges, and where the leftover filler goes.
-  Pick your printer (or type your print bed size) and big grids are split into tiles
+  Pick your printer (or type your print bed size - it's remembered, see Print bed) and big grids are split into tiles
   that lock together with dovetail joins. Tiles are named A1, A2… (on the border, or
   under the floor when magnet holes are on). "Lay tiles out for printing" spreads them
   apart; "Edit drawer grid…" changes everything later.
@@ -330,6 +516,62 @@ Gridfinity (left panel):
 - Grid on top of any shape: select a shape, "Add Gridfinity grid to top…" - cut into the
   top or built on top, with the same grid and filler options.
 - Snap Grid 42 mm / 21 mm: bins and bases dropped on the workplane line up with the grid.
+
+Too big to print: when a shape (or group) is bigger than your printer - the bed less its edge, and the
+build height - its panel says so and offers "Split to fit the printer…". It's cut evenly into the fewest
+pieces that fit (or more, if you like), with square holes across every cut - half in each piece, only
+where there's solid material round them, and at least 2 on every separate part of a cut (say a wing and
+the base cut by the same plane) so the pieces can't turn. Thin parts of a cut get smaller pegs (down to
+3 mm), each hole matching its peg; if a part only has room for one, or none, the app says to glue it too -
+and the pegs to go in them, one model per peg size, laid out lying down for printing. Snap pegs (the default) have a slot in each end,
+making two springy prongs with a bump on the outside, and each hole has a notch all round where the bumps
+click in: push a peg halfway into one piece, then press the next piece on until it clicks. Or plain
+square pegs to glue, or no pegs. Peg size (8 mm) and Fit (the gap round each peg, 0.15 mm) are set in the
+dialog. Colours are kept (an inlay group's pieces stay inlay groups). The pieces replace the original
+(undo puts it back) and are laid out flat on the workplane, ready to print one by one.
+
+Print bed: the button in the status bar ("Print bed 256 × 256 × 256") sets your printer - pick it from
+the list (Bambu A1 / P1S / X1C, A1 mini, H2D, Prusa, Creality…) or choose Custom and type the bed size
+and build height, plus the edge to keep clear. It's remembered, and everything that splits big prints into pieces uses
+it: Gridfinity drawer grids, SKÅDIS boards and anything added later. Changing the printer in one of
+those dialogs changes it here too.
+
+SKÅDIS & pegboards (left panel) - pegboards with the IKEA SKÅDIS hole pattern (slots 5 × 15 mm with round ends,
+in columns 20 mm apart; each column has a slot every 40 mm and every other column is 20 mm higher),
+and bins that hang on them - or any other pegboard pattern:
+- Hole pattern (boards and bins): IKEA SKÅDIS, standard pegboard (¼″ / 6.35 mm round holes on a
+  1″ / 25.4 mm grid), or Custom for any other board: slots, round or square-cornered holes; hole
+  width and height; Across (column spacing) and Down (spacing in a column), centre to centre; and
+  Staggered (every other column half a step higher, like SKÅDIS). Make a bin with the same pattern
+  as its board: its hooks go on one row of holes (at least 30 mm apart) and are sized to fit
+  through the holes - small round holes make small hooks, so keep those bins for light things.
+  The screw holes and spacers go half way between columns; if the columns are too close for the
+  screw heads, the panel says which screws fit.
+- Board: pick an IKEA size (36, 56 or 76 × 56 cm) or type any width and height; thickness (5 mm,
+  like IKEA's) and corners. On the wall: spacers on the back (printed stand-offs, 12 mm to start,
+  so hooks fit behind the board, with countersunk screw holes through them), countersunk holes
+  only (add your own spacers), or no holes. The holes sit half way between two columns, clear of
+  the slots and of the hooks behind. Bigger than the print bed: one piece, separate tiles (screw
+  them up side by side), or tiles that clip together with dovetails (Join fit sets how loose).
+  Tiles split half way between slots, so the pattern carries on across the joins, and are named
+  A1, A2… (A is the top row). They're laid out face down for printing (spacers up, no supports);
+  "Show assembled" puts the board together.
+- Bin: outside width, depth and height, walls, floor, corners and compartments; hooks 40 mm apart
+  (on one row of slots), as many as fit. Hooks: separate clips (the bin prints standing up and the
+  clips print flat - no supports anywhere; each clip slides up into a channel on the back of the
+  bin from underneath until it clicks: a springy finger at the bottom of the clip snaps over a
+  ledge, so it can't slide back out, and the bin hangs on the closed tops of the channels. Press
+  the bottom of a clip in towards the bin to slide it out again) or built in (one piece - each hook tip hangs in mid-air, so support the tips when printing).
+  Front: full height, or lower with sloped sides - type the front's height and the sides slope up
+  from it to the full height at the back wall (handy for reaching in; the back and its hooks stay
+  the same).
+  Bins 52 mm or taller also get a peg into the slot 40 mm below each hook, so they don't swing.
+  Board: the thickness of your SKÅDIS board (5 mm for IKEA's). To hang a bin: tilt it, put the
+  hooks through two slots, push it flat to the board and let it drop.
+
+Messages (at the bottom of the 3D view) stay up until you close them with their ×, or the next message replaces them.
+Left panel: click a section's heading (Shapes, Gridfinity, SKÅDIS & pegboards, Generators, User
+Shapes) to fold it away - handy for getting to your User Shapes quickly. It remembers which are folded.
 
 Workplane: shows the MakerShape logo and your design's name.
 
