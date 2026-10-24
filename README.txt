@@ -1,4 +1,4 @@
-MakerShape v5.7
+MakerShape v5.8
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -54,7 +54,10 @@ is in one place: Generators > Coat of arms opens a picker with 1 Shield, 2 Divis
   Ordinary (chief, fess, pale, bend, bend sinister, chevron, cross, saltire, bordure, canton, pile,
   rim colour): select the shield, then click it in the picker or pick one under "Add to this shield". Lines:
   straight, wavy, indented, embattled, engrailed, invected. They stay on their shield - move, resize
-  or reshape the shield and they follow. Each is a skin of colour (Depth, 1 mm) over the shield, so the
+  or reshape the shield and they follow. Placing one on its shield (its panel): Width, Up / down and
+  Left / right (a share of the shield's height and width, so they stay put if the shield is resized),
+  and for a chevron or per chevron the Angle of the arms (smaller = flatter). Counterchanged charges
+  follow the line wherever it's moved. Each is a skin of colour (Depth, 1 mm) over the shield, so the
   AMS only swaps colours near the top; ordinaries stand 0.6 mm proud (Raised).
 - Charges: lion rampant, mullet, estoile, crescent, roundel, annulet, lozenge, mascle, billet, cross
   couped, cross crosslet, cross patee, cross flory, fleur-de-lis, heart, key, tower, crown. Click one,
@@ -77,7 +80,8 @@ is in one place: Generators > Coat of arms opens a picker with 1 Shield, 2 Divis
   behind the shield and helm. Each prints as one piece: a 0.8 mm base of the first colour runs under
   the whole mantling (filling gaps up to 3 mm), and the lining colour sits on it, meeting the first
   colour with no gap - so no part of it can come off the print on its own.
-- Motto scrolls: rolled ends, looped ends, swallowtails and curled tails (plus the simple one), drawn
+- Motto scrolls: rolled ends, looped ends, swallowtails, curled tails and swept tails (a curved band whose
+  ends fold back into swallowtails sweeping up and out), plus the simple one, drawn
   as smooth curves: the front ribbon with a rim line along both edges, and the rolls, folds and tails as
   layers in front of or behind it. The motto is its own Text shape locked to the ribbon's curve: type
   any words and they follow it (long words shrink to stay on the scroll). Select it to change the words,
