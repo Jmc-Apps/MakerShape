@@ -1,4 +1,4 @@
-MakerShape v5.8
+MakerShape v6.2
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -574,6 +574,26 @@ and bins that hang on them - or any other pegboard pattern:
   hooks through two slots, push it flat to the board and let it drop.
 
 Messages (at the bottom of the 3D view) stay up until you close them with their ×, or the next message replaces them.
+Fasteners (left panel): Keyhole, Countersunk (screw hole), Magnet (pocket), Insert (heat-set), Nut trap and
+French cleat. Click one, choose the size, how many and the height (80% up the face by default), then click
+a flat face. For the ones that hang things (keyhole, countersunk, magnet, cleat) click the flat face that
+goes against the wall - turn the view to see underneath if the shape is lying on the bed (a curved
+plaque or a dome with a flat back is fine). Countersunk holes go right through, with the countersink on
+the front. On a curved front the countersink goes where the front comes furthest in under the
+head, with a head-sized counterbore running straight out from it, so the screw head sits down all round. Inserts and nut traps go into the face you click. They're spread evenly across the face at
+that height (within the face's outline, clear of its edges) and cut as holes - into the group the shape
+is in, or a new group with it. "Up" is towards the back of the workplane for a face lying flat, upwards
+for a standing one (a keyhole's slot runs up).
+- Keyhole: standard (screw up to 4.6 mm, head up to 9 mm; needs 5 mm of material) or large (5.8 / 12 mm).
+- Countersunk: a hole right through with a 90-degree countersink for 3-5 mm screws.
+- Magnet: a pocket 0.2 mm bigger than the magnet (8x3, 6x3, 10x2, 10x3, 12x3, 6x2, 5x2 mm).
+- Insert: a hole sized for M2-M5 brass heat-set inserts, with a small lead-in.
+- Nut trap: a hex pocket for an M3-M6 nut, with the screw hole right through.
+- French cleat: a 45-degree groove across the back and a matching wall strip (made next to the part, with
+  countersunk screw holes): screw the strip to the wall with its sloping edge up and away from the wall,
+  lift the piece over it, push it to the wall and let it drop.
+If the part is too thin for a fastener at a spot, the app says so before adding it.
+
 Left panel: click a section's heading (Shapes, Gridfinity, SKÅDIS & pegboards, Generators, User
 Shapes) to fold it away - handy for getting to your User Shapes quickly. It remembers which are folded.
 
