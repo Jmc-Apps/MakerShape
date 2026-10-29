@@ -159,6 +159,7 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 #splash .bar { width: 260px; height: 5px; border-radius: 3px; background: #E6EDF3; overflow: hidden; }
 #splash .bar i { display: block; width: 40%; height: 100%; background: linear-gradient(90deg, var(--teal), var(--orange)); border-radius: 3px; animation: load 1.2s ease-in-out infinite; }
 @keyframes load { 0% { transform: translateX(-100%); } 100% { transform: translateX(260%); } }
+#splash .bar.steps i { animation: none; width: 4%; transition: width .35s ease-out; }
 #splash p { margin: 0; color: var(--muted); font-weight: 500; }
 #splash.error .bar { display: none; }
 #splash.error p { color: var(--danger); max-width: 480px; text-align: center; line-height: 1.5; }

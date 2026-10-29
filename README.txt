@@ -1,4 +1,4 @@
-MakerShape v6.2
+MakerShape v6.3
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —

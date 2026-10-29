@@ -117,10 +117,27 @@
   <p id="splash-status">Loading…</p>
 </div>
 
-<script src="lib/occ-engine.js"></script>
-<script src="lib/font.js"></script>
-<script src="lib/mesh-engine.js"></script>
-<script src="lib/cad-worker.js"></script>
-<script src="app.js"></script>
+<script>
+// Load the engine files one after another, showing how far along it is (they're big: loading them all at
+// once used to look like the app had hung). Sizes (kB) are filled in when the app is built.
+(function () {
+  var files = [["lib/occ-engine.js", "Loading the CAD engine…", /*SIZE:occ*/9367], ["lib/font.js", "Loading fonts…", /*SIZE:font*/817], ["lib/mesh-engine.js", "Loading the mesh engine…", /*SIZE:mesh*/705],
+    ["lib/cad-worker.js", "Loading the background engine…", /*SIZE:worker*/2279], ["app.js", "Loading MakerShape…", /*SIZE:app*/3507]];
+  var total = 0, done = 0, i = 0; files.forEach(function (f) { total += f[2]; });
+  var bar = document.querySelector("#splash .bar"), fill = document.querySelector("#splash .bar i"), status = document.getElementById("splash-status");
+  bar.classList.add("steps");
+  function show(p) { fill.style.width = Math.max(4, Math.round(p * 100)) + "%"; }
+  function next() {
+    if (i >= files.length) return;
+    var f = files[i++], s = document.createElement("script");
+    status.textContent = f[1] + (i < files.length ? " (" + i + " of " + (files.length - 1) + ")" : "");
+    s.src = f[0]; s.async = false;
+    s.onload = function () { done += f[2]; show(done / total); setTimeout(next, 0); };
+    s.onerror = function () { status.innerHTML = "<b>Couldn't load " + f[0] + "</b> — make sure the whole MakerShape folder was copied, including the 'lib' folder."; document.getElementById("splash").classList.add("error"); };
+    document.body.appendChild(s);
+  }
+  show(0); next();
+})();
+</script>
 </body>
 </html>
