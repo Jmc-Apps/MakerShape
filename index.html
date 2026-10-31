@@ -1,143 +1,144 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#d4e5ee">
-  <meta name="description" content="Data Driven Development sports performance suite">
-  <title>Data Driven Development v1.45</title>
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icon-192.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="suite.css?v=1.45">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MakerShape</title>
+<meta name="theme-color" content="#13315C">
+<link rel="icon" type="image/png" href="assets/icon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <header class="topbar">
-    <button class="menu-button" id="menuButton" type="button" aria-label="Open menu">Menu</button>
-    <span class="brand-panel"><img class="brand-logo" src="assets/ddd-banner-v1-31.png" alt="Data Driven Development"></span>
-    <button class="install-button hidden" id="installButton" type="button">Install App</button>
-  </header>
-
-  <div class="shell">
-    <aside class="sidebar" id="sidebar">
-      <nav aria-label="Data Driven Development navigation">
-        <button class="nav-link home-logo-link active" data-page="home" aria-label="Home"><img src="assets/home-banner-v1-0.png" alt="Home"></button>
-        <div class="sidebar-app-links" aria-label="Applications">
-          <a class="sidebar-app-link captioned" href="field-hockey.html" aria-label="Open Field Hockey Goalie Stats"><img src="assets/field-hockey-banner-v467.png" alt=""><span>Field Hockey Stats</span></a>
-          <a class="sidebar-app-link captioned" href="trials/index.html" aria-label="Open Hockey Goalie Trials"><img src="trials/assets/trials-banner-v1-26.png" alt=""><span>Goalie Trials</span></a>
-          <a class="sidebar-app-link captioned" href="indoor-hockey.html" aria-label="Open Indoor Hockey Goalie Stats"><img src="assets/indoor-hockey-banner-v1-0.png" alt=""><span>Indoor Hockey Stats</span></a>
-          <button class="sidebar-app-link recorder-open" type="button" aria-label="Open Stats Recorder"><img src="recorder/assets/ddd-banner-v1-43.png" alt="Data Driven Development Stats Recorder"><span>Stats Recorder</span></button>
-        </div>
-        <div class="nav-heading">Shared services</div>
-        <button class="nav-link" data-page="goalies">Enrol Goalie</button>
-        <button class="nav-link" data-page="reports">Reports</button>
-        <button class="nav-link" data-page="benchmarking">Benchmarking</button>
-        <button class="nav-link" data-page="backup">Backup &amp; Restore</button>
-        <button class="nav-link" data-page="resources">Resources</button>
-      </nav>
-      <div class="suite-version">Data Driven Development<br><b>Version 1.45</b></div>
-    </aside>
-
-    <main>
-      <section class="page active" id="page-home">
-        <div class="hero">
-          <span class="hero-logo-panel"><img src="assets/ddd-logo-v1-31.png" alt="Data Driven Development" class="hero-emblem"></span>
-          <div><p class="eyebrow">One connected development suite</p><h1>Choose where you want to work</h1><p>Shared goalkeepers and central services, with each performance area kept in its own focused module.</p></div>
-        </div>
-        <section class="get-started hidden" id="getStarted" aria-labelledby="getStartedTitle">
-          <div class="get-started-head"><div><p class="eyebrow">New here?</p><h2 id="getStartedTitle">Get started in three steps</h2></div><span id="getStartedCount" class="get-started-count"></span></div>
-          <ol class="get-started-steps" id="getStartedSteps"></ol>
-        </section>
-        <div class="module-grid">
-          <a class="module-card field" href="field-hockey.html">
-            <div class="module-card-top"><img src="assets/home-emblem-v467.png" alt="Field Hockey Goalie Stats logo" class="module-logo"><span class="status ready">Available</span></div><h2>Field Hockey Goalie Stats</h2><p>Record matches, review video, analyse performance, heat maps and reports.</p><strong>Open Field Hockey Goalie Stats →</strong>
-          </a>
-          <a class="module-card trials" href="trials/index.html">
-            <div class="module-card-top"><img src="trials/assets/icon-192-v1-26.png" alt="Hockey Goalie Trials logo" class="module-logo"><span class="status ready">Available</span></div><h2>Hockey Goalie Trials</h2><p>Plan fair trials, record equal drills, compare goalkeepers and create selection reports.</p><strong>Open Hockey Goalie Trials →</strong>
-          </a>
-          <a class="module-card indoor" href="indoor-hockey.html"><div class="module-card-top"><img src="assets/indoor-hockey-logo-v1-0.png" alt="Indoor Hockey Goalie Stats logo" class="module-logo"><span class="status ready">Available</span></div><h2>Indoor Hockey Goalie Stats</h2><p>Record indoor matches with indoor periods, six-second shoot-outs and indoor-specific analysis.</p><strong>Open Indoor Hockey Goalie Stats →</strong></a>
-        </div>
-        <h2 class="section-title">Shared services</h2>
-        <div class="service-grid">
-          <button class="service-card" data-go="goalies"><b>Enrol Goalie</b><small>Add goalkeepers and their teams. Start here.</small></button>
-          <button class="service-card recorder-open" type="button"><b>Stats Recorder</b><small>Open the companion match recorder.</small></button>
-          <button class="service-card" data-go="reports"><b>Reports</b><small>Open reporting options across every sport for one goalie.</small></button>
-          <button class="service-card" data-go="benchmarking"><b>Benchmarking</b><small>Central participation and upload status.</small></button>
-          <button class="service-card" data-go="backup"><b>Backup &amp; Restore</b><small>Protect the complete connected suite.</small></button>
-          <button class="service-card" data-go="resources"><b>Resources</b><small>Open shared manuals, rules and development material.</small></button>
-        </div>
-      </section>
-
-      <section class="page" id="page-reports">
-        <div class="page-heading"><div><p class="eyebrow">Shared service</p><h1>Reports</h1><p>Select a shared goalie to access their reporting options across the platform.</p></div></div>
-        <article class="panel report-goalie-picker">
-          <label>Goalie<select id="platformReportGoalie"></select></label>
-          <div id="platformReportSummary" class="report-goalie-summary"></div>
-        </article>
-        <div id="platformReportOptions" class="platform-report-options"></div>
-      </section>
-
-      <section class="page" id="page-goalies">
-        <div class="page-heading"><div><p class="eyebrow">Shared directory</p><h1>Enrol Goalie</h1><p>Goalies enrolled here are available to Field Hockey, Indoor Hockey and Trials.</p></div><button class="primary" id="newGoalieButton" type="button">Enrol New Goalie</button></div>
-        <div class="two-column goalie-layout">
-          <article class="panel"><h2>Shared Goalkeepers</h2><div id="goalieList" class="goalie-list"></div></article>
-          <article class="panel form-panel" id="goalieFormPanel">
-            <h2 id="goalieFormTitle">Enrol New Goalie</h2>
-            <form id="goalieForm">
-              <input type="hidden" id="goalieId">
-              <div class="identity-grid">
-                <label>Full Name<input id="goalieName" required autocomplete="name"></label>
-                <label>Date of Birth<input id="goalieDob" type="date" min="1900-01-01" max="9999-12-31"></label>
-                <label>Age Group<input id="goalieAgeGroup" readonly aria-describedby="ageGroupHelp"><small id="ageGroupHelp">Calculated at 23:59 on 31 December of the previous year.</small></label>
-                <label>Gender<select id="goalieGender"><option>Male</option><option>Female</option></select></label>
-              </div>
-              <div class="team-heading"><div><h3>Team Profiles</h3><p class="form-note">Add at least one team. Matches are recorded against a team, and Level and Tier are needed before matches can be used for benchmarking.</p></div><button class="secondary" id="addTeamProfile" type="button">Add Team</button></div>
-              <div id="teamProfiles" class="team-profiles"></div>
-              <div class="form-actions"><button class="primary" type="submit">Save Shared Goalie</button><button class="secondary" type="button" id="cancelGoalieForm">Cancel</button></div>
-            </form>
-          </article>
-        </div>
-      </section>
-
-      <section class="page" id="page-benchmarking">
-        <div class="page-heading"><div><p class="eyebrow">Shared service</p><h1>Central Benchmarking</h1><p>Choose which goalkeepers share anonymous statistics for comparison. Names are never uploaded.</p></div></div>
-        <div class="notice">Opting in here applies to both sports. Benchmarks unlock after the goalkeeper's first finished, fully classified match uploads. Field Hockey goalkeepers are only compared with Field Hockey goalkeepers in the same format, and Indoor with Indoor.</div>
-        <div id="benchmarkList" class="benchmark-list"></div>
-      </section>
-
-      <section class="page" id="page-backup">
-        <div class="page-heading"><div><p class="eyebrow">Shared service</p><h1>Backup &amp; Restore</h1><p>One backup protects all connected Data Driven Development data on this device.</p></div></div>
-        <div class="backup-grid">
-          <article class="panel"><h2>Create Backup</h2><label>Backup contents<select id="backupScope"><option value="complete">Complete Data Driven Development suite</option><option value="field">Field Hockey only</option><option value="indoor">Indoor Hockey only</option><option value="trials">Field Hockey Trials only</option><option value="recorder">Stats Recorder only</option><option value="goalie">One goalie and all related data</option><option value="directory">Goalkeepers &amp; team profiles only</option></select></label><label id="backupGoalieWrap" class="hidden">Goalie<select id="backupGoalie"></select></label><button class="primary" id="downloadBackup" type="button">Download Backup</button><p class="form-note">Backups include permanent record IDs and update times for safe merging.</p></article>
-          <article class="panel"><h2>Restore or Import</h2><label>Backup file<input id="restoreFile" type="file" accept=".dddbackup,.json,application/json"></label><div id="backupPreview" class="backup-preview empty">Choose a backup to preview its contents.</div><label>Restore method<select id="restoreMode"><option value="merge">Merge — keep existing data and prefer newer records</option><option value="replace">Replace included sections</option></select></label><button class="primary" id="restoreBackup" type="button" disabled>Restore Selected Backup</button><p id="backupStatus" class="form-note"></p></article>
-          <article class="panel"><h2>Recorder Match Import</h2><p>Import a match export from the Data Driven Development Stats Recorder into Field Hockey Stats.</p><input id="recorderImportFile" type="file" accept=".json,application/json"><button class="primary" id="importRecorderMatch" type="button">Import Recorder Match</button><p id="recorderImportStatus" class="form-note"></p></article>
-          <article class="panel danger-zone"><h2>Clear Local Data</h2><p>Clear the complete suite or one selected section. A six-digit confirmation is always required.</p><label>Data to clear<select id="clearScope"><option value="complete">Complete suite</option><option value="field">Field Hockey</option><option value="trials">Field Hockey Trials</option><option value="recorder">Stats Recorder</option></select></label><button class="danger" id="clearData" type="button">Clear Selected Data</button></article>
-        </div>
-      </section>
-
-      <section class="page" id="page-resources">
-        <div class="page-heading"><div><p class="eyebrow">Shared service</p><h1>Resources</h1><p>One central library for every Data Driven Development app.</p></div></div>
-        <div class="resource-grid">
-          <article class="resource-card"><h2>Data Driven Development Theory</h2><p>The principles behind the platform's evidence-led development approach, including Save Rate, Defence Rate, benchmarks and the Weighted Score.</p><div><a class="primary" href="resources/Data_Driven_Development_Theory.pdf" target="_blank" rel="noopener">Open</a><a class="secondary" href="resources/Data_Driven_Development_Theory.pdf" download>Download</a></div></article>
-          <article class="resource-card"><h2>FIH Rules of Hockey 2026</h2><p>Shared official rules reference for Field Hockey workflows.</p><div><a class="primary" href="resources/FIH_Rules_of_Hockey_2026.pdf" target="_blank" rel="noopener">Open</a><a class="secondary" href="resources/FIH_Rules_of_Hockey_2026.pdf" download>Download</a></div></article>
-          <article class="resource-card"><h2>Field Hockey Stats Manual</h2><p>Setup, recording, analysis, reports and maintenance guidance.</p><div><a class="primary" href="resources/Hockey_Goalie_Stats_Main_App_User_Manual.pdf" target="_blank" rel="noopener">Open</a><a class="secondary" href="resources/Hockey_Goalie_Stats_Main_App_User_Manual.pdf" download>Download</a></div></article>
-          <article class="resource-card"><h2>Stats Recorder Manual</h2><p>Match setup, live recording and transfer instructions.</p><div><a class="primary" href="resources/Goalie_Stats_Recorder_User_Manual.pdf" target="_blank" rel="noopener">Open</a><a class="secondary" href="resources/Goalie_Stats_Recorder_User_Manual.pdf" download>Download</a></div></article>
-          <article class="resource-card"><h2>Indoor Hockey Quick Start</h2><p>First match to reports in Indoor Hockey Goalie Stats, step by step.</p><div><a class="primary" href="resources/Indoor_Hockey_Goalie_Stats_Quick_Start.pdf" target="_blank" rel="noopener">Open</a><a class="secondary" href="resources/Indoor_Hockey_Goalie_Stats_Quick_Start.pdf" download>Download</a></div></article>
-          <article class="resource-card"><h2>Hockey Goalie Trials Quick Start</h2><p>Creating a trial, recording, comparison and selection, step by step.</p><div><a class="primary" href="resources/Hockey_Goalie_Trials_Quick_Start.pdf" target="_blank" rel="noopener">Open</a><a class="secondary" href="resources/Hockey_Goalie_Trials_Quick_Start.pdf" download>Download</a></div></article>
-          <article class="resource-card"><h2>FIH Rules of Indoor Hockey 2023</h2><p>Official indoor hockey rules on the FIH website (needs an internet connection).</p><div><a class="primary" href="https://www.fih.hockey/static-assets/pdf/fih-rules-of-indoor-hockey-2023.pdf" target="_blank" rel="noopener">Open Official Rules</a></div></article>
-        </div>
-      </section>
-    </main>
+<header id="top">
+  <img class="logo" src="assets/logo-header.png" alt="MakerShape">
+  <input id="doc-name" value="Untitled design" spellcheck="false" title="Design name">
+  <div class="tb">
+    <button class="f" id="btn-new" title="New design"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg><span>New</span></button>
+    <button class="f" id="btn-open" title="Open a .makershape file (⌘O)"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v10H3z"/></svg><span>Open</span></button>
+    <button class="f" id="btn-save" title="Save design (⌘S)"><svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/></svg><span>Save</span></button>
+    <i class="sep"></i>
+    <button class="f" id="btn-import" title="Import STL, 3MF or STEP (or drop a file on the workplane)"><svg viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 14v6h16v-6"/></svg><span>Import</span></button>
+    <button class="f" id="btn-tracer" title="Trace a photo into a shape, or lay a reference photo on the workplane"><svg viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M8.5 15.5c1-3 2.5-4.5 3.5-4.5s1.5 1.5 3.5 1.5"/><circle cx="9.5" cy="9" r="1.3"/></svg><span>Trace photo</span></button>
+    <button id="btn-sketch" title="Sketch on the workplane or a flat face (K)"><svg viewBox="0 0 24 24"><path d="M4 20h7"/><path d="M15.5 4.5a2.1 2.1 0 0 1 3 3L9 17l-4 1 1-4z"/></svg><span>Sketch</span></button>
+    <i class="sep"></i>
+    <button id="btn-undo" title="Undo (⌘Z)"><svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></button>
+    <button id="btn-redo" title="Redo (⇧⌘Z)"><svg viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H9a5 5 0 0 0 0 10h3"/></svg></button>
+    <i class="sep"></i>
+    <button id="btn-dup" title="Duplicate (⌘D)"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></svg></button>
+    <button id="btn-del" title="Delete (⌫)"><svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></button>
+    <i class="sep"></i>
+    <button id="btn-rotate" title="Rotate (R)"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg><span>Rotate</span></button>
+    <button id="btn-mirror" title="Mirror (M)"><svg viewBox="0 0 24 24"><path d="M12 3v18" stroke-dasharray="2 2"/><path d="M9 6L3 18h6z"/><path d="M15 6l6 12h-6z"/></svg><span>Mirror</span></button>
+    <button id="btn-align" title="Align shapes (L)"><svg viewBox="0 0 24 24"><path d="M4 3v18"/><rect x="7" y="5" width="10" height="5" rx="1"/><rect x="7" y="14" width="14" height="5" rx="1"/></svg><span>Align</span></button>
+    <i class="sep"></i>
+    <button id="btn-pp" title="Push/Pull a face (U)"><svg viewBox="0 0 24 24"><rect x="4" y="12" width="16" height="8" rx="1"/><path d="M12 10V3M9 6l3-3 3 3"/></svg><span>Push/Pull</span></button>
+    <button id="btn-edges" title="Round / chamfer edges (E)"><svg viewBox="0 0 24 24"><path d="M4 20V11a7 7 0 0 1 7-7h9"/></svg><span>Edges</span></button>
+    <i class="sep"></i>
+    <button id="btn-hole" title="Solid ↔ Hole (H)"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="3 2.5"/></svg><span>Hole</span></button>
+    <button id="btn-group" title="Group (⌘G)"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="10" height="10" rx="1"/><circle cx="15" cy="12" r="6"/></svg><span>Group</span></button>
+    <button id="btn-ungroup" title="Ungroup (⇧⌘G)"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="9" height="9" rx="1"/><circle cx="17" cy="12" r="5"/></svg><span>Ungroup</span></button>
+    <i class="sep"></i>
+    <button id="btn-paint" title="Paint: bucket fill and brush (P)"><svg viewBox="0 0 24 24"><path d="M18.5 3.5a2.1 2.1 0 0 1 3 3L12 16l-4-4z"/><path d="M8 12c-3 0-4 2-4 4 0 1.5-1 2.5-2 3 3 1 7 0 8-3"/></svg><span>Paint</span></button>
   </div>
-  <dialog id="recorderConfirm" class="confirm-dialog">
-    <form method="dialog">
-      <img src="assets/ddd-banner-v1-31.png" alt="Data Driven Development">
-      <h2>Open Stats Recorder?</h2>
-      <p>Do you want to open the Stats Recorder?</p>
-      <div class="confirm-actions"><button value="no" class="secondary" type="submit">No</button><button value="yes" class="primary" type="submit">Yes</button></div>
-    </form>
-  </dialog>
-  <div id="toast" class="toast" role="status"></div>
-  <script src="suite.js?v=1.45"></script>
+  <div id="export-wrap">
+    <button id="btn-export" class="export" title="Export for 3D printing"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></svg>Export<span class="caret">▾</span></button>
+    <div id="export-menu">
+      <button data-fmt="bambu"><b>3MF · Bambu Studio</b><span>Multi-colour project for your A1 — colours become filaments</span></button>
+      <button data-fmt="stl"><b>STL</b><span>Single colour · works with every slicer</span></button>
+      <button data-fmt="3mf"><b>3MF · other slicers</b><span>Multi-colour · Prusa, Orca, Cura and others</span></button>
+      <button data-fmt="obj"><b>OBJ</b><span>Multi-colour · for other 3D apps (zip with colour file)</span></button>
+      <p>Exports the selected shapes, or everything if nothing is selected. Holes on their own are left out.</p>
+    </div>
+  </div>
+  <input id="file-open" type="file" accept=".makershape,.json,application/json,.stl,.3mf,.step,.stp" hidden>
+  <input id="file-import" type="file" accept=".stl,.3mf,.step,.stp" multiple hidden>
+  <input id="file-tracer" type="file" accept="image/*" hidden>
+</header>
+
+<aside id="palette">
+  <h2>Shapes</h2>
+  <div id="shapes"></div>
+  <p class="pal-tip">Click a shape, then click the workplane (or another shape) to drop it.</p>
+  <h2>Gridfinity</h2>
+  <div id="gf-shapes"></div>
+  <h2>SKÅDIS &amp; pegboards</h2>
+  <div id="skadis-shapes"></div>
+  <h2>Generators</h2>
+  <div id="gen-shapes"></div>
+  <h2>Fasteners</h2>
+  <div id="fast-shapes"></div>
+  <div class="lib-head"><h2>User Shapes</h2><span><button id="lib-import" title="Import a User Shapes library file">Import</button><button id="lib-export" title="Save all your User Shapes to one file">Export</button></span></div>
+  <div id="user-shapes"></div>
+  <input id="lib-file" type="file" accept=".makershape-library,.json,application/json" hidden>
+</aside>
+
+<main id="viewport">
+  <div id="viewbar">
+    <button id="v-home" title="Home view"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></button>
+    <button id="v-fit" title="Zoom to selection (F)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+    <button id="v-in" title="Zoom in"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+    <button id="v-out" title="Zoom out"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+    <i></i>
+    <button id="v-top" class="txt" title="Top view">Top</button>
+    <button id="v-front" class="txt" title="Front view">Front</button>
+    <button id="v-right" class="txt" title="Right view">Right</button>
+  </div>
+  <div id="toast"></div>
+  <div id="marquee"></div>
+  <div id="rot-label"></div>
+  <div id="paint-pane"></div>
+  <div id="busy"><div class="spin"></div><span id="busy-msg">Working…</span></div>
+</main>
+
+<aside id="inspector"></aside>
+
+<footer id="status">
+  <span id="hint"></span>
+  <span class="grow"></span>
+  <span id="obj-count"></span>
+  <button id="btn-bed" title="Your printer's bed size — used to split drawer grids, SKÅDIS boards and other big prints into pieces that fit"></button>
+  <span id="param-wrap">
+    <button id="btn-param" title="Parametric design on/off — saved with this design" aria-pressed="false"><i class="knob"></i><span>Parametric</span></button>
+    <button id="btn-vars" hidden title="Variables for formulas"><b>ƒx</b><span>Variables</span></button>
+  </span>
+  <label>Snap Grid <select id="snap" title="Snap Grid — also the arrow-key nudge step"><option value="0">Off</option><option value="0.1">0.1 mm</option><option value="0.25">0.25 mm</option><option value="0.5">0.5 mm</option><option value="1" selected>1.0 mm</option><option value="2">2.0 mm</option><option value="5">5.0 mm</option><option value="10">10 mm</option><option value="21">21 mm (½ Gridfinity)</option><option value="42">42 mm (Gridfinity)</option></select></label>
+  <span class="units">mm</span>
+</footer>
+
+<div id="fontpop"></div>
+<div id="varpop"></div>
+<div id="user-menu"></div>
+<div id="modal"></div>
+
+<div id="splash">
+  <img src="assets/logo-full.png" alt="MakerShape">
+  <div class="bar"><i></i></div>
+  <p id="splash-status">Loading…</p>
+</div>
+
+<script>
+// Load the engine files one after another, showing how far along it is (they're big: loading them all at
+// once used to look like the app had hung). Sizes (kB) are filled in when the app is built.
+(function () {
+  var files = [["lib/occ-engine.js", "Loading the CAD engine…", /*SIZE:occ*/9367], ["lib/font.js", "Loading fonts…", /*SIZE:font*/817], ["lib/mesh-engine.js", "Loading the mesh engine…", /*SIZE:mesh*/705],
+    ["lib/cad-worker.js", "Loading the background engine…", /*SIZE:worker*/2280], ["app.js", "Loading MakerShape…", /*SIZE:app*/3511]];
+  var total = 0, done = 0, i = 0; files.forEach(function (f) { total += f[2]; });
+  var bar = document.querySelector("#splash .bar"), fill = document.querySelector("#splash .bar i"), status = document.getElementById("splash-status");
+  bar.classList.add("steps");
+  function show(p) { fill.style.width = Math.max(4, Math.round(p * 100)) + "%"; }
+  function next() {
+    if (i >= files.length) return;
+    var f = files[i++], s = document.createElement("script");
+    status.textContent = f[1] + (i < files.length ? " (" + i + " of " + (files.length - 1) + ")" : "");
+    s.src = f[0]; s.async = false;
+    s.onload = function () { done += f[2]; show(done / total); setTimeout(next, 0); };
+    s.onerror = function () { status.innerHTML = "<b>Couldn't load " + f[0] + "</b> — make sure the whole MakerShape folder was copied, including the 'lib' folder."; document.getElementById("splash").classList.add("error"); };
+    document.body.appendChild(s);
+  }
+  show(0); next();
+})();
+</script>
 </body>
 </html>

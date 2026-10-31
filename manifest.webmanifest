@@ -1,25 +1,28 @@
 {
-  "name": "Data Driven Development",
-  "short_name": "DDD",
-  "description": "Connected goalkeeper statistics, trials, benchmarking and backup suite.",
-  "start_url": "./index.html?v=1.45",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#dceaf2",
-  "theme_color": "#d4e5ee",
-  "orientation": "any",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+ "name": "MakerShape",
+ "short_name": "MakerShape",
+ "description": "Offline 3D modelling for 3D printing",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#FFFFFF",
+ "theme_color": "#13315C",
+ "icons": [
+  {
+   "src": "assets/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "assets/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "assets/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
 }

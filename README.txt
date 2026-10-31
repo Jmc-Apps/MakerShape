@@ -1,927 +1,638 @@
-Data Driven Development Suite v1.45
-Field Hockey Goalie Stats v5.123
-Indoor Hockey Goalie Stats v1.19
-Hockey Goalie Trials v1.31
-Stats Recorder v1.45
-Benchmark Worker v1.2 (deployed 25 Oct 2026; no Worker or database change in this version)
-
-Version 1.45 / Field v5.123 / Indoor v1.19 reorders report summaries and adds xSD and xDD to every breakdown.
-
-Report summaries
-- Match or context details first, then Save Rate, Defence Rate, xSD and xDD, then the counts. Applies to the Individual Match, 5 Game, Year, Opponent Analysis, Team / Home Team and Data Driven Development reports. All summary blocks are the same width.
-- Individual Match Report: Date, Home Team, Opponent, Score, Result first. The Match block is removed because it repeats the date and teams.
-- 5 Game and Year reports no longer show the xSD and xDD blocks twice.
-- Goalie Development Report adds Recent 5 / Previous 5 xSD and xDD beside the recent and previous rates.
-
-Breakdown tables
-- Every breakdown table (periods, halves, shot situation, shot type, outnumbered, match-by-match trend) has xSD after Save Rate and xDD after Defence Rate. Rows with no placed shots show "-".
-
-Version 1.44 / Field v5.122 / Indoor v1.18 fixes the goalkeeper list on the start screen.
-
-- The start screen kept rebuilding itself (the small save-rate counts set off another rebuild each time), which closed the goalkeeper drop-down as soon as it opened. It now only rebuilds when something changes, and never while the list is in use.
-
-Version 1.43 / Field v5.121 / Indoor v1.17 / Trials v1.31 names saved report PDFs.
-
-Report PDF file names
-- Field and Indoor: goalkeeper - report - match or date range, for example "Test Keeper - 5 Game Report - 2026-03-13 to 2026-04-17".
-- Trials: trial - report type - goalkeeper (individual feedback) - date, for example "Test Trial - Goalkeeper Selection Report - 2026-10-28".
-- Works from the Print / Save PDF button and from the browser's own print command. Safari on iPhone and iPad may still use its own name.
-
-Version 1.42 / Trials v1.30 adds heat map placements, xSD, xDD and the Trial Score to Hockey Goalie Trials.
-
-Recording
-- Trial Recording and Video Review have a D map and goal box map for each attempt: tap where it was taken and where it reached the goal. Placements are optional; attempts saved without them are left out of xSD and xDD.
-- Penalty Stroke sections place the attempt on the penalty spot automatically. The goal box map is greyed out for an angle closed off.
-- The shot editor shows both maps so placements can be added or corrected later.
-
-Trial Score
-- Trial Score = ((Save Rate + xSD) + (Defence Rate + xDD)) / 2, using the same weights as Field Hockey Goalie Stats (distance, angle, placement, rebound, deflection, In Game 1v1, 8 Second 1v1, outnumbered, penalty stroke, minimum 0.05).
-- The ranking and overall score now use the Trial Score in place of Defence Rate. The ratings influence slider works as before: at 100% ratings count the same as the Trial Score.
-- Comparison, Promotion / Selection and the stats tables show xSD, xDD and the Trial Score.
-
-Selection Report and individual feedback
-- Provisional ranking: Save rate, xSD, Defence, xDD, Trial Score, ratings, overall score and Rank on Defence, with the formula explained.
-- New sections: Difficulty faced (with an unequal-difficulty flag), By trial section (save rate and xSD), Saves by difficulty, and Placements coverage.
-- Individual feedback adds xSD, xDD, Trial Score with rank, saves above expected, D and goal box heat maps, and xSD by section against the trial average.
-
-Platform
-- Trials code files are versioned so updates take effect on the first open.
-
-Version 1.41 / Field v5.120 / Indoor v1.16 adds the remaining shot type and situation adjustments to xSD and xDD.
-
-New adjustments (from the updated theory document)
-- In Game 1v1 (shot type) x 0.70. If it is also recorded as outnumbered, both apply.
-- 8 Second 1v1 (Field) / 6 Second Shoot-out (Indoor) x 0.60, on top of distance, angle and placement.
-- Penalty Corner x 1.00 (no extra adjustment; Myers and Daly found it not significant once distance, angle and shot type are included).
-- Minimum adjustment 0.05: no attempt can fall below a 5% chance of a save.
-- All factors that apply are multiplied together, for saves, goals and Angles Closed Off (no placement for Angles Closed Off). Penalty stroke stays 0.25 x placement.
-
-Platform
-- The platform Reports page now has an Expected Differential Report button for Field and Indoor.
-
-Resources
-- Data Driven Development Theory updated with the new shot type and situation adjustments.
-
-Version 1.40 / Field v5.119 / Indoor v1.15 adds the rebound adjustment to xSD and xDD.
-
-Rebound adjustment
-- Shots with the shot type Rebound have their chance of a save multiplied by 0.80 (Macdonald, Lennon and Sturdivant 2012: about 1.73 times the odds of a goal at the same distance and angle).
-- Every factor that applies to a shot is multiplied in: distance x angle x placement x outnumbered x rebound x deflection. Example: an ordinary shot (0.69) as a rebound while 3 vs 1 is 0.69 x 0.80 x 0.65 = 0.36.
-- Angles Closed Off use distance x angle with any outnumbered or rebound adjustment (no placement). Penalty strokes use 0.25 x placement only.
-- Report text updated to describe the rebound adjustment and multiple factors.
-
-Resources
-- Data Driven Development Theory updated with the rebound section and compressed diagrams (4.4 MB).
-
-Version 1.39 / Field v5.118 / Indoor v1.14 renames the weighted scores to xSD and xDD and adds the outnumbered adjustment.
-
-Expected Save Differential (xSD) and Expected Defence Differential (xDD)
-- The Save Rate and Defence Rate Weighted Scores are now called Expected Save Differential (xSD) and Expected Defence Differential (xDD), matching the theory document. Cards on the Stats tab and in every report summary use the new names.
-- The Weighted Score Report is now the Expected Differential Report (xSD / xDD).
-
-Outnumbered adjustment
-- When the goalkeeper is outnumbered the chance of a save is multiplied by 0.70 (2 vs 1), 0.65 (3 vs 1) or 0.60 (4+ vs 1; Indoor 4 vs 1 and 5 vs 1 also use 0.60).
-- Applies to saves, goals and Angles Closed Off. Penalty strokes are not adjusted. Empty-goal events stay excluded.
-- The Expected Differential Report has a new Outnumbered table (records, save rate, xSD, defence rate, xDD).
-
-Other
-- The Training Focus coaching insight refers to the benchmark save rate for the level.
-- Data Driven Development Theory updated (outnumbered adjustments, xSD and xDD).
-
-Version 1.38 / Field v5.117 / Indoor v1.13 makes updates take effect on the first open.
-
-Updates
-- After an update, the first open could show the new version number but still run the previous calculation code until the app was reloaded (a v1.37 Weighted Score Report showed the old weights this way).
-- The app's code files are now loaded with the version number attached (for example app-enhancements.js?v=1.38), and the offline copy always downloads fresh files when a new version installs. The new code runs on the first open.
-
-Weighted Score Report
-- Coaching notes read correctly for one or several items ("1 save was made on a difficult shot... This lifts...").
-
-Version 1.37 / Field v5.116 / Indoor v1.12 recalibrates the weighted scores and fixes the Weighted Score Report.
-
-Weighted score weights (chance of saving; matches the updated theory document)
-- Distance: close 0.60, middle 0.88, long 0.97. Angle: central 0.85, mid 0.93, wide 0.98. Placement: corners and edges 0.65, body height 0.92, low 0.97.
-- Deflection or tip-in x 0.75 and penalty stroke 0.25 (Myers and Daly's odds ratios converted to a chance of saving).
-- An ordinary shot is now about 0.70, so 0% really means "as expected"; the old weights put almost every goalkeeper far above 0.
-
-Weighted Score Report fixes
-- Shot Situation and Shot Type tables count every record, so their Save Rate and Defence Rate match the summary; weighted columns use the records with placements.
-- Penalty strokes appear as their own row in the Distance and Angle tables.
-- Matches with no shots are left out of the match table and graph (with a note).
-- Matches on the same date are numbered on the graph, e.g. 09-01 (1), 09-01 (2).
-- Difficulty bands updated for the new weights: Difficult under 50%, Moderate 50-75%, Routine 75% or more.
-
-Resources
-- Data Driven Development Theory updated with the recalibrated weighted score section.
-
-Version 1.36 / Field v5.115 / Indoor v1.11 / Trials v1.29 / Recorder v1.45 adds weighted scores, a Weighted Score report, shot counts beside every percentage and the updated theory document.
-
-Weighted scores (Data Driven Development Theory; Myers and Daly 2022)
-- Each attempt gets an adjustment: distance zone (0.3 / 0.6 / 0.9) x angle zone (0.3 / 0.6 / 0.9) x goal placement zone (0.5 / 0.7 / 0.9). Deflection or tip-in x 0.45. Penalty stroke uses 0.12 in place of distance and angle.
-- A save scores 1 - adjustment, a goal scores - adjustment. 0% means as expected for the attempts faced.
-- Save Rate Weighted Score: saves and goals. Defence Rate Weighted Score: also counts Angles Closed Off, weighted by distance and angle only (no goal placement) and scored like a save.
-- Records without the heat map placements they need are left out and counted ("18 of 20 shots placed"). Own goals and empty-goal events are left out.
-- Both scores appear beside Save Rate and Defence Rate on the Stats tab and in every report summary (Field and Indoor).
-
-Weighted Score Report (new report type)
-- Pick a first and last match. Summary, weighted scores by match graph, match-by-match table, and breakdowns by difficulty, distance, angle, placement, shot situation and shot type, with coaching notes and the method.
-
-Shot counts
-- Every percentage now shows its count, for example Save Rate 69% (80/116) and Defence Rate 73% (96/132), across the Stats tab, reports, coaching insights, the start screen and Trials.
-
-Resources
-- Data Driven Development Theory replaced with the updated document (weighted score section), compressed from 34 MB to 4.3 MB.
-
-Version 1.35 / Field v5.114 / Indoor v1.10 / Trials v1.28 / Recorder v1.45 records rebounds for every save, highlights low coaching ratings and adds coaching insights to the Training Focus report.
-
-Rebounds
-- Every save now starts with Safe selected. Choose Dangerous, or No rebound when the rebound could not be seen.
-- Rebounds are recorded for saves only. For goals and Angles Closed Off the rebound choices are greyed out, the Recorder skips the rebound step, and no rebound is stored.
-- Applies to live recording, Video Stats Review, the shot editors, Trials stations and the Trials shot editor, and the Recorder. In Trials the rebound resets after each saved shot.
-- The Safe Rebound Rate calculation is unchanged: safe / (safe + dangerous), so No rebound does not affect it.
-
-Coaching ratings
-- Scores of 1 or 2 are highlighted as low in the Individual Match report and in the Trials Selection Report rating tables.
-- The Data Driven Development and Training Focus reports include a Coaching Ratings table for every included match, with averages; 1-2 scores and averages of 2.5 or below are highlighted.
-
-Training Focus report: Coaching Insights (Data Driven Development Theory)
-- Save rate against the expected range for the level: U13 65-75%, U16 70-80%, 1st Team 75-85%, Provincial 80%.
-- Low save rate (individual technique), many shots and many goals (team defensive structure; 12+ shots and 3+ goals a match), frequent rebound goals (25%+ of goals; kicking width and clearing to the sidelines), goals while outnumbered (30%+ of goals), and rebound distribution (flagged at 30%+ dangerous).
-- Where goals come from on the D heat map and where they go in on the goal box heat map.
-- 5-match save-rate trend, and low coaching ratings with the intervention advice (including calling marking assignments at least 5 seconds before circle entry).
-
-Version 1.34 / Field v5.113 / Indoor v1.9 / Trials v1.27 / Recorder v1.44 fixes report filtering, benchmark separation, restore and the Recorder, and makes the suite easier for new users.
-
-Fixes
-- Data Driven Development report: the included matches, summaries, breakdowns, heat maps, timelines and the All Recorded Matches chart now use only matches for the selected home team and (Field) match format. The v1.33 range fix did not reach the report builder.
-- Shot Situation, Period, Training Focus and Goalie Development reports: match timelines and match-by-match trends follow the same filters. Indoor 5 Game, Year and Development reports now follow the Home Team Filter.
-- Opponent Analysis lists only opponents for the selected team and format. A report is cleared when its options change, so an old report can no longer be printed by mistake.
-- Stats tab per-type save rates use saves / (saves + goals), matching the reports.
-- Benchmarking: uploads carry the sport. Field and Indoor data are stored and compared separately, and one app's upload no longer deletes the other's matches. Indoor matches use the format "indoor". The Field Stats benchmark compares like with like by match format. Requires D1 migration 0003 and Worker v1.2.
-- Backup & Restore merge: matches missing on this device are restored even when the goalkeeper profile was edited more recently. Indoor no longer marks shared goalkeepers as edited every time it opens.
-- Recorder: Field Hockey offers 8 Second 1v1 (Indoor keeps 6 Second Shoot-out) and the export keeps it; Field matches can be 11-a-side or 7-a-side and the format is imported; heat-map taps work with a mouse or trackpad; Save Setup records the selected goalkeeper; it no longer deletes the other apps' offline caches. Field Hockey files any older "6 Second Shoot-out" shots as 8 Second 1v1.
-- Platform Recorder import uses the shared goalkeeper for Indoor matches instead of creating a duplicate.
-- Long videos: audio for waveforms and Auto Sync is streamed for files over 200 MB (or if decoding fails) instead of being loaded whole, and the sync search no longer freezes the page. Trials Auto Sync searches offsets up to 60 minutes.
-- Trials: rates with nothing to divide show N/C; equal scores share a rank (=1); final outcomes start as Outcome pending and must be chosen before confirming; a goalkeeper with no attempts cannot score from ratings alone; age groups and tiers match the platform (U10 to U21, Senior, Open, Masters; A / 1st format).
-- Heat-map legend shows the pink Deflection/Tip in outline. New Match and Heat Maps no longer scroll sideways on phones. Suite version is recorded correctly in backups.
-
-Usability
-- Home: Get started checklist (enrol a goalkeeper, add a team, record a first match). Menu app logos have text labels. Enrol spelling.
-- Enrol Goalie: the form opens when needed, starts with one team row, fills team age groups from the date of birth, and warns before saving without a team.
-- Field and Indoor: a start screen to choose the goalkeeper, start or resume a match and see recent matches; shot recording stays locked until the match is started; a benchmark-readiness note during match setup; Finish Match button; on-page messages instead of pop-ups; stacked, larger heat maps with a legend toggle on phones; locked Benchmarks button explains how to unlock; form labels are linked to their fields.
-- Trials: the phone navigation keeps the current page in view and shows when more items are off-screen.
-- Recorder: opens on Setup until a goalkeeper is chosen; on-page messages.
-- Resources: new Indoor Hockey and Hockey Goalie Trials quick start guides.
-
-Deployment order for benchmarking: run cloudflare-worker/migrations/0003_sport.sql once on hgs-benchmarks-prod, then deploy cloudflare-worker/worker.js. Uploading this app package does not change the Worker or the database.
-
-
-Version 1.33 / Field Hockey v5.112 / Indoor v1.8 applies team filters to the DDD report match ranges.
-
-- Filters the Field Hockey Data Driven Development report's first/last match selectors by the chosen home team and 11-a-side / 7-a-side format.
-- Applies those same team and format filters to every match included in the Field Hockey DDD report and its match trend.
-- Filters the Indoor Hockey Data Driven Development report's range selectors, included matches and match trend by the selected home team.
-- Retains the v1.32 team-aware Stats and Reports match choices in both sports.
-- Indoor Hockey remains fixed to its indoor match rules and does not add a match-format selector.
-
-Version 1.32 / Field Hockey v5.111 / Indoor v1.7 fixes team-aware match selection in Stats and Reports.
-
-- Adds a Home Team Filter to Indoor Hockey Reports and filters the Individual Match Report choices by the selected team.
-- Makes Indoor Hockey Stats match choices follow the selected home team and opponent; applies team/opponent filters before selecting the most recent five matches.
-- Filters Field Hockey Stats and report match choices by the selected team and 11-a-side / 7-a-side format.
-- Keeps Indoor Hockey's match format fixed to its indoor rules; it has no selectable match-format field.
-- Preserves the 7-a-side classification, benchmark format separation, D1 migration and prior-year age cutoff from v1.31.
-
-Version 1.31 / Field Hockey v5.110 / Indoor v1.6 / Trials v1.26 adds 7-a-side classification and the prior-year age cutoff.
-
-- Adds 11-a-side / 7-a-side Match Format to Field Hockey setup and Match Editor; older matches remain 11-a-side.
-- Adds format filters to Field Hockey Stats and reports, and keeps uploaded and downloaded benchmark cohorts separate by format.
-- Includes a D1 migration that adds match_format to existing benchmark databases, defaulting historical records to 11-a-side.
-- Calculates age-group eligibility at 23:59 on 31 December of the previous year, including January 1 birthdays.
-- Keeps the approved HOME banner, central goalkeeper/team directory, existing backup options, and the menu-free Recorder.
-
-Version 1.30 / Trials v1.25 completes multi-day Trial Event Template scheduling.
-
-- Displays a separate required date field for every day or session in a selected Trial Event Template.
-- Shows each template day's saved trial sections beside its date so the schedule is clear before creation.
-- Uses the exact selected date for each trial day instead of silently calculating later dates from the first day.
-- Prevents creation when a session date is missing, duplicated or not in chronological order.
-
-Version 1.29 / Trials v1.24 strengthens selection eligibility and final ranking clarity.
-
-- Marks age-ineligible goalkeepers with a red tile border and a red eligibility notice on Promotion / Selection.
-- Shows the goalkeeper's age at 23:59 on 31 December of the previous year and the trial age group directly on the ineligible tile.
-- Keeps Selected, Reserve and Non-travelling Reserve goalkeepers in the first Selection Report ranking group.
-- Starts every other trial participant's rank immediately after the lowest rank in that selected group, while retaining the grey secondary section.
-
-Version 1.28 / Trials v1.23 simplifies Stats navigation and the enlarged-video workflow.
-
-- Removes the Goalies sidebar tab from Field Hockey and Indoor Hockey because permanent profiles and teams are managed on the central platform.
-- Renames the Match sidebar tab to New Match in both Stats apps.
-- Changes each Trials Enlarge Video button to Shrink Video while its goal video is enlarged; the same button restores the normal layout.
-- Restores the Enlarge Video label when fullscreen is exited through the browser or when leaving Video Review.
-
-Version 1.27 / Trials v1.22 centralizes permanent enrollment and adds enlarged Trials video review.
-
-- Moves permanent goalkeeper and team enrollment, editing and deletion to the Data Driven Development platform.
-- Makes the goalkeeper profile and platform team sections in Field Hockey and Indoor Hockey read-only, with a direct link to the platform manager.
-- Preserves the Field Hockey Trials workflow for adding trial-only goalkeepers as well as choosing goalkeepers from the shared platform directory.
-- Adds an Enlarge Video control to Goal A and Goal B in Trials Video Review, keeping the shared playback controls and recording tools available in the enlarged view.
-- Uses a six-digit confirmation before deleting a shared goalkeeper and their Field and Indoor match data; linked historical trial records are retained.
-
-Version 1.26 / Trials v1.21 adds goal-based Trials video review and per-shot clip export.
-
-- Renames Trials video Angle A and Angle B to Goal A and Goal B for Match Situation sections.
-- Shows a single Goal video and playlist for every other trial section.
-- Stores Goal A or Goal B on every recorded shot, preserves it through goalkeeper swaps, migrates older records, and allows correction in the shot editor.
-- Moves each goal's reframing controls into its header and replaces the permanent playlist panel with a compact pop-up editor.
-- Makes the Trials sync controls collapsible per trial section while leaving the shared transport controls visible.
-- Shifts both Trials waveforms onto one common visual timeline after manual or automatic sync.
-- Exports a video-linked shot from its recorded goal with configurable time before and after, saved reframing, original audio, and a coloured goalkeeper/details overlay.
-- Uses the simpler Trials white-line and circular-handle sync marker appearance in Field and Indoor Video Stats Review.
-
-Version 1.25 / Trials v1.20 adds deflection tracking and a streamed large-video analysis fallback.
-
-- Adds “Deflection/Tip in” as a shot type throughout Field Hockey, Indoor Hockey, Trials and Stats Recorder.
-- Draws deflection and tip-in shots with a pink outline on heat maps while preserving the existing result colour.
-- Includes shot type in benchmark heat-map data returned by the bundled Cloudflare Worker source.
-- Processes large local videos through a memory-efficient media stream in Chrome when direct audio decoding is unsuitable.
-- Shows progress during streamed waveform analysis and uses the resulting envelopes for manual alignment and Auto Sync.
-
-Version 1.24 / Trials v1.19 completes the advanced Trials Video Review workflow.
-
-- Makes the main shared video seek bar explicitly draggable so scrubbing moves both synchronized angles.
-- Adds Swap Goal A / Goal B to two-goal Match Situation video review sections.
-- Adds goalkeeper timers driven by video timestamps, independent of playback speed.
-- When manual section time already exists, asks whether video-calculated time should be added, replace it, or be cancelled.
-- Reads selected local video files directly for waveform analysis and processes angles sequentially to improve long-video waveform and Auto Sync reliability in Chrome.
-- Remembers a video folder per trial and exact Angle A / Angle B file handles per trial day and section, with automatic or prompted reconnection.
-- Adds independent zoom, drag-to-position and reset-framing controls to both video angles and remembers each angle’s framing.
-
-Version 1.23 / Trials v1.18 adds advanced synchronized Trials video review controls.
-
-- Adds local audio-waveform Auto Sync across the complete Angle A and Angle B playlists, with a proposed offset, confidence score, low-confidence warning and explicit acceptance.
-- Adds Show / Hide Waveforms plus manual Marker A / Marker B placement and Sync Markers.
-- Replaces the speed menu with individual 0.25x, 0.5x, 1x, 1.5x and 2x buttons.
-- Adds shared -5 second and +5 second seeking and a centred current-position -5 to +5 second loop.
-- Makes the bottom shot-timeline playhead dot draggable to seek both synchronized angles.
-
-Version 1.22 / Trials v1.17 corrects the incomplete Trials Video Stats Review release.
-
-- Gives Angle A and Angle B independent multi-video playlists with ordered clip lists, reordering and removal.
-- Synchronizes the two playlists at user-aligned frames and keeps them on one shared master timeline.
-- Replaces independent native playback controls with one Play Both / Pause Both control.
-- Adds 0.25x, 0.5x, 1x, 1.5x and 2x speeds plus previous-frame and next-frame progression.
-- Keeps both angles playing together across playlist clips and corrects timing drift from the shared clock.
-- Adds a visual shot timeline at the bottom of Video Review; shots recorded there are linked to the current video time and can be clicked to seek both angles.
-- Makes the Trial Recording rotation overview explicitly show every eligible goalkeeper, including those waiting, with whole-day shots faced and whole-day time in goal plus current-section progress.
-
-Version 1.21 / Trials v1.16 builds on the complete v1.20 trial workflow release.
-
-- Adds a live Goalkeeper Rotation Overview above Trial Recording showing every goalkeeper in the current round, their coloured kit icon, shots faced against target, time in goal and current Goal A / Goal B assignment.
-- Updates the rotation overview after shots, goalkeeper changes, swaps and while timers are running.
-- Adds recorded-shot editing to both Trial Recording and Video Review while keeping each shot in its original trial day and section.
-- Allows correction of the goalkeeper, outcome, shot type, situation, outnumbered state, rebound result and notes.
-- Keeps Penalty Corner, Penalty Stroke and 8 Second 1v1 situations locked when editing shots.
-- Opens Video Review on the earliest trial day not marked completed, falling back to the final day when all days are complete.
-- Keeps completed-day video recording and shot editing read-only until the day is reopened in Promotion / Selection.
-
-Version 1.20 / Trials v1.15 builds on the complete v1.19 trial workflow release.
-
-- Opens Trial Recording and Trials Roster on the earliest trial day not marked completed, falling back to the final day when all days are complete.
-- Makes completed Trial Recording and roster-day controls read-only until the day is explicitly reopened in Promotion / Selection.
-- Reopening a day keeps recorded evidence but clears progression and selection confirmations from that day onward so they can be confirmed again.
-- Removes the separate Final decision selector and confirmed-selection summary from reports; confirmed Promotion / Selection outcomes are the single source of truth.
-- Shows the confirmed selection outcome on each individual feedback report, or Outcome pending before the final decision is confirmed.
-- Renames Coach feedback to Selectors’ feedback and omits the feedback section entirely when no feedback has been entered.
-- Shows age ineligibility only alongside a selection status and warns again before an ineligible goalkeeper is marked Selected, Reserve or Non travelling reserve.
-- Improves service-worker upgrade handling so refreshed builds are less likely to retain stale Trials code.
-
-Version 1.19 / Trials v1.14 builds on the complete v1.18 trial workflow release.
-
-- Adds reusable Trial Event Templates containing team classification, relative trial-day spacing, scheduled sections and attempt targets without copying roster or performance data.
-- Adds reusable Trial Day Templates containing scheduled sections and attempt targets, with safe replacement blocked when a day already has recorded results or ratings.
-- Automatically preselects Male or Female for a new trial-only goalkeeper from the trial gender; Mixed trials require the user to select the individual goalkeeper’s gender.
-- Keeps all goalkeepers visible in Current Ranking while greying out and labelling goalkeepers who did not progress to the current round.
-- Adds Excused from this round with a required reason; excused goalkeepers automatically progress to the next round and remain eligible, but not guaranteed, for final selection.
-- Shows explicit final outcomes for Selected, Reserve, Non travelling reserve, Not selected and Excused from this round.
-- Marks age-ineligible goalkeepers on the Selection Report and leaves the Trial Events page empty after the final trial is deleted.
-- Prevents a blank “Unnamed trial” session from being created when the last Trial Event is deleted.
-
-Version 1.18 / Trials v1.13 builds on the complete v1.17 trial workflow release.
-
-- Adds six-digit-confirmed deletion of an entire trial event and all of its trial-specific data while leaving shared goalkeeper profiles untouched.
-- Adds Male, Female and Mixed team gender to trial creation, setup, event cards, comparisons and reports.
-- Adds a compact goalkeeper kit icon beside names in Trials rosters and recording stations. The torso follows the smock colour and all pads follow the leg-guard colour.
-- Enforces a valid four-digit DOB year throughout the shared platform, Field Hockey, Indoor Hockey and trial-only roster forms.
-- Automatically locks Penalty Corners, Penalty Strokes and 8Sec 1v1 recording to their matching shot situations in live and video capture.
-- Starts every trial-section rating at 3 / 5, saves it immediately, and automatically overwrites the single saved review as ratings or notes change.
-- Orders the Trials sidebar as Home, Trial Events, Trial Setup, Trials Roster, Trial Recording, Video Review, Comparison, Promotion / Selection and Selection Report.
-
-Version 1.16 / Trials v1.11 builds on the complete v1.15 multiday and promotion release.
-
-- Warns before adding a goalkeeper who is older than the configured trial age group, calculated at 23:59 on 31 December of the previous trial year, and keeps a visible roster warning if added anyway.
-- Adds per-day smock and leg-guard colour selection and displays both colours while recording.
-- Changes a recording station to a green completion state when its goalkeeper reaches the scheduled attempt target.
-- Automatically starts a goalkeeper's timer with their first live recorded shot if it has never been started.
-- When a running goalkeeper is replaced, starts the replacement goalkeeper's timer after 30 seconds unless it is started or cancelled manually.
-- Treats ratings and notes as one persistent review per goalkeeper, day and trial section, including Match Situation sections.
-- Replaces category blending with a ratings-influence control capped at 100%, where 100% gives the combined ratings score equal influence to Defence Rate and never more.
-- Adds individual rating weights for Technical, Physical, Tactical, Discipline and Communication.
-- Reports unequal attempts by individual trial day/session rather than only across the whole trial.
-- Expands the Selection Report to show every goalkeeper across every day and scheduled section, full outcome and rate statistics, time in goal, rating values, shot-type and situation breakdowns, and every section note.
-
-Version 1.15 adds multi-event and multi-day Trials management, editable setup lines, full inline shot capture, promotion and final selection, comparable scoring, and inline Discipline ratings.
-
-Version 1.14 updated the Recorder to v1.41 and removed the operating-system file-type filter so valid .dddbackup files remain selectable on iPhone, iPad and other restrictive file pickers while still being validated safely after selection.
-
-Version 1.13 adds central backup compatibility to the Stats Recorder. The Recorder now accepts .dddbackup and legacy .json files, previews the number of shared goalkeepers and team profiles before import, merges Field and Indoor profiles by permanent goalkeeper ID, and deliberately excludes matches, trials and benchmarking data.
-
-Version 1.12 applies the approved Home banner to the platform, Field Hockey, Indoor Hockey and Trials home destinations. Field and Indoor Match Editors now use the same readable light input palette as their Match tabs. Indoor coaching ratings now use Positioning, Communication, Rebound Control and Decision Making only; Low Movement and Footwork and Distribution and Board Use have been removed. The Recorder remains menu-free with no route back to the main platform.
-
-Version 1.11 adds the complete Indoor Hockey Goalie Stats module. Indoor matches use a separate store and benchmark cohort while sharing the central goalkeeper directory. The module includes four-period indoor defaults, six-second shoot-outs with three initial attempts, goalkeeper on/off participation, indoor detail tags, shared heat maps and fixed indoor penalty-stroke D placement. The central platform now exposes Indoor reports, Indoor-only backups and the official FIH Indoor Hockey rules resource. The Recorder sport selector exports Field or Indoor matches and its menu/return control has been removed.
-
-Version 1.10 adds approved banner-logo links for Field Hockey Goalie Stats,
-Field Hockey Trials and Stats Recorder directly below Home in the platform
-sidebar. The Recorder link retains its Yes/No confirmation. Shared services
-remain grouped below the app links, and the optimized package structure is
-preserved without historical or duplicate artwork.
-
-Version 1.9 is a clean-package release.
-
-Version 1.9 / Field Hockey v5.102 / Trials v1.6 / Recorder v1.36 changes:
-
-- Removed historical HTML builds, superseded artwork versions, unused source masters and duplicate icon aliases from the distributable package.
-- Retained only the current approved DDD, Field Hockey and Trials artwork required at runtime.
-- Corrected the Field Hockey video-export overlay to use the current Field Hockey app icon.
-- Rebuilt every service-worker cache from files that are actually included in this package.
-- Preserved the central Reports service, Recorder confirmation and standard child-app return controls from v1.8.
-- Preserved all database names, storage keys, backup compatibility and application features.
-
-Version 1.8 adds platform-wide report access and consistent platform navigation.
-
-Version 1.8 / Field Hockey v5.101 / Trials v1.5 / Recorder v1.35 changes:
-
-- Added a central Reports service that begins with the shared goalkeeper directory.
-- Shows Field Hockey report types for the selected goalie and opens the existing app Reports tab with that goalie and report type selected.
-- Shows Trials reporting only when the selected shared goalie is linked to Trials.
-- Keeps Indoor Hockey reporting visible but unavailable until the Indoor module is built.
-- Preserved the existing Reports tabs inside Field Hockey Goalie Stats and Hockey Goalie Trials.
-- Added a Yes/No confirmation before leaving the platform to open Stats Recorder.
-- Standardised the return-to-platform control in every child app using the approved DDD banner immediately above version information.
-- Added a responsive Recorder navigation sidebar while preserving its mobile recording workflow.
-- Refreshed all PWA caches and versioned files without changing existing storage keys.
-
-Version 1.7 restores the approved Field Hockey Goalie Stats artwork.
-
-Version 1.7 / Field Hockey v5.100 changes:
-
-- Removed all active references to the unintended legacy v4.64 artwork.
-- Restored the approved Hockey Goalie Stats banner in the app header and every report.
-- Restored the approved Hockey Goalie Stats emblem on the app Home screen and suite launcher card.
-- Restored the approved goalkeeper statistics icon for PWA installation and video overlays.
-- Removed the unintended legacy artwork and affected historical HTML copies from the distributable package to prevent accidental reuse.
-- Retained the complete v5.99 light-theme component correction.
-- Refreshed versioned assets and offline caches so installed apps cannot retain the incorrect artwork.
-
-Version 1.6 completes the Field Hockey light-theme conversion.
-
-Version 1.6 / Field Hockey v5.99 changes:
-
-- Replaced remaining dark shot-selection buttons with light neutral controls and high-contrast selected states.
-- Converted statistics cards and coaching-rating panels to the lighter suite palette.
-- Updated legacy Match Editor, benchmark, shootout, timeline and dialog surfaces.
-- Updated the controls surrounding Video Stats Review while retaining a dark video stage and timeline for footage visibility.
-- Preserved green Save/success, red Goal/danger, amber Angle/warning and cyan selected/active meanings.
-- Refreshed the suite cache so installed PWAs receive every corrected component style.
-
-Version 1.5 applies the approved app identities and lighter suite palette consistently.
-
-Version 1.5 / Field Hockey v5.98 / Recorder v1.34 / Trials v1.4 changes:
-
-- Restored the approved original Hockey Goalie Stats logo throughout Field Hockey, reports, video overlays and the installed PWA.
-- Renamed the launcher card to Field Hockey Goalie Stats.
-- Applied the approved Hockey Goalie Trials banner to the Trials header and reports.
-- Derived the Trials launcher and installed-PWA icons from the goalkeeper emblem in the approved Trials logo.
-- Retained the lighter blue and slate colour scheme across the launcher, Field Hockey, Trials and Recorder.
-- Refreshed every service-worker cache and versioned icon reference so installed apps receive the new branding.
-
-Version 1.4 / Field Hockey v5.97 / Recorder v1.33 / Trials v1.3 changes:
-
-- Field Hockey Stats now uses its own banner, Home emblem, report branding and PWA icon.
-- Field Hockey Trials now uses its own approved app logo in the header, reports and installed PWA.
-- The DDD launcher and shared services retain the overarching DDD identity.
-- Stats Recorder retains the approved DDD Recorder branding and shared Recorder PWA icon.
-- Aligned Full Name, Date of Birth, Age Group and Gender labels and controls on one consistent baseline.
-- Kept the Age Group explanation below its field without shifting that field upward.
-
-- Replaced the very dark interface with a lighter blue and slate palette across the launcher, Field Hockey Stats, Trials and Recorder.
-- Removed the white backing blocks from the platform logos while maintaining readable contrast.
-- Expanded Enroll Goalie to use the full available page width.
-- Rebuilt every Team Profile as a spacious card with a full-width Team Name field and larger classification controls.
-- Corrected the Field Hockey launcher card to use the complete Hockey Goalie Stats emblem.
-
-- Replaced the incorrect launcher mark with the approved three-interconnected-D scope logo.
-- Kept the approved dark logo text readable against the lighter application surfaces.
-- Added each available app's own logo to its launcher card.
-- Added the approved shared PWA app icon for the Data Driven Development suite and Stats Recorder.
-- Updated manifest, Apple touch and favicon assets in all required icon sizes.
-- Updated the Recorder header to use the Data Driven Development banner and identify the module as Stats Recorder.
-- Unified the navy, cyan and amber platform colour palette across the launcher, Field Hockey Stats, Recorder and Trials interfaces.
-- Changed the Field Hockey desktop layout so its sidebar is flush with the far-left edge and the active screen uses all remaining width.
-- Moved Resources to one central shared service and linked Field Hockey to it.
-- Expanded Enroll Goalie with calculated age group and multiple sport-specific team profiles.
-- Expanded central Backup & Restore with complete, section, directory and single-goalie exports; previewed merge/replace imports; old Field Hockey backup compatibility; Recorder match import; and protected data clearing.
-- Removed the Data Driven Development Home button from the Recorder interface.
-- Preserved the collapsible mobile sidebar and the independently scrolling desktop sidebar/content regions.
-- Updated Field Hockey report branding to the Hockey Goalie Stats banner.
-- Preserved the existing Field Hockey database key and Recorder storage keys.
-- Refreshed both service-worker caches so installed PWAs receive the new logos, icons, colours and layout.
-
-This package introduces the overarching Data Driven Development launcher and shared services.
-
-STRUCTURE
-- index.html: Data Driven Development home and central services
-- field-hockey.html: full Field Hockey Stats application
-- trials/index.html: Hockey Goalie Trials: Data Driven Selection
-- recorder/index.html: shared Stats Recorder entry point
-- Indoor Hockey Stats: reserved on the launcher for the next module
-
-SHARED DATA
-- Enroll Goalie writes to the existing hockeyGoalieStatsV3 database, so current data is retained.
-- Goalies can still be added and assigned Field Hockey teams inside Field Hockey Stats.
-- Trials can choose a shared goalie or create a trial-only goalie.
-- Trial-only goalies are never added to the shared directory.
-- Backup & Restore creates one .dddbackup file for the connected suite.
-- Benchmark participation is surfaced centrally; Field and future Indoor cohorts remain separate.
-
-Hockey Goalie Stats - Main App Package
-
-Version 5.92 standardises timeline rendering across every report type.
-
-Version 5.92 changes:
-
-- Individual Match Reports now use the same coloured S/G/A indicator dots as Data Driven Development Reports.
-- Single-match reports no longer bypass the canonical report timeline renderer.
-- Data Driven Development Reports now contain exactly one timeline addendum even when background report refreshes run repeatedly.
-- Timeline replacement is confined to the styled report content so indicator dots cannot inherit full-page SVG dimensions.
-- Added a defensive 34-pixel size constraint to every canonical report timeline indicator and SVG.
-- Preserved multiple-goalie chronology, grey Alternate Goalie entries, period markers and selected-goalie-only heat maps.
-- Refreshed the PWA cache so installed copies receive the standardised report timelines.
-
-Version 5.91 fixes complete report printing and multiple-goalie report timelines.
-
-Version 5.91 changes:
-
-- Printed and PDF reports can now flow across every required page instead of stopping after page one.
-- Major report sections keep intentional page starts, heat maps remain together and long timelines can continue cleanly across pages.
-- Report tables repeat their column headings where supported and avoid splitting individual rows.
-- Multiple-goalie report timelines now merge both goalies' shots with shared End of Period markers in their correct chronological positions.
-- The selected goalie remains the Primary Goalie with normal numbered shot icons; the other goalie is shown as grey Alternate Goalie text without an icon and does not consume shot numbers.
-- Older saved two-goalie matches use shared order, saved period and recording time to reconstruct the combined timeline.
-- Report heat maps, totals and rate calculations continue to use only the selected goalie's shots.
-- Refreshed the PWA cache so installed copies receive the report printing and timeline fixes.
-
-Version 5.90 adds complete shootout performance details to every report type.
-
-Version 5.90 changes:
-
-- Every report now includes a Shootout Performance section.
-- Reports with no relevant shootout records clearly state that no shootout data is recorded.
-- Shootout summaries show shootouts played, wins, losses, attempts faced, saves, goals conceded, save rate, defence rate and the most common save method.
-- Reports containing multiple matches include a match-by-match shootout breakdown.
-- Individual Match Reports include the selected goalie's round-by-round opponent attempts, results, save methods and notes.
-- Replaced the older Data Driven Development-only shootout summary to prevent missing or duplicated figures.
-- Shootout performance is calculated only from the matches included in the selected report.
-- Refreshed the PWA cache so installed copies receive the complete shootout reporting update.
-
-Version 5.89 improves multiple-goalie reports and the draw-to-shootout prompt.
-
-Version 5.89 changes:
-
-- Replaced the browser draw confirmation with an in-app question using explicit Yes and No buttons.
-- Reports clearly identify matches in which multiple goalies played.
-- The goalie selected for a report is always labelled Primary Goalie; the other goalie is labelled Alternate Goalie.
-- Reports show only the Alternate Goalie's save rate and defence rate alongside the primary report statistics.
-- Alternate Goalie shots appear in their correct chronological place in report timelines as grey text without shot icons.
-- Alternate Goalie timeline entries do not consume Primary Goalie shot numbers and are excluded from Primary Goalie heat maps.
-- Alternate-goalie reports now include the shared End of Period markers, including for older saved matches where the alternate mirror omitted them.
-- Future alternate-goalie mirror records retain the shared period sequence and filtered chronological shot order.
-- Refreshed the PWA cache so installed copies receive the updated report behaviour.
-
-Version 5.88 corrects Match Timeline numbering and combines two-goalie match events.
-
-Version 5.88 changes:
-
-- End of Period markers no longer consume a shot number.
-- Shot numbering continues across the complete match while period markers remain unnumbered.
-- Primary and alternate-goalie shots now appear together in their shared chronological Match Timeline.
-- Primary-goalie timeline text is white and alternate-goalie timeline text is cyan.
-- Added a named goalie colour legend whenever alternate-goalie shots are present.
-- Outcome badge colours remain based on Save, Goal or Angle Closed Off rather than the goalkeeper.
-- Newly recorded alternate shots retain their exact position in the shared timeline.
-- Previously recorded alternate shots are merged using their saved period and recording time where available.
-- Refreshed the PWA cache so installed copies receive the corrected timeline.
-
-Version 5.87 restores Data Driven Development report generation while retaining corrected outcome icons.
-
-Version 5.87 changes:
-
-- Removed the cross-script function dependency that prevented the Data Driven Development report from generating in version 5.86.
-- Data Driven Development timelines now normalise outcomes using their own report-scoped function.
-- The final timeline icon formatter is self-contained and cannot interrupt report generation.
-- Goals remain red G icons, saves remain green S icons and angles closed off remain yellow A icons.
-- Added full timeline-generation regression checks alongside the outcome-icon checks.
-- Refreshed the PWA cache so installed copies receive the corrected report generator.
-
-Version 5.86 corrects report timeline outcome icons.
-
-Version 5.86 changes:
-
-- Report timeline icons now use the outcome stored on each shot instead of relying on displayed punctuation.
-- Goals consistently display as red G icons, saves as green S icons and angles closed off as yellow A icons.
-- The correction applies to individual, multi-match, development and Data Driven Development report timelines, including printed reports.
-- Added safe compatibility fallbacks for older generated timeline markup.
-- Refreshed the PWA cache so installed copies receive the corrected report renderer.
-
-Version 5.85 protects live match progress and repairs legacy heat-map rendering.
-
-Version 5.85 changes:
-
-- Video Stats Review and Match Editor selections no longer replace the active live-match pointer.
-- Opening a completed historical match in Video Stats Review cannot repopulate the Match tab as an active match.
-- On startup and save, a stale pointer to a finalised or missing match is detached without deleting or changing the match.
-- Genuine draft matches remain resumable as active match progress.
-- Heat maps ignore missing or non-numeric coordinates while continuing to display every valid recorded point.
-- Added the current mobile-web-app-capable metadata while retaining Apple installed-PWA compatibility.
-
-Version 5.84 removes the duplicate multiple-goalie control.
-
-Version 5.84 changes:
-
-- Goalkeeper Participation is now the only control that starts the multi-goalie workflow.
-- Selecting Partial match reveals the alternate-goalie questions automatically.
-- Selecting Full match or Not specified hides the alternate-goalie workflow.
-- The separate Two goalies will play in this match checkbox has been removed.
-- The user chooses full alternate-goalie recording or a goals-conceded-only total.
-- Full recording supports another saved goalie or a named guest goalie.
-- Match and Video Stats Review shot recording can switch between the primary and alternate goalie.
-- Each goalie keeps separate shots, heat maps and calculated rates while sharing the match score.
-- Existing alternate goalies receive a linked match appearance in their own history and reports.
-- Guest appearances remain stored inside the shared match and are excluded from benchmarking.
-
-Version 5.84 adds a protected Recorder reset control.
-
-Version 5.84 changes:
-
-- Recorder Setup includes Reset Recorded Data.
-- Reset requires a generated six-digit confirmation code.
-- Reset clears the current match recording while preserving imported goalie and team master data.
-
-Version 5.84 updates the Recorder App navigation order and labels.
-
-Version 5.84 changes:
-
-- Recorder navigation now runs left to right as Setup, Match, Timeline, Finish and Import.
-- The Recorder home screen is labelled Match and uses a hockey stick-and-ball icon.
-- Recorder service-worker cache version is refreshed so the navigation update is picked up by installed copies.
-
-Version 5.84 launches the bundled Recorder App directly instead of opening its folder listing.
-
-Version 5.84 changes:
-
-- The Recorder App sidebar link now targets <code>./recorder/index.html</code> explicitly, which works from a local package folder and when hosted.
-- Resource cards now use equal-height vertical layouts.
-- Every Open and Download button row is anchored to the bottom of its card for a uniform appearance.
-- Replaced the short Main App and Recorder manuals with comprehensive tab-by-tab guides.
-- Added three end-to-end recording workflows: direct Match-tab capture, Recorder-app capture and filmed Video Stats Review capture.
-- Added detailed benchmarking, report, backup, external-video-library and troubleshooting guidance.
-- Bundled the Recorder App v1.29 under <code>./recorder/</code>; its manifest and service worker remain independent so it can also be installed as a separate PWA.
-
-Version 5.77 adds safe single-goalie backup and cross-coach merge.
-
-Version 5.77 changes:
-
-- Added a Single Goalie Transfer card to Backup.
-- A goalie transfer includes that goalie, team profiles, matches, shots, timelines and saved Video Review metadata.
-- Imports merge by stable IDs instead of replacing the whole database.
-- Newer team and match records overwrite older copies; older imports cannot overwrite newer work.
-- Deletions are transferred as explicit records and must be approved during import before any team or match is removed.
-- Declining deletion approval still allows other non-destructive additions and updates to merge.
-- Locally connected video files are retained when an incoming match update is merged; video files themselves remain on their external drive and may need reconnection on another device.
-- Benchmark consent and downloaded benchmark caches remain device-local.
-
-Version 5.76 restores independent scrolling throughout Video Stats Review.
-
-Version 5.76 changes:
-
-- Video Stats Review now uses its main workspace as a dedicated vertical scroll container on desktop.
-- The review can scroll from the playback controls through heat maps, timeline and export controls.
-- Entering and leaving Video Stats Review now applies and removes the root scrolling mode consistently.
-
-Version 5.75 clarifies the successful benchmark-upload message when no comparison cohort is available yet.
-
-Version 5.75 changes:
-
-- A successful upload with no matching comparison data now clearly confirms that the upload succeeded.
-- Stats and Benchmark Reports explain that comparison data from other matching goalies is not available yet.
-- The app no longer tells the user to repeat an upload that already succeeded.
-
-Version 5.74 separates desktop navigation and content scrolling and left-aligns the banner logo.
-
-Version 5.74 changes:
-
-- The desktop sidebar remains fixed beneath the banner while the active page scrolls independently.
-- The sidebar receives its own scrollbar only when its navigation content exceeds the available height.
-- Sidebar version information remains at the bottom of the navigation panel.
-- The banner logo is now left-aligned.
-- Mobile slide-out navigation retains its existing behaviour.
-
-Version 5.73 connects anonymous benchmarking to the prepared Cloudflare Worker API and moves version information into the sidebar.
-
-Version 5.73 additions:
-
-- Added anonymous upload and benchmark-download connections for the configured Worker address.
-- Uploads use permanent anonymous goalkeeper and match identifiers.
-- Unchanged data is not uploaded repeatedly, and server upserts prevent duplicate matches.
-- Finalising a match schedules an updated anonymous upload for opted-in users.
-- Added a manual Upload Data & Refresh Benchmarks button.
-- Opting out removes that goalkeeper's anonymous central records when a connection is available.
-- Downloaded benchmark cohorts feed the existing Stats and Benchmark Report comparisons.
-- Moved the app name and current version to the bottom of the sidebar.
-- Removed the old footer and duplicate Resources text link.
-- Included the matching Cloudflare Worker code and D1 schema in cloudflare-worker.
-
-Important: the live Worker currently returns the default Hello World response. Deploy cloudflare-worker/worker.js and run cloudflare-worker/schema.sql before using uploads.
-
-Version 5.72 fixes the Video Stats Review opening freeze while retaining context-aware return navigation and keeping Cloudflare disconnected.
-
-Version 5.72 fix:
-
-- Stopped the return-button observer from repeatedly rewriting the same label.
-- Opening Video Stats Review no longer creates a continuous page-update loop.
-- Both Match and Match Editor opening routes retain their correct return destinations.
-
-Version 5.71 adds context-aware Video Stats Review return navigation and removes Video Review from the sidebar without connecting to Cloudflare.
-
-Version 5.71 additions:
-
-- Removed Video Review from desktop and mobile sidebar navigation.
-- Video Stats Review remains available from Match and Match Editor.
-- Opening from Match changes the review return action to Back to Match.
-- Opening from Match Editor changes the review return action to Back to Match Editor.
-- The selected match and saved video-review state are preserved when returning.
-- Cloudflare remains disconnected and no benchmark data can leave the device.
-
-Version 5.70 adds sidebar navigation, historical Team Profile repair and Stats benchmark overlays without connecting to Cloudflare.
-
-Version 5.70 additions:
-
-- Replaced the horizontal navigation row with a sticky left sidebar on desktop.
-- Added a collapsible compact sidebar and a slide-out mobile menu.
-- Added Video Review and Resources to the main navigation.
-- Automatically fills missing home-team classifications in previous matches from matching Team Profiles.
-- Preserves previous-match classifications that already contain valid information.
-- Added Apply to Previous Matches to each Team Profile for deliberate historical corrections.
-- Added Include Benchmarks to Stats, locked until benchmarking is activated by a successful eligible upload.
-- Applicable Stats rate cards can show the matching benchmark and percentage-point difference.
-- Added matching cohort sample sizes and Limited Data labelling to Stats.
-- Cloudflare remains disconnected and no benchmark data can leave the device.
-
-Version 5.69 adds the gated Benchmark Report framework without connecting to Cloudflare.
-
-Version 5.69 additions:
-
-- Added Benchmark Report to the Reports selector.
-- Benchmark Report remains locked unless the goalkeeper has opted in and completed a successful eligible upload.
-- Added Full Year and Last 5 Matches report periods.
-- Added All or specific Team Level and Team Tier filters.
-- Prepared same-age-group and same-gender cohort matching.
-- Prepared overall, shot-situation, shot-type, outnumbered and rebound comparisons.
-- Prepared all-shot benchmark heat maps and sample-size labels.
-- Added Limited Data labelling for small benchmark samples.
-- Added ranked training-focus recommendations for below-benchmark areas.
-- Cloudflare remains disconnected and no benchmark data can leave the device.
-
-Version 5.68 adds saved Team Profiles and removes selective match benchmarking without connecting to Cloudflare.
-
-Version 5.68 additions:
-
-- Replaced the goalkeeper's plain team-name list with editable Team Profiles.
-- Each Team Profile stores name, age group, team level and team tier.
-- Migrated existing team names into Team Profiles without changing saved matches.
-- Changed tiers to A / 1st, B / 2nd, C / 3rd and D / 4th.
-- Migrated existing A, B, C and D tier values to the new labels.
-- Home-team classification is populated from the selected Team Profile.
-- Home classification is read-only in Match setup and Match Editor.
-- Opposition classification initially copies the home profile values.
-- Each opposition field stops auto-copying after the user changes that field.
-- Removed per-match benchmark inclusion controls from Match setup and Match Editor.
-- Opted-in goalkeepers contribute every objectively eligible finalised match.
-- Master-data export now includes Team Profiles.
-- Cloudflare remains disconnected and no benchmark data can leave the device.
-
-Version 5.67 corrects legacy match finalisation and adds Derby as a match type without connecting to Cloudflare.
-
-Version 5.67 additions:
-
-- Added Derby to Match Type in Match setup and Match Editor.
-- Added an explicit Draft / Finalised status to saved matches.
-- New matches begin as Draft and become Finalised when the match outcome is saved.
-- Older saved matches are migrated to Finalised unless they are an identifiable current-day unfinished draft.
-- Added Match Status to Match Editor for manual correction.
-- Benchmark eligibility now uses the stored match status instead of relying on legacy score fields.
-- Cloudflare remains disconnected and no benchmark data can leave the device.
-
-Version 5.66 prepares anonymous benchmarking locally without connecting to Cloudflare.
-
-Version 5.66 additions:
-
-- Corrected and centralised the displayed/exported application version.
-- Added stable anonymous goalkeeper and match benchmark identifiers.
-- Added goalkeeper team and opposition age group, level and tier snapshots to matches.
-- Added match type, goalkeeper participation and minutes-played fields.
-- Added the same benchmark classification fields to Match Editor.
-- Added per-goalkeeper Opt In / Opt Out benchmarking choices.
-- Benchmark access remains locked until a successful eligible upload in a future connected build.
-- Added local eligibility checks and an anonymous payload preview.
-- Team names, goalkeeper names, dates of birth, notes and video data are excluded from the preview.
-- Save Rate and Defence Rate are prepared for equal goalkeeper-level aggregation.
-- Heat-map benchmarking retains every anonymous shot from qualifying matches.
-- Small benchmark samples will be displayed with a Limited Data label.
-- No network endpoint is configured and no benchmark data can leave the device.
-
-Version 5.65 additions:
-
-- Number of Periods is now selected from 1, 2, 4 or Custom in Match setup.
-- Match Editor uses the same 1, 2, 4 or Custom period selector.
-- Custom period totals are recalculated from the match's End Period markers.
-- Adding, deleting or reordering period markers keeps Custom matches current.
-- Team reports list both the goalie's current profile teams and every home team retained in saved matches.
-- Removing a team from the goalie profile no longer removes that team's historical reporting option.
-- Duplicate and blank team names are removed from the report selector.
-
-Version 5.64 applies safe interface, cache and maintainability cleanup without changing match data or video calculations.
-
-Version 5.64 additions:
-
-- Reduced the main banner to 75% of its previous displayed size.
-- Removed nonessential instructional descriptions while retaining errors, warnings, progress and empty states.
-- Restyled Camera Run break controls as compact professional dividers.
-- Locked waveform sync-marker pills to 25% opacity with a solid centre alignment line.
-- Corrected sync-point colour cycling to use the complete eight-colour palette.
-- Corrected the offline service-worker fallback.
-- Preserved all v5.63 progressive waveform and authoritative period-marker improvements.
-
-Version 5.63 additions:
-- Waveform rows appear immediately instead of waiting for every large clip to decode.
-- Each clip waveform is added progressively with visible generation progress.
-- Missing video access and audio decoding failures now show a clear status.
-- Stale waveform work from another Camera Run cannot replace the selected run.
-- Visible waveforms refresh automatically after external-drive videos reconnect.
-- Period-end markers now determine each shot's authoritative period everywhere.
-- Match Timeline, shot export selector, video-linked clip lists and exported overlays use the same period.
-
-Version 5.62 fixes Camera Run-local scrubbing and playback after seeking.
-
-Version 5.62 additions:
-- The master playback clock is calculated from the selected Camera Run only.
-- Durations from earlier Camera Runs are never added to the selected run's current time.
-- Releasing the timeline or pressing Play no longer snaps Camera Run 2 back to its endpoint.
-- Timeline seeks remain locked until the source video confirms the requested position.
-- Same-clip seeking and seeking across clip boundaries use the same confirmed-seek workflow.
-- Playback and time-update events preserve the corrected Camera Run-local position.
-
-Version 5.61 per-Camera-Run state additions retained:
-- Every angle stores its clip, source position and unified playhead separately for each Camera Run.
-- Returning to a Camera Run restores that run's own saved position instead of another run's endpoint.
-- New Camera Runs open at their first available frame when they do not yet have a saved position.
-- Timeline dragging keeps the requested position locked while the video seeks or changes clips.
-- Playback updates cannot push the slider back while the user is dragging it.
-- Seeking inside the current clip changes its source time directly instead of reloading the clip.
-- Crossing a clip boundary loads only the required clip and resumes playback after the seek completes.
-- Framing is stored separately for every angle and Camera Run.
-- Playback, second-screen viewing and export all use the selected run's framing.
-
-Version 5.60 Camera Run timeline corrections retained:
-- Changing Camera Runs resets the unified playhead to the selected run's first available frame.
-- The previous Camera Run can no longer supply a sync anchor to the newly selected run.
-- Clip durations are resolved before the selected Camera Run's start and endpoint are finalized.
-- The timeline draws only clips from the selected Camera Run.
-- Shot markers are filtered to the selected Camera Run, including older saved shots when their clip can identify the run.
-- Newly saved video-linked shots record their Camera Run explicitly.
-- Main-window and second-screen time displays are clamped to the selected Camera Run's valid range.
-
-Version 5.59 second-screen additions retained:
-- Open Second-Screen Player appears beside the existing Full Screen control.
-- The separate resizable player window mirrors the exact reframed video shown in the main player.
-- Playback position, play/pause, Camera Run, active angle, speed, volume and framing stay synchronized.
-- The second-screen window includes its own playback controls, unified timeline, Camera Run selector and angle buttons.
-- Zoom, reset framing and fullscreen controls are available in the second-screen window.
-- Closing and reopening the player reconnects it to the current match and playback state.
-- Chrome pop-up blocking is detected with a clear instruction to allow the window.
-- Deleting an End of Period marker now uses a normal confirmation instead of a six-digit code.
-
-Version 5.58 Switch Angles additions retained:
-- A separate collapsible Switch Angles panel appears at the top of Video Angles.
-- One full-width button is shown for every loaded angle, using the angle's name.
-- The currently playing angle is clearly highlighted.
-- Switching angles keeps the same unified timeline position and preserves playback state, speed and volume.
-- If an angle has no footage at the current time, its existing no-footage state is shown without moving the timeline.
-- The collapsed Switch Angles header shows the active angle name.
-
-Version 5.57 sidebar additions retained:
-- Add and Batch Videos, External Video Library and Loaded Video Angles are separate collapsible panels.
-- Each panel collapses to its section header and compact live summary.
-- Header chevrons show whether a panel will expand or collapse.
-- External Video Library shows Connected, Working, Access Required or Drive Unavailable in its collapsed header.
-- Loaded Video Angles shows the current angle and clip totals.
-- Collapsed panel choices persist when returning to Video Stats Review or opening another match.
-- Collapsing a panel does not pause playback, remove video URLs or disconnect the external drive.
-
-Version 5.56 interface corrections retained:
-
-Version 5.56 interface corrections:
-- The Match Folder Name field now uses the full available width.
-- Copy Folder Name is a full-width horizontal pill beneath the folder-name field.
-- Choose Video Library Folder, Use Existing Match Folder, Import Match Folder to Library and Allow Video Access each occupy a separate full-width row.
-- Video-library button labels remain on one line and no longer form oversized circular controls.
-- Save Video-Linked Shot and Clear Shot now appear beneath the D and Goal Box heat maps.
-- End Period remains at the top of Record Shot.
-
-Version 5.55 external-drive video library retained:
-
-Version 5.55 video-library additions:
-- Choose a Video Library Folder on an internal or external drive.
-- Chrome stores the selected folder handle and reopens the match folder when permission remains available.
-- Allow Video Access restores saved folder permission without selecting every clip again.
-- Batch Add Videos connects an existing match folder directly.
-- Use Existing Match Folder finds the current match inside the selected Video Library Folder.
-- Import Match Folder to Library copies a complete match folder into the selected library using streamed file writes.
-- Import never deletes the original files.
-- Matching destination files with the same filename and size are not copied again.
-- A read-only Match Folder Name field provides the correct folder-safe match name.
-- Copy Folder Name copies that name and confirms completion.
-- Each first-level folder in the match folder becomes an angle using the folder's exact name.
-- Numbered folders inside an angle, such as 1, 2, 3 and 4, become Camera Runs in numeric order.
-- Clips inside every Camera Run use natural filename ordering.
-- Angle folders without numbered subfolders continue to load as Camera Run 1.
-- Disconnecting an external drive does not erase the saved match or clip information.
-
-Version 5.54 export and playback corrections retained:
-- Playback and export use the same source-pixel crop calculation.
-- Each angle stores normalized crop centre and zoom values independently of screen size.
-- Portrait footage can be reframed into a landscape crop without exporting the unused portrait area.
-- Export freezes the angle's normalized crop and playback aspect ratio before loading the source range.
-- Existing angle zoom and pan values are migrated into the normalized crop model when video dimensions become available.
-- Selecting an older shot no longer replaces the angle's current framing.
-- Pan and zoom changes are saved to that angle and restored when returning to it.
-- Source audio is merged into the exported recording independently of the playback volume control.
-- The complete app logo is embedded at export-safe resolution and drawn without cropping.
-- Newly recorded video-linked shots appear immediately in Shot to Export and are automatically selected.
-- The overlay shows the period without displaying a potentially inaccurate gameplay time.
-- Overlay rows now show Situation, Shot Type, Outnumbered and Rebound without inferring one field from another.
-- Set Clip In and Set Clip Out update immediately, persist their positions and validate that Out is later than In.
-- The Video Stats Review banner is displayed at 75% of its previous width.
-- A new match clears the loaded player, angles, clips, Camera Runs, sync state, waveforms and export selection from the active workspace.
-- Finalizing a match resets the active Video Stats Review workspace.
-
-Export updates:
-- The app logo is embedded in the export renderer so overlay exports remain origin-clean.
-- Exported clips use the selected angle's playback zoom and pan.
-- Shot to Export lists every video-linked shot and drives single-shot export.
-- The single-shot action is labelled Export Selected Shot - Current Angle.
-
-Playback and match updates:
-- Speaker/mute button, 0-100 volume slider, percentage readout and saved volume.
-- Playback volume remains consistent across clips and angles.
-- Record Shot selection pills visibly highlight the current choices.
-- End Period remains at the top of Record Shot.
-- New and finalized matches receive a clean active Video Stats Review workspace.
-
-Included:
-- index.html
-- goalie_stats_app_v5_73.html
-- app icons and PWA manifest
-- service worker
-- app assets
-- resources/Data_Driven_Development_Theory.pdf
-- resources/FIH_Rules_of_Hockey_2026.pdf
-- resources/Hockey_Goalie_Stats_Main_App_User_Manual.pdf
-- resources/Goalie_Stats_Recorder_User_Manual.pdf
-
-Current build notes:
-- Video Review controls are grouped by purpose.
-- Prev and Next clip buttons were removed.
-- The Reports shortcut button was removed from Video Stats Review.
-- Angle cards now show Edit Videos instead of listing all clips.
-- Edit Videos lets users add, remove and reorder clips for that angle.
-- Batch clip export now warns that browsers may ask permission to allow multiple downloads.
-- Same-day duplicate matches against the same opponent are numbered from 2 upward.
-- Existing reports, resources, print-safe timelines and single README packaging are preserved.
-
-Recommended use:
-- Back up app data before replacing an installed copy.
-- Refresh the browser or clear the PWA cache after updating if the old version remains visible.
-- For reliable automatic video reload, use Chrome or an installed Chrome PWA and grant access to the selected Video Library Folder.
-- Keep the external drive connected when opening a match. If Chrome requests access again, select Allow Video Access.
+MakerShape v6.4
+===============
+
+To open: double-click index.html (Chrome or Safari). Everything runs offline —
+no internet or installation needed. Keep all the files in this folder together.
+
+Your design is saved automatically in the browser, and you can also use
+Save (⌘S) to keep a .makershape file. Export gives you:
+  STL - single colour, works with every slicer
+  3MF - Bambu Studio: a ready Bambu project for the A1 - each colour becomes a
+        filament and shapes/parts/painted faces are assigned automatically
+  3MF - other slicers: multi-colour, each shape a separate coloured part
+  OBJ - multi-colour, as a zip holding the .obj and its .mtl colour file
+
+Hosting later: upload this whole folder to any web host (e.g. Cloudflare Pages).
+Opened from a web address, it becomes an installable app (PWA) that works offline.
+
+Trackpad
+  Two-finger swipe ........ orbit (change the angle of view)
+  Pinch ................... zoom           Shift + two-finger swipe .. pan
+  ⌘-drag .................. pan            Drag a shape .............. move it
+  Drag on empty space ..... box-select     Shift-drag ................ add to selection
+  Click empty space ....... deselect       Shift-click a shape ....... add/remove it
+  White corner squares .... resize         Dark top square ........... height
+  Dark cone above shape ... lift up/down   Shift while resizing ...... keep proportions
+  Curved arrows (hover) ... rotate: the flat one right above the top turns it round Z (on the
+                            workplane); the tall ")" beside the right or left side tips it
+                            front to back (round X). Pointing at one says what it does;
+                            inside the shaded band = 22.5° steps, outer circle = free.
+                            (To turn round Y, type it in the panel's Rotation Y°.)
+
+Mouse: scroll wheel zooms, right-drag orbits, middle-drag or ⌘-drag pans.
+
+Keys
+  ⌘Z / ⇧⌘Z undo / redo     ⌘D duplicate     ⌫ delete       ⌘A select all
+  ⌘G group  ⇧⌘G ungroup    H solid/hole     E edges (round / chamfer)
+  R rotate                 L align          F zoom to selection
+  K sketch                 U push / pull
+  D drop onto whatever is below (another shape or the workplane)
+  Arrows nudge by the Snap Grid amount (0.1 mm when snap is Off)
+  Shift+arrows = 10x the snap, Alt+↑/↓ = up/down   Esc cancel / deselect
+
+Heraldry - build a coat of arms to print face up, flat back on the bed, multi-colour on the AMS. Everything
+is in one place: Generators > Coat of arms opens a picker with 1 Shield, 2 Divisions, 3 Ordinaries,
+4 Charges and 5 Helm, crest and motto (and the Make coat of arms button).
+- Shield: Heater, French, Spanish, Swiss, Kite, Round or Lozenge. Face: Flat, Curved (side to side) or
+  Domed, with Curve = how much higher the middle is. Rim width / Rim up (0 = no rim). Hanging: a hole,
+  a keyhole slot in the back (for a screw head up to 9 mm) or two pockets for 8 x 3 mm magnets.
+  In a coat of arms the keyhole (and the magnet pockets and hole) go through everything behind
+  the shield too - mantling, scroll - so nothing fills them. The keyhole: push the screw head into the
+  round hole, then let the shield drop so the head slides up behind the 1.6 mm lip (screw up to
+  4.6 mm, head up to 9 mm across and 2.2 mm thick).
+- Division (per pale, per fess, per bend, per bend sinister, per chevron, per saltire, quarterly) and
+  Ordinary (chief, fess, pale, bend, bend sinister, chevron, cross, saltire, bordure, canton, pile,
+  rim colour): select the shield, then click it in the picker or pick one under "Add to this shield". Lines:
+  straight, wavy, indented, embattled, engrailed, invected. They stay on their shield - move, resize
+  or reshape the shield and they follow. Placing one on its shield (its panel): Width, Up / down and
+  Left / right (a share of the shield's height and width, so they stay put if the shield is resized),
+  and for a chevron or per chevron the Angle of the arms (smaller = flatter). Counterchanged charges
+  follow the line wherever it's moved. Each is a skin of colour (Depth, 1 mm) over the shield, so the
+  AMS only swaps colours near the top; ordinaries stand 0.6 mm proud (Raised).
+- Charges: lion rampant, mullet, estoile, crescent, roundel, annulet, lozenge, mascle, billet, cross
+  couped, cross crosslet, cross patee, cross flory, fleur-de-lis, heart, key, tower, crown. Click one,
+  then click on the shield: it sinks in just enough to sit snugly on the curve. They are sculpted
+  (rounded over at the top in steps that match the print's layers). Facing: dexter or sinister.
+  The lion's mane, fur and claws are engraved lines (Engraving depth, 0 = smooth).
+- Counterchange: select a charge lying on a divided shield and press Counterchange. It is split along
+  the division and each half takes the tincture of the other side (e.g. a lion per fess sable and
+  argent on a field per fess argent and sable). The halves move and resize together and follow the
+  shield; Undo counterchange puts it back. (No need to stack two copies of a charge in groups.)
+- Helm: great helm, close helm, open helm and crowned helm, drawn as smooth curves after reference
+  pictures: skull, visor, bevor and neck plates as separate raised layers, eye slits, visor bars and
+  breathing holes cut in, and gold trim, rosettes, fleurs and scrollwork standing just proud of the steel.
+  Two-tone (steel + gold, each its own shape) or Single colour (one piece; the trim still stands out in
+  relief): pick in the Coat of arms picker before placing, or switch on a helm's panel.
+- Crest, added separately: red plume, blue & white plume (two colours), dragon crest (with its crown),
+  cloth mantle (red with gold embroidery) and torse. Drop one on a helm and it goes where it belongs on
+  that helm (and is sized to suit it). Plumes and the cloth sit behind the helm.
+- Mantling: four red-and-gold designs (each colour its own part - recolour them freely); they sit
+  behind the shield and helm. Each prints as one piece: a 0.8 mm base of the first colour runs under
+  the whole mantling (filling gaps up to 3 mm), and the lining colour sits on it, meeting the first
+  colour with no gap - so no part of it can come off the print on its own.
+- Motto scrolls: rolled ends, looped ends, swallowtails, curled tails and swept tails (a curved band whose
+  ends fold back into swallowtails sweeping up and out), plus the simple one, drawn
+  as smooth curves: the front ribbon with a rim line along both edges, and the rolls, folds and tails as
+  layers in front of or behind it. The motto is its own Text shape locked to the ribbon's curve: type
+  any words and they follow it (long words shrink to stay on the scroll). Select it to change the words,
+  font, letter size or curve.
+- Colours: the panel offers the heraldic tinctures (Or, Argent, Gules, Azure, Vert, Purpure, Sable)
+  and picks a contrasting one for each new part (metal on colour, colour on metal).
+- Make coat of arms (on the shield's panel) groups the shield, its divisions and ordinaries and the
+  charges, helm, crest and motto around it into one Inlay group: each tincture is one colour part.
+The lion rampant is traced from "lion rampant" by szquirrel (Openclipart, public domain). The helms and
+scrolls are drawn after, and the crest pieces and mantlings traced from, reference pictures supplied for
+MakerShape.
+
+Open-source parts (licences in the 'licenses' folder): OpenCascade (LGPL-2.1)
+via replicad, three.js, opentype.js, and the Inter font (SIL OFL).
+
+Edges (E): click edges, choose Round or Chamfer, Apply. Each Apply is a step in the Steps list:
+- Click a rounded or chamfered face to pick it, then "Remove this rounding" to take away just
+  that one (handy when a corner comes out twisted).
+- Edit changes an earlier step (its edges and size) - the shape shows how it was before that
+  step while you edit. × removes a step. Later steps are rebuilt on top.
+- Twisted corner? Round the edges that meet there in one step, or use a smaller radius.
+
+Size boxes: click a corner handle (or drag it) and the width and depth show on the workplane
+along the two edges that meet there; the top handle shows the height. Click a box, type a size
+(sums and, in parametric mode, formulas work) and press Enter - the shape changes from that
+handle, so the opposite corner (or the base) stays put. Tab moves between boxes, Esc hides them.
+Shapes whose size comes from their settings (threads, generators, Gridfinity) show it read-only.
+Several shapes selected: one dashed box goes round them all, with corner squares, a top square and the lift
+cone. Dragging resizes the selection as if it were one shape (⇧ keeps proportions): every shape grows or
+shrinks by the same amount and keeps its place relative to the others; text letters grow too, and shapes
+that can't change size (threads, generated parts) just move. The side panel has Size and Position boxes
+for the whole selection (with Keep proportions).
+
+New shapes: Wedge (a ramp, high at the back), Star and Star pyramid (a star rising to a point) - set
+the number of Points (3-24) and the Inner ratio (inner ÷ outer radius: 0.1 is spiky, 0.95 almost
+round; both can be formulas in parametric mode) - and Heart. All resize, stretch, become holes,
+group, round / chamfer and push / pull like the other shapes (the heart's curved sides too).
+
+Toolbar order: New · Open · Save | Import · Trace photo · Sketch | Undo · Redo | Duplicate · Delete |
+Rotate · Mirror · Align | Push/Pull · Edges | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
+photo, Picture on a face, or Reference photo. Bin labels are with the Gridfinity shapes. The side panel's
+Steps section lists everything done to a shape after it was made (rounded / chamfered edges, push/pulls,
+Gridfinity grids) with Edit and ×, and has the Edges, Push/Pull and Grid buttons.
+
+Toolbar: when the window is too narrow for every tool on one line, the tools move to a second
+line under the logo, name and Export (the labels go only if even that line is too narrow).
+
+Sketch (K, or the toolbar button): click the workplane or a flat face of a shape - the view turns to
+look straight at it. Draw with the tools in the bar:
+  V Select (click a line or shape to see and change its measurements in the side panel; drag it
+    to move it; ⌫ deletes it)    L Line - click point after point, click back on the first point
+    to close the outline (click the same point twice or press Enter to stop)
+  R Rectangle (Corners or Centre)   C Circle   A Arc (start, end, then a point on the arc)
+  S Slot (the two round ends, then its width)   G Polygon (set the number of sides in the bar)
+Points snap to the grid, to ends, middles and centres, and line up square with the last point;
+hold Shift for 0.1 mm steps. While drawing, just type a number for an exact size (length and
+angle, width and height, radius…) - Tab moves to the next box, Enter places it.
+Closed outlines become faces (shaded); an outline inside another is a hole. Lines that don't close
+are shown red and left out. There's no constraint solver: lines that share an end stay joined when
+you change a line's length or angle in the panel, but other shapes don't follow.
+In parametric mode the measurements in the panel can be formulas using your variables, and the
+sketch rebuilds when a variable changes (its plane stays put).
+Finish (Enter) makes the solid at the Height in the panel and goes straight into Push/Pull with
+its top face picked: drag the arrow to set the height. (When a sketch has several separate top
+faces - an island inside a hole, or two outlines - each face is pushed or pulled on its own; use
+H to change the whole sketch's height.) On a face, tick "Cut into the face" (or push
+the top face down through its plane) to make it a hole going into the shape - then group it with
+the shape (⌘G) to cut the pocket. Edit later with a double-click, K, or "Edit sketch" in the panel
+(also from a group that holds the sketch); any steps on it are rebuilt on top.
+
+Reference photo (Trace photo ▸ Reference photo…, or Photo… in the sketch bar): straighten the sheet
+of paper the photo was taken on (A4 / A5 / A3 / Letter / other) and it is laid flat at its true
+size, faded, on the workplane (or the plane you're sketching on). No sheet? Place it as it is and
+set the scale: click two points on it and type how far apart they really are. The side panel
+(nothing selected, or while sketching) moves, turns, fades, hides, locks it, sets its scale again
+or puts it on a shape's face. Locked photos can't be clicked; unlocked ones can be dragged. Photos
+are saved with the design but never exported.
+
+Push/Pull (U, or the toolbar button): click a flat face of the selected shape, then drag its arrow
+out to pull (adds material) or in to push (takes it away) - or type the distance in the bar (minus
+pushes) and press Enter. Choose the direction in the bar: Square to face (N), or along the
+workplane's X, Y or Z (pull a roof's slope along Z and the walls rise straight up under it). Grid
+snap applies; hold Shift for 0.1 mm steps. Each push/pull is a step in the Steps list (Edit
+changes its distance or direction) and stays on when you change the shape's size. Works on flat
+faces of solid shapes, merged groups, STEP parts and generator parts - not on imported meshes,
+threads, text or inlay groups.
+Curved faces too: the side of a cylinder or cone, a sketched arc or circle, the wall of a round hole,
+a rounded edge. A curved face moves square to itself everywhere (pull a cylinder's side out 3 mm and
+it's 3 mm bigger all round; pull a hole's wall in and the hole gets smaller), so X / Y / Z are greyed
+out for it. Rounded edges work but leave small steps where they meet the next faces; a sphere can't
+be pushed or pulled (resize it instead).
+
+Placing: click on another shape to put the new shape on that surface
+(hold Alt to place on the workplane only).
+
+Mirror (M): select shapes, click Mirror and choose Left <-> right (X), Front <-> back (Y) or Top <-> bottom (Z).
+They're flipped across the middle of the selection, so the selection stays where it was. Works on any shape,
+on groups (every shape in them is mirrored), on imported models and on text (the letters come out reversed);
+rounded edges and push/pull steps stay put, and ones added afterwards land where you click. Mirroring a shield
+takes its divisions and ordinaries with it (a bend becomes a bend sinister). Mirror again to undo it (or
+Undo). Not for counterchanged charges, or text wrapped onto an oval or freeform face.
+Align (L): click a dot to line shapes up; click one selected shape first to
+make it the key shape that stays still. Grey dots are already lined up.
+Distribute is in the side panel.
+
+Rotating: hover over a selected shape and curved arrows appear (one above it,
+one on each side). Drag one and a dial shows for just that axis: keep the
+pointer in the shaded band for 22.5° steps, or move out to the thin outer circle
+to turn freely. The Rotate button (R) still works, and you can type angles.
+Turned shapes keep their resize squares and dashed box square to the workplane.
+A shape turned in 90° steps stretches exactly along them; one turned at another
+angle grows or shrinks evenly (type W/D/H to change one size).
+
+Generators (left panel, under Gridfinity) - the Thread is here too (bolts, rods, nuts, holes):
+  Snap-lock case - a hinged case of any size using the SnapLock box's own hinge and latch
+    design (from the STEP file): width, depth, height, lid height (at least 20 mm, and the base
+    at least 20 mm), walls, corner radius; 1-4 latches and 1-3 hinges (or Auto). Latch fit:
+    Loose / Standard (as designed) / Snug, plus Fine-tune in 0.05 mm steps - "Make a test-fit
+    piece" prints one latch and one hinge cut from a small case so you can check the fit first.
+    The lid's top edge is square: round or chamfer it yourself with Edges (E) - your edges are
+    kept when you edit the case. The back and side edges round or chamfer up to about 2 mm;
+    the front edge beside the latch lugs can't be (the app tells you rather than making a
+    broken lid). Options: recessed label panel on the front, grip ribs on the sides, dividers,
+    or sized for Gridfinity bins with a baseplate in the floor.
+    Edges: Square, Chamfer or Rounded (up to 3 mm) on the lid's top edge and the base's bottom
+    edge. The front latch lugs stop where the lid's edge starts - that part of the lug is above
+    the latch, so the latch works exactly the same.
+    Gridfinity feet: the base gets standard Gridfinity feet so the case drops into a baseplate.
+    They're worked out from the case's size: the 42 mm squares line up with the front of the
+    latches and the left grip ribs, so the whole case (latches and hinges included) fits inside
+    the grid, but the feet themselves are only under the base - cut short wherever its walls end
+    partway through a square (slivers under 8 mm are left flat). The summary shows how many
+    whole feet there are and how many squares the case takes up.
+    Sized for Gridfinity bins: the tallest bins that fit are cut into the inside of the back
+    wall, e.g. "9U · 8U+LIP" (9U bins, or 8U with a stacking lip), and shown in the summary. Gridfinity grid on the lid: a baseplate grid on top of the lid for bins to sit
+    on (it adds 4.65 mm; the feet add 4.75 mm - the summary shows the total height). The lid's grid
+    covers the lid itself, so it has fewer squares than a footprint that includes the latches.
+    Padlock tabs: a flat tab on the lid and one on the base at the seam, shaped like a tab design
+    that's known to work: closed, the lid's tab sits on the base's and the holes line up for a
+    padlock shackle (hole 4-10 mm, 7 mm by default; 45° underneath so both print without
+    supports). They sit in the widest free stretch of the front (two latches move out towards
+    the corners to make room).
+    Compartments: Dividers (equal parts across and deep), Bento walls built in (walls printed as
+    part of the base), or Bento insert (a separate tray that drops into the base, 0.4 mm clear of
+    the walls, up to just below the rim unless you set its height). Both bento choices use the
+    compartments editor (see Bento tray), with divider thickness, how much lower the dividers are
+    than the walls, and finger notches; the insert also has its own walls, floor and scoop.
+    Size: Outside size (width, depth, height) or Room inside - type the space you need inside
+    (height = floor to the inside of the lid) and the outside is worked out from it.
+    Gasket seal: the base's lip gets wider (inwards, with a 45° ledge under it so it prints) and a
+    groove along its top; a separate ring, printed in TPU (85A-95A), presses into the groove, and
+    the lid's ceiling squeezes it when the latches close. No claim of waterproof - it keeps dust
+    and spills out. Gridfinity cases get 2.8 mm wider so the bins still fit.
+    Folding lid handle: a recess in the lid shaped round the handle (a U-shaped channel, the lid
+    left solid in the middle - so printing the lid upside down only bridges narrow strips, with no
+    supports), with a finger notch in front of the grip; lift the
+    handle to carry, fold it flat to stack. Printed in place (the default): the handle is part of
+    the lid - it lies in the recess, flush with the lid's top, with pins on its arm ends in holes in
+    the recess's end walls, 0.4-0.5 mm clear all round, so it prints with the lid (upside down)
+    and comes off the printer already fitted. The inside of the lid is printed as a bridge over
+    it, so slow bridges down (about 10 mm/s) and raise the bridge flow in the slicer; work the
+    handle up and down a few times afterwards to free it. Or Separate, clicks on: a flat U printed
+    on its own that presses down into the recess until its arm ends click onto a ball on each end
+    wall. Not with the Gridfinity grid on the lid or lid feet.
+    Stacking: L-shaped seats in the four corners under the base and on top of the lid, with 45°
+    lead-ins; four small feet (chamfered at the ends) are glued into the base's seats and drop
+    into the lid seats of the case below, so stacked cases can't slide off. (Not with Gridfinity
+    feet or the lid grid - those stack already.)
+    Lid feet for Gridfinity bins: with "Sized for Gridfinity bins", tick "Feet under the lid" and
+    the lid gets a grid of Gridfinity feet that drop into the stacking lips of the bins, closing
+    each bin so nothing spills from one to the next. The lid is set for the tallest bins with a
+    stacking lip that fit (shown in the summary and marked inside the back wall); the summary
+    says how much lower or taller to make the case to avoid filling the lid in.
+    Carry handle: on the front (in the free stretch between the latches - two latches move out to
+    the corners to make room; needs a wider case, about 160 mm+) or one on each end (in place of the
+    grip ribs). The handle is one smooth rounded U. It clips on like the latches: two rounded lugs on
+    the base each have a small ball on the outside, and each arm end has a dimple inside - push the
+    handle down over the lugs (a shallow channel in each arm guides the ball) until the balls click
+    into the dimples; it pivots on them. Folded down flat against the wall a smaller bump clicks
+    into a second dimple, so it stays put. It prints flat on its outer face, no supports. Grip length (0 = as long as fits),
+    rounded grip, finger grooves. The summary says if there isn't room and why.
+    Card box: tick "Make it a card box", choose one deck or two, the card width and length (poker
+    63.5 x 88.9 mm by default), the deck's height and the card clearance. The case is sized
+    round a card tray (0.7 mm round the tray, 1.3 mm above it): one deck lies lengthwise, two
+    decks stand side by side. The tray has tapered corner posts with a slanted lead-in, a
+    window to push the deck up through and a thumb notch to lift it out (the plate is flat
+    between the posts); ribs inside the lid
+    rest just above the deck so the cards can't rattle (the case is at least 40 mm tall for the
+    latches, so on a thin deck the tray's plate is raised a little too).
+    Solid base / Solid lid: the inside is filled in (walls, rim, hinges and latches unchanged,
+    so it still closes), ready for tool-shaped pockets. "Space above" leaves open room over the
+    base's fill. Cut pockets with Photo Tracer: select the base (or the lid, laid out upside
+    down), open Trace photo and choose "Cut pocket" - it measures from the filled face and keeps
+    inside the walls; do it again to add more pockets to the same part. Or group hole shapes
+    with it yourself. "Edit snap-lock case..." still works on a pocketed part (select its group):
+    the pockets stay where they are. The base, lid (upside down)
+    and latches are laid out for printing; "Show assembled" puts it together and "Edit..."
+    changes any setting later. (Check the SnapLock design's licence on MakerWorld before
+    sharing or selling cases made with it.)
+  Press-fit box - a plain box with a flat lid that pushes on and clicks shut. Under the lid is a
+    plug, a band about 4 mm wide that fits just inside the walls; pockets in it leave thin spring
+    arms along its edge, each joined at one end, that bend sideways in the plane of the lid (along
+    the printed layers, so they're strong). Near each arm's tip is a wedge-shaped ridge: as the lid
+    goes on the arms bend in, then the ridges click into a groove round the inside of the walls.
+    Size: outside (height includes the lid) or room inside; walls (1.7-1.9 mm or more, for the
+    groove), floor, corners, lid thickness, fit (the gap round the plug, 0.15 mm) and grip (Light
+    / Normal / Firm - how far the ridges stand out; the dialog shows an arm from below and a cut
+    through the joint). Optional thumb dip in the front rim to lift the lid. Prints without
+    supports: the box upright, the lid upside down. Too tight or too loose? Change the grip or the
+    fit and print just the lid again.
+  Threaded jar - diameter, height, walls, thread length, pitch, 1 or 2 starts (2 = fewer turns
+    to close) and fit; grip grooves on the lid, a recessed label band, stackable (the bottom
+    screws onto the jar below) or a Gridfinity base. The lid prints upside down.
+  Gear - spur gears with straight, helical or herringbone teeth: teeth, module (tooth size -
+    gears only mesh with the same module), thickness and play; a meshing pair (built at the
+    right distance apart, ratio shown), a rack and pinion, or a GT2 belt pulley (teeth, belt
+    width, flanges). Shaft hole: none, round, D-shaft or hex (across the flats, e.g. 5.5 mm for
+    an M3 nut); optional hub with an M3 set-screw hole.
+  Cookie cutter - choose a picture (a drawing, logo or shape on a plain background; transparent
+    PNGs work well) and make a cutter, a cutter + stamp, or a stamp only, like CookieCAD. The
+    cutter follows the picture's outline (Join gaps closes small gaps; holes are filled in) and
+    tapers from a thicker base wall to a thin cutting edge, with a flange round the bottom
+    (width and thickness). The stamp presses the picture's darker lines into the dough (Stamp
+    lines slider; Thicken lines makes fine lines printable): line height, backing plate, gap to
+    the cutter, and a handle that presses into two holes in its back. The cutter prints edge
+    up; the stamp and handle print upside down as laid out.
+  Lithophane - a photo that shows when lit from behind: flat or curved (angle), width, frame,
+    thinnest and thickest (light parts thin, dark parts thick; Negative swaps them), a separate
+    stand with a slot, or a hanging tab with a hole; Draft / Normal / Fine detail. The preview
+    shows roughly how it will look lit up. Print it standing up, in white, at 100% infill.
+  Bento tray - a tray, or a Gridfinity bin (width × depth in grid units, height in U, stacking
+    lip, magnet holes), split into compartments. The editor shows the inside from above: click a
+    compartment to pick it - the + on its right edge splits it side by side, the + on its bottom
+    edge splits it front to back, the bin removes it (its neighbour takes the room). Click a size
+    (↔ width, ↕ depth) to type it exactly - the compartments beside it share what's left, the
+    outside stays the same. Drag a divider to move it (0.5 mm steps, Shift = 0.1 mm). Give the
+    picked compartment a label (sunk into its floor). Reset goes back to one compartment.
+    Settings: walls, dividers, floor, outside corners, inside corners, scoop (the floor curves up
+    into the walls so small parts slide out), dividers lower than the walls, finger notches in the
+    dividers, and a lift-off lid whose rim pushes into the top (or into a Gridfinity bin's lip).
+  Bin label - labels that sit on the label tab of a Gridfinity bin: bin width in units,
+    compartments, the text (or one label per line for several), inlaid or raised. Change a
+    label's words later in the panel like any text on a surface.
+Caps Lock: with the bucket or eyedropper (Paint pane and Photo Tracer) Caps Lock shows a thin
+precise crosshair instead of the icon.
+
+Photo Tracer (Trace photo button): turns a photo into an outline in real millimetres.
+1 Sheet - photograph the object lying on a sheet of paper, from above, with the whole sheet
+  in view. The sheet's corners are found for you; drag them if they're off, and pick the
+  sheet size (A4, A5, A3, Letter or your own). The photo is straightened so the outline is
+  true to size even if the photo was taken at an angle.
+2 Outline - teal shows what counts as the object; the orange line is the outline that will
+  be made. Sensitivity, Remove specks, Fill holes, Smooth and Clearance (grow the outline,
+  e.g. 0.5-1 mm so a tool drops into its pocket easily). Paint in / Rub out fixes bits by hand.
+3 Use it - add it as a solid or a hole (any height), cut it as a pocket into the shape you
+  had selected (a solid Gridfinity bin or any block: depth, optional finger notch, a warning
+  and a "make the bin bigger" button if it doesn't fit), put it on a face as a picture, or
+  save it as an SVG file.
+Tracer tools: View, Paint in / Rub out (brush - turn Caps Lock on to see its size), Fill in /
+Fill out (bucket: click an area and everything joined to it of a similar colour goes in or
+out; Tolerance sets how far it spreads), Lasso in / out (drag round an area, or click point
+to point and click the first point or press Enter to close; Shift = in, Alt = out).
+A magnifier shows while you drag sheet corners or place lasso points; arrow keys nudge the
+last point (Shift = 10 px). ⌘Z / ⇧⌘Z undo and redo inside the tracer.
+Colours (Picture): switch Outline to Colours to keep a picture's colours. "Merge similar"
+joins shades that look alike (higher = fewer colours); then merge more by hand until you
+reach your Target (the panel shows how many are left to merge): drag one colour onto another
+(it takes the look of the one you drop it on), ⇧-click several and merge them, or press
+"Merge closest" to join the two most alike. "Split" undoes a merge. Each colour is matched to
+a filament (click the dot to change it), tick "cut away" for colours to drop (the background
+starts cut away). Blended pixels along edges join one of the colours touching them, so there
+are no dark rims or stray specks, and the outlines run smoothly between pixels; neighbouring
+colours share the same edge. Edge smoothing rounds them more; Smallest detail gives bits too
+thin to print to the colour next to them. The preview shows the shapes that will be made.
+Brush, Bucket and Lasso recolour or cut away parts. On a face each colour becomes its own
+part - Inlay (flush) or Raised - ready for the AMS; the panel counts the filaments you'll need.
+Pictures on flat faces are built as exact outline shapes (lighter and much faster than before).
+Exporting shapes that aren't grouped: shapes that touch or sit in each other (a lion on a shield, a
+motto on its scroll) go into the 3MF as parts of one object, so the slicer keeps them where they were
+instead of dropping each onto the plate. Pieces behind (mantling, plumes) are listed first and smaller
+pieces after bigger ones, so where they overlap the piece in front keeps its colour. Shapes standing
+apart stay separate objects.
+
+All the heavy 3D work - shields, charges, helms, groups, rounded edges, text on a curve,
+generator parts, and making the triangles for an export - is done by a second copy of the 3D engine
+running in the background. The page only draws and listens to you, so it stays responsive: while
+something builds you see "Building…" (or the preview appears a moment later when placing a detailed
+shape), but the page never freezes or asks to close. Simple shapes (boxes, cylinders and the like) are
+still built straight away on the page, as they're instant. The background engine also pre-builds each
+new shape while you work, so combining them later only has the combining left to do.
+
+If opening your last design ever freezes MakerShape, the next start offers to start with an empty
+design instead, and a link saves that last design as a file (open it again later with Open). If
+building it at start-up takes very long, the same choice appears after 20 seconds. The background
+engine gives up on any single build after 4 minutes and says so, rather than leaving you waiting.
+
+If the 3D engine ever runs out of memory on something very detailed, the change is undone and the
+engine restarts by itself - try fewer colours or a higher "Smallest detail".
+Colour relief: on a Raised picture, tick "Colour relief" and each colour gets its own height:
+"Biggest lowest", "Darkest on top" or "Lightest on top" set them in steps (Step size), then
+fine-tune any colour's Height in the list.
+Transparent PNGs: the see-through parts are shown as a grey checkerboard and left out. In
+Outline, "Shape from: Transparency" makes everything visible the shape (or choose Colours to
+trace a drawing inside it); in Colours they're always cut away and don't count as a colour.
+Turning before you use it: in the last step, turn the outline a quarter either way, set any
+angle (⇧ for 15° steps), Straighten it to sit square in the smallest box, or Mirror it. The
+pocket check uses the turned shape and offers "Turn 90° to fit" when that's all it needs.
+Click the workplane instead to get the picture on its own white plate.
+Picture (left panel): trace a logo or drawing (no sheet needed - you set its width), then
+click a face to put it on: Raised, Inlay (own colour, flush) or Engraved, like text. It
+follows curved faces too. Clicking the workplane makes it a flat picture shape.
+Covering a whole face: on the picture's panel, "Cover face" stretches the picture to
+fill the face it's on, and "Fit to face" makes it as big as it goes keeping its shape.
+- Flat face: sized to the face and trimmed to the face's outline (a round top stays round),
+  0.4 mm in from the edges.
+- Cylinder (or another curved outline, like an oval): right round, top to bottom; Fit fills the
+  height and goes as far round as its shape allows.
+- Sphere: right round like a map of the world (squeezed towards the top and bottom).
+- Half-sphere: Cover wraps it right round the dome; Fit lays it over the dome as seen from above.
+Once stretched, the panel shows its height too (Tall), and Unstretch puts it back to its own
+proportions. A picture over a whole curved face is combined as triangles (fast), so rounded or
+chamfered edges can't go on that group.
+Tip: dark objects on white paper trace best; avoid strong shadows (light from above or
+use a lightbox). iPhone HEIC photos: share or export them as JPG first.
+
+Combine modes for groups: Merge (one solid) or Inlay (each shape stays its own
+colour part; smaller shapes cut their space out of bigger ones) - Inlay exports
+to 3MF as one object made of coloured parts, ready for multi-colour printing.
+Engrave (coats of arms): a group with a shield can also be set to Engrave. On the shield, one tincture
+(chosen on the group's panel - the lightest, e.g. Argent, to start with) is cut into the shield's face
+as deep as Depth, and everything in the other tinctures - field, divisions, ordinaries, charges - sits
+flat at the face: the shield becomes one solid in one colour, to print in one colour and paint or fill
+the recesses. The helm, mantling, motto and the rest stay as in Inlay.
+Engrave the motto into the scroll (a tick box on an Inlay or Engrave group with a motto scroll): the
+words are cut into the scroll's ribbon as deep as Depth, instead of standing on it - the scroll and its
+motto print as one piece in the scroll's colour.
+Grouping shapes of different colours makes an Inlay group by default (pick Merge on the
+group's panel to fuse them into one solid instead). Merge checks every join: where the 3D
+engine would quietly lose a piece (detailed shapes that only just touch), the pieces are
+kept side by side instead, so nothing disappears.
+
+Part colours: select a group with text, a picture or other inlaid parts and the panel lists
+each part - Body, each Text, each picture colour - with its own colours. Changes show at
+once (no rebuilding). Point at a row to see that part light up; click a part of the shape to
+find its row. ⇄ swaps two parts' colours (click ⇄ on one, then on the other). If the body is
+made of several shapes, tick "Colour each piece of the body separately". The panel counts the
+filaments the design needs and warns above 4 (AMS lite).
+
+Paint (toolbar button or P): a small pane to colour the surface.
+  Bucket - "Whole part" colours a shape or one part of a group; "One face" colours just the
+    face you click (a side of a box, the top of raised text, a curved surface).
+  Brush - drag over the surface; size 0.5-20 mm ([ and ] change it), Caps Lock shows the brush,
+    Alt paints back to the part's own colour, ⇧-click draws a straight line from the last
+    point, "Stay on the face I start on" keeps stripes neat.
+  Pick - eyedropper: click the shape to take its colour.
+  Clear paint removes it from the selected shapes; ⌘Z undoes a stroke or fill. Keys: B brush,
+  G bucket, I pick, Esc to finish. Drag empty space to turn the view while painting.
+  Select (S) - Lasso, Box or Line. Drag around an area (or a box over it) and everything inside,
+    as you see it, takes the colour: the surfaces facing you, on the selected shapes, or on every
+    shape under the drawing if none are selected. Line: drag a line across a shape, then click the
+    side to colour. "Colour right through" colours back and hidden surfaces too. Alt puts the
+    part's own colour back; Esc cancels a drawing. (With Select, use a two-finger swipe to turn
+    the view.) The surface is divided finer along the outline, so the colour edge is crisp.
+Paint is colour only (the shape doesn't change); it moves, turns and stretches with the shape.
+It exports to the Bambu 3MF as Bambu Studio paint (multi-colour on the A1), to the other 3MF
+as coloured triangles, and to OBJ; STL stays one colour. Detail finer than the 0.4 mm nozzle
+won't show in the print. Paint on shapes you then group stays on them but only shows when
+they're ungrouped - paint the group itself instead.
+
+Groups keep each shape's colour (Multicolour). Pick a single colour swatch to
+paint the whole group, or press Multicolour again to get the colours back.
+
+Groups fit their resize guides and W/D/H to the shape that's left after their holes,
+so a dome cut from a sphere shows the dome's real size.
+Resizing: groups resize like a single shape - drag the corner or height handles,
+type W/D/H, or set Scale % in the panel. Hold Shift while dragging a handle to
+keep the proportions in all three directions (works for single shapes too).
+A group stretched by different amounts in W, D and H passes the stretch down to the
+shapes inside it, so it keeps real edges you can round or chamfer. That works when
+every shape inside is square to the group (turned in 90° steps) and is a basic
+shape or group; otherwise (text, threads, imports, odd angles) the group is shown as
+a stretched copy without pickable edges, and a message says which shape is why.
+Threads inside a resized group are stretched with it, so they may no longer fit
+a standard bolt or nut - the panel warns you when that applies.
+
+Bent text: a Text shape's Bend (mm) curves the words along an arc - how much higher the ends sit
+than the middle (minus arches them the other way; 0 = straight). A motto on a scroll has a Curve
+(radius, mm) instead, so any words follow the scroll.
+
+Text on shapes: drop Text onto a shape and it follows the surface - wrapping around
+any curve: cylinders, cones, spheres, ovals, rounded corners and other extruded
+curves follow the surface exactly; free-form shapes (e.g. a squashed sphere) get
+the text projected onto them. Curves that aren't perfectly round take a few
+seconds to build. If you move or resize the shape afterwards, press Re-fit to
+surface in the panel. In the
+panel choose Raised (stands out), Inlay (set in flush as its own colour) or
+Engrave (cut in), and adjust size, depth, spacing, Around and Up/down.
+The text is grouped with its shape; Ungroup to detach it.
+
+Import (top bar, or drop a file on the workplane):
+(Models whose surface has gaps or tangles - common with 3D scans and sculpts - are repaired as they're
+imported: holes filled, twisted and doubled triangles sorted out, touching corners pulled apart - so they
+can be grouped, cut and split. The import message says how many holes were filled. Models already in a
+design are repaired the same way when you group or split them.)
+(Very detailed models - over 800,000 triangles, like 3D scans and sculpts - get a choice on import:
+simplify to 500k triangles (recommended: it looks the same - the summary says how far the surface moved,
+usually well under 0.1 mm), to 250k or to 1 million, or keep them all (up to 2 million). It's done in the
+background in a few seconds, even for a 3-million-triangle file.)
+(Groups with an imported STL/3MF model in them are combined as triangles, by a separate mesh engine
+(Manifold), instead of being turned into exact solids first - so even detailed models (tens of thousands
+of triangles, like a coat of arms exported earlier) group, merge or inlay in seconds rather than
+freezing. Merge, Inlay, holes, colours, resizing and export all work the same; rounded edges and
+Push/Pull aren't available on such a group. The model has to be closed (watertight): if it isn't, the
+app says so - repair it in your slicer and import it again.)
+- STL and 3MF (including Bambu Studio projects - each part comes in with its colour).
+  These are triangle meshes: move, resize, colour, group them or cut holes in them.
+  Their edges can't be rounded, and very detailed models are slow to combine.
+- STEP (.step / .stp) - e.g. from Fusion 360: File > Export > STEP. Comes in as an exact
+  solid, so edges can be rounded and holes cut cleanly. (Fusion's timeline and
+  parameters can't come across - only the finished shape.)
+- Imported models are stored in the browser and inside saved .makershape files.
+
+Colours: black and white come first; brown has been added.
+
+QR code (left panel): click the workplane for a QR plate (white plate, black code inlaid -
+two colours on the A1), or click a shape's face to put the code on it. In the panel: Link,
+Text, Wi-Fi or Contact; error correction; size; Raised / Inlay (best to scan) / Engrave;
+"Dark background" for codes on dark shapes. Keep squares 1 mm or bigger. Flat faces scan
+best - on curves, test-scan before printing.
+
+Gridfinity (left panel):
+- Drawer grid: enter the inside size of your drawer and a gap. Choose full (42 mm),
+  half (21 mm) or full + half cells at the edges, and where the leftover filler goes.
+  Pick your printer (or type your print bed size - it's remembered, see Print bed) and big grids are split into tiles
+  that lock together with dovetail joins. Tiles are named A1, A2… (on the border, or
+  under the floor when magnet holes are on). "Lay tiles out for printing" spreads them
+  apart; "Edit drawer grid…" changes everything later.
+- Bin: size in grid units (W/D in 42 mm steps, .5 for half; H in 7 mm units). Hollow bins
+  have compartments, label tab and finger scoop; Solid bins are a block to cut tool shapes
+  into. Both can have the stacking lip, magnet and screw holes.
+- Base: Gridfinity feet with a flat top at 7 mm - put your own design on it and group.
+- Grid on top of any shape: select a shape, "Add Gridfinity grid to top…" - cut into the
+  top or built on top, with the same grid and filler options.
+- Snap Grid 42 mm / 21 mm: bins and bases dropped on the workplane line up with the grid.
+
+Too big to print: when a shape (or group) is bigger than your printer - the bed less its edge, and the
+build height - its panel says so and offers "Split to fit the printer…". It's cut evenly into the fewest
+pieces that fit (or more, if you like), with square holes across every cut - half in each piece, only
+where there's solid material round them, and at least 2 on every separate part of a cut (say a wing and
+the base cut by the same plane) so the pieces can't turn. Thin parts of a cut get smaller pegs (down to
+3 mm), each hole matching its peg; if a part only has room for one, or none, the app says to glue it too -
+and the pegs to go in them, one model per peg size, laid out lying down for printing. Snap pegs (the default) have a slot in each end,
+making two springy prongs with a bump on the outside, and each hole has a notch all round where the bumps
+click in: push a peg halfway into one piece, then press the next piece on until it clicks. Or plain
+square pegs to glue, or no pegs. Peg size (8 mm) and Fit (the gap round each peg, 0.15 mm) are set in the
+dialog. Colours are kept (an inlay group's pieces stay inlay groups). The pieces replace the original
+(undo puts it back) and are laid out flat on the workplane, ready to print one by one.
+
+Print bed: the button in the status bar ("Print bed 256 × 256 × 256") sets your printer - pick it from
+the list (Bambu A1 / P1S / X1C, A1 mini, H2D, Prusa, Creality…) or choose Custom and type the bed size
+and build height, plus the edge to keep clear. It's remembered, and everything that splits big prints into pieces uses
+it: Gridfinity drawer grids, SKÅDIS boards and anything added later. Changing the printer in one of
+those dialogs changes it here too.
+
+SKÅDIS & pegboards (left panel) - pegboards with the IKEA SKÅDIS hole pattern (slots 5 × 15 mm with round ends,
+in columns 20 mm apart; each column has a slot every 40 mm and every other column is 20 mm higher),
+and bins that hang on them - or any other pegboard pattern:
+- Hole pattern (boards and bins): IKEA SKÅDIS, standard pegboard (¼″ / 6.35 mm round holes on a
+  1″ / 25.4 mm grid), or Custom for any other board: slots, round or square-cornered holes; hole
+  width and height; Across (column spacing) and Down (spacing in a column), centre to centre; and
+  Staggered (every other column half a step higher, like SKÅDIS). Make a bin with the same pattern
+  as its board: its hooks go on one row of holes (at least 30 mm apart) and are sized to fit
+  through the holes - small round holes make small hooks, so keep those bins for light things.
+  The screw holes and spacers go half way between columns; if the columns are too close for the
+  screw heads, the panel says which screws fit.
+- Board: pick an IKEA size (36, 56 or 76 × 56 cm) or type any width and height; thickness (5 mm,
+  like IKEA's) and corners. On the wall: spacers on the back (printed stand-offs, 12 mm to start,
+  so hooks fit behind the board, with countersunk screw holes through them), countersunk holes
+  only (add your own spacers), or no holes. The holes sit half way between two columns, clear of
+  the slots and of the hooks behind. Bigger than the print bed: one piece, separate tiles (screw
+  them up side by side), or tiles that clip together with dovetails (Join fit sets how loose).
+  Tiles split half way between slots, so the pattern carries on across the joins, and are named
+  A1, A2… (A is the top row). They're laid out face down for printing (spacers up, no supports);
+  "Show assembled" puts the board together.
+- Bin: outside width, depth and height, walls, floor, corners and compartments; hooks 40 mm apart
+  (on one row of slots), as many as fit. Hooks: separate clips (the bin prints standing up and the
+  clips print flat - no supports anywhere; each clip slides up into a channel on the back of the
+  bin from underneath until it clicks: a springy finger at the bottom of the clip snaps over a
+  ledge, so it can't slide back out, and the bin hangs on the closed tops of the channels. Press
+  the bottom of a clip in towards the bin to slide it out again) or built in (one piece - each hook tip hangs in mid-air, so support the tips when printing).
+  Front: full height, or lower with sloped sides - type the front's height and the sides slope up
+  from it to the full height at the back wall (handy for reaching in; the back and its hooks stay
+  the same).
+  Bins 52 mm or taller also get a peg into the slot 40 mm below each hook, so they don't swing.
+  Board: the thickness of your SKÅDIS board (5 mm for IKEA's). To hang a bin: tilt it, put the
+  hooks through two slots, push it flat to the board and let it drop.
+
+Messages (at the bottom of the 3D view) stay up until you close them with their ×, or the next message replaces them.
+Fasteners (left panel): Keyhole, Countersunk (screw hole), Magnet (pocket), Insert (heat-set), Nut trap and
+French cleat. Click one, choose the size, how many and the height (80% up the face by default), then click
+a flat face. For the ones that hang things (keyhole, countersunk, magnet, cleat) click the flat face that
+goes against the wall - turn the view to see underneath if the shape is lying on the bed (a curved
+plaque or a dome with a flat back is fine). Countersunk holes go right through, with the countersink on
+the front. On a curved front the countersink goes where the front comes furthest in under the
+head, with a head-sized counterbore running straight out from it, so the screw head sits down all round. Inserts and nut traps go into the face you click. They're spread evenly across the face at
+that height (within the face's outline, clear of its edges) and cut as holes - into the group the shape
+is in, or a new group with it. "Up" is towards the back of the workplane for a face lying flat, upwards
+for a standing one (a keyhole's slot runs up).
+- Keyhole: standard (screw up to 4.6 mm, head up to 9 mm; needs 5 mm of material) or large (5.8 / 12 mm).
+- Countersunk: a hole right through with a 90-degree countersink for 3-5 mm screws.
+- Magnet: a pocket 0.2 mm bigger than the magnet (8x3, 6x3, 10x2, 10x3, 12x3, 6x2, 5x2 mm).
+- Insert: a hole sized for M2-M5 brass heat-set inserts, with a small lead-in.
+- Nut trap: a hex pocket for an M3-M6 nut, with the screw hole right through.
+- French cleat: a 45-degree groove across the back and a matching wall strip (made next to the part, with
+  countersunk screw holes): screw the strip to the wall with its sloping edge up and away from the wall,
+  lift the piece over it, push it to the wall and let it drop.
+If the part is too thin for a fastener at a spot, the app says so before adding it.
+
+Left panel: click a section's heading (Shapes, Gridfinity, SKÅDIS & pegboards, Generators, User
+Shapes) to fold it away - handy for getting to your User Shapes quickly. It remembers which are folded.
+
+Workplane: shows the MakerShape logo and your design's name.
+
+Parametric design (per design): switch Parametric on in the bottom bar. It is saved with
+each design and starts off for new designs.
+- Variables (fx button next to it): give measurements names, e.g. wall = 2, bolt_d = 6.
+  Variables can use each other (dia = wall*15).
+- Formulas: type a formula into any measurement - size, position, rotation, sides, text
+  settings, the shape under a surface text, or a round/chamfer size - e.g. wall*2 or
+  bolt_d + 0.4. Fields with a formula show fx; click the field to edit the formula.
+  Formulas can use + - * / ^, brackets, sqrt, abs, round, min, max, sin/cos/tan (degrees), pi.
+- Change a variable and everything that uses it updates. Rounded/chamfered edges stay on
+  the right edges, and surface text follows the shape it sits on (no Re-fit needed).
+- Typing a plain number or dragging a handle replaces that field's formula.
+- Switching Parametric off keeps your formulas; switching it back on brings them back.
+- Grouped shapes stay together when variables resize them: shapes keep their distance to the
+  nearest side (a wall on the edge of a plate stays on the edge, things on top go up), and a
+  small shape flush against a bigger one grows away from it. X/Y/Z formulas survive grouping.
+
+Home view: the house button shows the workplane from the front, tilted down.
+
+Threads: pick Thread from the shapes, then choose Bolt, Rod, Nut or Hole and a
+standard size (Metric, UNC/UNF, BSW, BSP) or Custom (diameter, pitch or TPI,
+profile, starts, left/right hand). Fit clearance makes printed threads screw
+together. A Hole thread cuts a real thread into any shape you group it with.
+
+User Shapes: select shapes and press Shift+Cmd+S (or Save as User Shape) to keep
+them for future designs. Use the ... button on a card to rename, update,
+duplicate or delete. Export/Import saves or loads the whole collection as a
+.makershape-library file (keep a backup - the collection lives in this browser).
+
+Fonts (Chrome only): select a text shape and click the Font button. The first
+time, Chrome asks to let MakerShape use your fonts. In other browsers, text
+always uses MakerShape's default font.
