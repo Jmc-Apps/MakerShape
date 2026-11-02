@@ -1,4 +1,4 @@
-MakerShape v6.4
+MakerShape v6.5
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -109,6 +109,10 @@ along the two edges that meet there; the top handle shows the height. Click a bo
 (sums and, in parametric mode, formulas work) and press Enter - the shape changes from that
 handle, so the opposite corner (or the base) stays put. Tab moves between boxes, Esc hides them.
 Shapes whose size comes from their settings (threads, generators, Gridfinity) show it read-only.
+Lift height: while you lift a shape with the cone, and whenever the selected shape (or shapes) sits off
+the workplane, a blue line runs from its bottom down to the workplane with the height on it (↕ 12.50 mm).
+Click the number, type the height you want and press Enter - the bottom goes exactly there (0 puts it
+back on the workplane; Esc cancels). Turned shapes are measured from their lowest point.
 Several shapes selected: one dashed box goes round them all, with corner squares, a top square and the lift
 cone. Dragging resizes the selection as if it were one shape (⇧ keeps proportions): every shape grows or
 shrinks by the same amount and keeps its place relative to the others; text letters grow too, and shapes
@@ -598,6 +602,14 @@ for a standing one (a keyhole's slot runs up).
 - French cleat: a 45-degree groove across the back and a matching wall strip (made next to the part, with
   countersunk screw holes): screw the strip to the wall with its sloping edge up and away from the wall,
   lift the piece over it, push it to the wall and let it drop.
+Placement: at the top of the fastener window choose "Spread evenly" (the way above) or "One where I
+click": then each click puts a single fastener exactly where you click, and you can keep clicking to
+add more (numbered 1, 2, 3...) - press Esc when you're done. For the French cleat the choice is "Across
+the face" at a height you type, or "At the height I click". The window remembers your choice for each kind.
+Resizing a shape that has fasteners in it (W/D/H, the handles or typed sizes) stretches the shape but
+not the fasteners: each one moves with the spot it's on and keeps its exact size, so screws and magnets
+still fit. Holes right through grow as long as the part is now thick. A French cleat's groove grows with
+the width, but the wall strip next to it doesn't - add the cleat again if you need a matching strip.
 If the part is too thin for a fastener at a spot, the app says so before adding it.
 
 Left panel: click a section's heading (Shapes, Gridfinity, SKÅDIS & pegboards, Generators, User
