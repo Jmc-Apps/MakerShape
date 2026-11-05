@@ -544,3 +544,14 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .pic-cover .btn { flex: 1; }
 #liftdim { position: absolute; transform: translate(14px, -50%); display: flex; align-items: center; gap: 4px; pointer-events: auto; z-index: 3; font: 600 13px/1 inherit; font-family: inherit; color: #2F6FB5; background: rgba(255,255,255,.92); border: 1px solid #BFD3EA; border-radius: 9px; padding: 3px 7px 3px 6px; box-shadow: 0 2px 8px rgba(19, 49, 92, .12); cursor: text; }
 #liftdim .dim-box { position: static; transform: none; width: 62px; padding: 4px 3px; color: #2F6FB5; box-shadow: none; }
+
+.dist-menu { padding: 12px 14px; width: 300px; }
+.dist-menu h4 { margin: 0 0 10px; color: var(--navy); font-size: 14px; }
+.dist-menu .dm-l { font-size: 12px; color: var(--muted); margin: 0 0 4px; }
+.dist-menu .seg button { flex-direction: row; align-items: center; justify-content: center; padding: 0; }
+.dist-menu .seg button:hover { background: rgba(255,255,255,.6); }
+.dist-menu .seg button.on:hover { background: #fff; }
+.dist-menu .fld { margin-bottom: 4px; }
+.dist-menu .dm-info { margin: 2px 0 10px; min-height: 30px; }
+.dist-menu .dm-info b, .dist-menu .seg b { font-size: inherit; color: var(--navy); }
+.dist-menu .modal-btns { margin-top: 4px; }

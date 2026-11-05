@@ -1,4 +1,4 @@
-MakerShape v6.5
+MakerShape v6.6
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -124,8 +124,15 @@ the number of Points (3-24) and the Inner ratio (inner ÷ outer radius: 0.1 is s
 round; both can be formulas in parametric mode) - and Heart. All resize, stretch, become holes,
 group, round / chamfer and push / pull like the other shapes (the heart's curved sides too).
 
+Distribute (toolbar, with 2 or more shapes selected): spreads them out evenly along X, Y or Z (it picks the
+way they're already spread). "Equal gaps" makes the spaces between the shapes the same; "Equal centres" puts
+their centres the same distance apart. The total distance starts as the distance between the two outermost
+shapes now - leave it to spread the others evenly between them, or type a new total to spread them all over
+exactly that distance (choose which stays still: the first, the middle or the last). The shapes move as you
+type so you can see it; Distribute (or Enter) does it, Cancel (or Esc) puts them back. Undo works as usual.
+
 Toolbar order: New · Open · Save | Import · Trace photo · Sketch | Undo · Redo | Duplicate · Delete |
-Rotate · Mirror · Align | Push/Pull · Edges | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
+Rotate · Mirror · Align · Distribute | Push/Pull · Edges | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
 photo, Picture on a face, or Reference photo. Bin labels are with the Gridfinity shapes. The side panel's
 Steps section lists everything done to a shape after it was made (rounded / chamfered edges, push/pulls,
 Gridfinity grids) with Edit and ×, and has the Edges, Push/Pull and Grid buttons.

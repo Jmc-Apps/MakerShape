@@ -32,6 +32,7 @@
     <button id="btn-rotate" title="Rotate (R)"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg><span>Rotate</span></button>
     <button id="btn-mirror" title="Mirror (M)"><svg viewBox="0 0 24 24"><path d="M12 3v18" stroke-dasharray="2 2"/><path d="M9 6L3 18h6z"/><path d="M15 6l6 12h-6z"/></svg><span>Mirror</span></button>
     <button id="btn-align" title="Align shapes (L)"><svg viewBox="0 0 24 24"><path d="M4 3v18"/><rect x="7" y="5" width="10" height="5" rx="1"/><rect x="7" y="14" width="14" height="5" rx="1"/></svg><span>Align</span></button>
+    <button id="btn-dist" title="Distribute: spread shapes evenly"><svg viewBox="0 0 24 24"><path d="M3 4v16M21 4v16"/><rect x="6" y="9" width="3" height="6" rx=".5"/><rect x="10.5" y="9" width="3" height="6" rx=".5"/><rect x="15" y="9" width="3" height="6" rx=".5"/></svg><span>Distribute</span></button>
     <i class="sep"></i>
     <button id="btn-pp" title="Push/Pull a face (U)"><svg viewBox="0 0 24 24"><rect x="4" y="12" width="16" height="8" rx="1"/><path d="M12 10V3M9 6l3-3 3 3"/></svg><span>Push/Pull</span></button>
     <button id="btn-edges" title="Round / chamfer edges (E)"><svg viewBox="0 0 24 24"><path d="M4 20V11a7 7 0 0 1 7-7h9"/></svg><span>Edges</span></button>
@@ -123,7 +124,7 @@
 // once used to look like the app had hung). Sizes (kB) are filled in when the app is built.
 (function () {
   var files = [["lib/occ-engine.js", "Loading the CAD engine…", /*SIZE:occ*/9367], ["lib/font.js", "Loading fonts…", /*SIZE:font*/817], ["lib/mesh-engine.js", "Loading the mesh engine…", /*SIZE:mesh*/705],
-    ["lib/cad-worker.js", "Loading the background engine…", /*SIZE:worker*/2280], ["app.js", "Loading MakerShape…", /*SIZE:app*/3518]];
+    ["lib/cad-worker.js", "Loading the background engine…", /*SIZE:worker*/2280], ["app.js", "Loading MakerShape…", /*SIZE:app*/3522]];
   var total = 0, done = 0, i = 0; files.forEach(function (f) { total += f[2]; });
   var bar = document.querySelector("#splash .bar"), fill = document.querySelector("#splash .bar i"), status = document.getElementById("splash-status");
   bar.classList.add("steps");
