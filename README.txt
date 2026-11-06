@@ -1,4 +1,4 @@
-MakerShape v6.6
+MakerShape v6.7
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -124,6 +124,26 @@ the number of Points (3-24) and the Inner ratio (inner ÷ outer radius: 0.1 is s
 round; both can be formulas in parametric mode) - and Heart. All resize, stretch, become holes,
 group, round / chamfer and push / pull like the other shapes (the heart's curved sides too).
 
+Hollow (toolbar, or the Hollow button in a shape's Steps): turns the selected shape into an open-topped box or
+container. Choose the wall thickness and the floor thickness (the floor can be thicker than the walls, and
+follows them while they're the same). It opens at the shape's flat top; for shapes with no flat top (sphere,
+cone, pyramid, roof, wedge…) choose "Cut the top off" and the height - a sphere becomes a bowl, a cone a cup.
+Shapes with curvy outlines (heart, text, sketches, traced shapes) are hollowed straight down with walls that
+follow the outline. It's a step like rounded edges: Edit it in the Steps list to change it, × to fill it back
+in, and the walls stay the same thickness when you resize the shape. (Not for imported models, threads,
+pictures, QR codes or multi-colour groups.)
+
+Expand / shrink (O, or the Expand/Shrink button in a shape's Steps, or in the panel when several shapes are
+selected): grows or shrinks the shape all round by the amount you type - every surface moves out (or in) by
+that much, so a 40 mm box expanded by 2 mm is 44 mm, and a hole through it gets 4 mm smaller. Good for
+clearances and tolerances (a lid that fits over something, a slightly smaller insert). Outside corners can stay
+sharp or come out rounded. Height: "Upwards too" (the bottom stays put and it grows at the top - the default),
+"Sides only" (the height stays exactly the same, only the sides move) or "Up and down" (the top and the bottom
+both move, so an expanded shape pokes below the workplane). With several shapes selected each is done on its own; a group is done as one. It's a step: Edit it
+in the Steps list, or × to undo it. Upright-sided shapes (boxes, cylinders, stars, hearts, text, sketches) have
+their outline grown exactly, with flat tops; other shapes are grown all over (a large curvy shape can take a few
+seconds). Not for imported models, threads, pictures, QR codes or multi-colour groups.
+
 Distribute (toolbar, with 2 or more shapes selected): spreads them out evenly along X, Y or Z (it picks the
 way they're already spread). "Equal gaps" makes the spaces between the shapes the same; "Equal centres" puts
 their centres the same distance apart. The total distance starts as the distance between the two outermost
@@ -132,7 +152,7 @@ exactly that distance (choose which stays still: the first, the middle or the la
 type so you can see it; Distribute (or Enter) does it, Cancel (or Esc) puts them back. Undo works as usual.
 
 Toolbar order: New · Open · Save | Import · Trace photo · Sketch | Undo · Redo | Duplicate · Delete |
-Rotate · Mirror · Align · Distribute | Push/Pull · Edges | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
+Rotate · Mirror · Align · Distribute | Push/Pull · Edges · Hollow | Hole · Group · Ungroup | Paint … Export. Trace photo offers: Trace a
 photo, Picture on a face, or Reference photo. Bin labels are with the Gridfinity shapes. The side panel's
 Steps section lists everything done to a shape after it was made (rounded / chamfered edges, push/pulls,
 Gridfinity grids) with Edit and ×, and has the Edges, Push/Pull and Grid buttons.
