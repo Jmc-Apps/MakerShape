@@ -1,4 +1,4 @@
-MakerShape v6.7
+MakerShape v6.8
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -143,6 +143,21 @@ both move, so an expanded shape pokes below the workplane). With several shapes 
 in the Steps list, or × to undo it. Upright-sided shapes (boxes, cylinders, stars, hearts, text, sketches) have
 their outline grown exactly, with flat tops; other shapes are grown all over (a large curvy shape can take a few
 seconds). Not for imported models, threads, pictures, QR codes or multi-colour groups.
+
+Hinge (Generators → Hinge): a print-in-place hinge - knuckles with 45° cone pins and a clearance gap all round,
+printed already assembled with no supports; work it back and forth after printing to free it.
+ - On its own (nothing selected): two leaves with countersunk screw holes; choose the length, leaf width,
+   thickness, knuckle size and count, clearance (0.3-0.5 mm suits most printers) and screw holes.
+ - Joining two of your shapes: select both, click Hinge (or "Hinge these two together" in the panel), then click
+   next to the edge where it goes.
+   · A lid sitting on a box: click the box's back (near the top edge). The hinge runs along that edge; it prints
+     closed, as it is, and the lid opens up and over the back (to about 135°). If the lid touches the box it's
+     lifted by the clearance so the two don't print stuck together.
+   · Two shapes side by side: click the top of one near the edge facing the other. They print open, flat, and
+     the second folds up and over onto the first; it's moved so the gap between them suits the knuckles.
+   Each shape is grouped with its half of the hinge (a 45° wedge under the knuckles so nothing hangs in mid-air,
+   and room cut out for the other half's knuckles to turn). Select either one: "Edit hinge" changes the knuckles,
+   clearance, length or position along the edge; "Remove hinge" takes it off again.
 
 Distribute (toolbar, with 2 or more shapes selected): spreads them out evenly along X, Y or Z (it picks the
 way they're already spread). "Equal gaps" makes the spaces between the shapes the same; "Equal centres" puts
