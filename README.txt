@@ -1,4 +1,4 @@
-MakerShape v6.8
+MakerShape v6.9
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -158,6 +158,22 @@ printed already assembled with no supports; work it back and forth after printin
    Each shape is grouped with its half of the hinge (a 45° wedge under the knuckles so nothing hangs in mid-air,
    and room cut out for the other half's knuckles to turn). Select either one: "Edit hinge" changes the knuckles,
    clearance, length or position along the edge; "Remove hinge" takes it off again.
+
+Open (⌘O) shows a gallery of your designs, with a picture of each (saved designs now keep a small picture of
+themselves inside the file):
+ - Recent: the designs you've opened or saved lately - click one to open it, × to take it off the list.
+   (In Chrome/Edge it goes back to the file itself; in Safari the browser keeps a copy of each.)
+ - Folder: every design in a folder you choose (your save folder to start with) - newest first. Chrome/Edge only.
+ - Browse files… opens any file as before (STL, 3MF and STEP too). Designs saved before this version show a
+   plain icon until they're saved again.
+
+Saving to a folder: click the little ▾ next to Save. "Choose a save folder…" picks a folder once; from then on
+Save (⌘S) and every export (STL, 3MF, OBJ, SVG…) go straight into it instead of Downloads, and MakerShape
+remembers it next time (the browser may ask once per session for permission to save there). A design you
+opened, or saved, is saved back to the same file; saving a new design over an existing file of the same name asks
+first. "Save as…" picks the name and place for this design; "Use Downloads again" goes back. This needs Chrome or
+Edge - Safari and Firefox can't save into a folder, so there files go to Downloads (change which folder in the
+browser's settings).
 
 Distribute (toolbar, with 2 or more shapes selected): spreads them out evenly along X, Y or Z (it picks the
 way they're already spread). "Equal gaps" makes the spaces between the shapes the same; "Equal centres" puts
