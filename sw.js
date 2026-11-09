@@ -1,11 +1,40 @@
-// MakerShape service worker — only used when the app is hosted on a web server.
-const CACHE = "makershape-202611082144";
-const FILES = ["./", "index.html", "app.css", "app.js", "lib/occ-engine.js", "lib/font.js", "lib/mesh-engine.js", "lib/cad-worker.js", "manifest.webmanifest",
-  "assets/icon-32.png", "assets/icon-180.png", "assets/icon-192.png", "assets/icon-512.png", "assets/logo-header.png", "assets/logo-full.png",
-  "assets/thumb-thread.png", "assets/thumb-gfbin.png", "assets/thumb-gfbase.png", "assets/thumb-gfgrid.png", "assets/thumb-qr.png", "assets/thumb-sncase.png", "assets/thumb-bento.png", "assets/thumb-pbox.png", "assets/thumb-fast-keyhole.png", "assets/thumb-fast-csk.png", "assets/thumb-fast-magnet.png", "assets/thumb-fast-insert.png", "assets/thumb-fast-nut.png", "assets/thumb-fast-cleat.png", "assets/thumb-jar.png", "assets/thumb-gear.png", "assets/thumb-cutter.png", "assets/thumb-litho.png", "assets/thumb-heraldry.png", "assets/thumb-skboard.png", "assets/thumb-skbin.png", "assets/thumb-shape-box.png", "assets/thumb-shape-cylinder.png", "assets/thumb-shape-sphere.png", "assets/thumb-shape-halfsphere.png", "assets/thumb-shape-cone.png", "assets/thumb-shape-pyramid.png", "assets/thumb-shape-roof.png", "assets/thumb-shape-wedge.png", "assets/thumb-shape-star.png", "assets/thumb-shape-starpyramid.png", "assets/thumb-shape-roundroof.png", "assets/thumb-shape-heart.png", "assets/thumb-shape-text.png"];
-self.addEventListener("install", (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting())); });
-self.addEventListener("activate", (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
-self.addEventListener("fetch", (e) => {
-  if (e.request.method !== "GET") return;
-  e.respondWith(caches.match(e.request, { ignoreSearch: true }).then((hit) => hit || fetch(e.request)));
+// KeyCut3D service worker: keeps the app working offline once it has been opened.
+// Bump CACHE when you publish a new version so phones pick up the update.
+const CACHE = 'keycut3d-v14';
+const FILES = [
+  './',
+  './index.html',
+  './manifest.webmanifest',
+  './icons/logo.png',
+  './icons/favicon.png',
+  './icons/apple-touch-icon.png',
+  './icons/icon-192.png',
+  './icons/icon-512.png',
+  './card/keycut3d_card_85.6x53.98.stl'
+];
+
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+});
+
+// Serve from cache straight away, then refresh the cache from the network in the background.
+self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(
+    caches.open(CACHE).then(async cache => {
+      const cached = await cache.match(e.request, { ignoreSearch: true });
+      const fresh = fetch(e.request)
+        .then(res => { if (res && res.ok) cache.put(e.request, res.clone()); return res; })
+        .catch(() => cached);
+      return cached || fresh;
+    })
+  );
 });
