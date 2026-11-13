@@ -1,4 +1,4 @@
-MakerShape v7.1
+MakerShape v7.2
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -554,7 +554,9 @@ The text is grouped with its shape; Ungroup to detach it.
 Import (top bar, or drop a file on the workplane):
 (OBJ models - e.g. Tinkercad's "Export → .OBJ": import the zip it downloads as it is, or choose the .obj and
 its .mtl file together. Each object in each colour comes in as its own part, in its colour; without the .mtl
-they come in grey. A model made with Y up - lying on its back - is stood up automatically.)
+each colour gets a made-up one. A model made with Y up - lying on its back - is stood up automatically.
+Tinkercad paints its colours onto one joined-up surface rather than separate shapes, so such a model is cut into
+a solid part for each colour, by the colour seen from above - ready for multi-colour printing.)
 (Models whose surface has gaps or tangles - common with 3D scans and sculpts - are repaired as they're
 imported: holes filled, twisted and doubled triangles sorted out, touching corners pulled apart - so they
 can be grouped, cut and split. The import message says how many holes were filled. Models already in a
