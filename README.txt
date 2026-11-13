@@ -1,4 +1,4 @@
-MakerShape v7.3
+MakerShape v7.4
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -163,8 +163,8 @@ Shape with the picture on it (Picture → trace a logo or picture → "Use it"):
 picture's outline - all its colours together, holes filled in, plus a border all round - and puts the picture on
 top, each colour inlaid as its own part (or choose Raised / Engrave in the panel afterwards). Choose its
 thickness, the border (0 = exactly the picture's outline) and the shape's colour. Tick "The picture on the
-underside too" to put it on the bottom as well, mirrored so it reads the right way round when you turn the shape
-over end to end (top edge towards you). Good for badges, signs, keyrings and fridge
+underside too" to put it on the bottom as well, mirrored - lined up exactly under the picture on top, as if
+you could see through the shape, so it always fits the shape's outline. Good for badges, signs, keyrings and fridge
 magnets. Undo takes it all away in one go.
 
 Open (⌘O) shows a gallery of your designs, with a picture of each (saved designs now keep a small picture of
@@ -556,7 +556,9 @@ Import (top bar, or drop a file on the workplane):
 its .mtl file together. Each object in each colour comes in as its own part, in its colour; without the .mtl
 each colour gets a made-up one. A model made with Y up - lying on its back - is stood up automatically.
 Tinkercad paints its colours onto one joined-up surface rather than separate shapes, so such a model is cut into
-a solid part for each colour, by the colour seen from above - ready for multi-colour printing.)
+a solid part for each colour, by the colour seen from above - ready for multi-colour printing. When you import one
+it asks: "Cut into a part for each colour" (separate parts) or "Keep it as one shape, in its colours" (one
+multi-colour shape that moves and resizes as one - recolour it with Paint, or Ungroup it for the separate parts).)
 (Models whose surface has gaps or tangles - common with 3D scans and sculpts - are repaired as they're
 imported: holes filled, twisted and doubled triangles sorted out, touching corners pulled apart - so they
 can be grouped, cut and split. The import message says how many holes were filled. Models already in a
