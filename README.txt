@@ -1,4 +1,4 @@
-MakerShape v6.9
+MakerShape v7.1
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -159,12 +159,20 @@ printed already assembled with no supports; work it back and forth after printin
    and room cut out for the other half's knuckles to turn). Select either one: "Edit hinge" changes the knuckles,
    clearance, length or position along the edge; "Remove hinge" takes it off again.
 
+Shape with the picture on it (Picture → trace a logo or picture → "Use it"): makes a shape cut to the
+picture's outline - all its colours together, holes filled in, plus a border all round - and puts the picture on
+top, each colour inlaid as its own part (or choose Raised / Engrave in the panel afterwards). Choose its
+thickness, the border (0 = exactly the picture's outline) and the shape's colour. Tick "The picture on the
+underside too" to put it on the bottom as well, mirrored so it reads the right way round when you turn the shape
+over end to end (top edge towards you). Good for badges, signs, keyrings and fridge
+magnets. Undo takes it all away in one go.
+
 Open (⌘O) shows a gallery of your designs, with a picture of each (saved designs now keep a small picture of
 themselves inside the file):
  - Recent: the designs you've opened or saved lately - click one to open it, × to take it off the list.
    (In Chrome/Edge it goes back to the file itself; in Safari the browser keeps a copy of each.)
  - Folder: every design in a folder you choose (your save folder to start with) - newest first. Chrome/Edge only.
- - Browse files… opens any file as before (STL, 3MF and STEP too). Designs saved before this version show a
+ - Browse files… opens any file as before (STL, 3MF, OBJ and STEP too). Designs saved before this version show a
    plain icon until they're saved again.
 
 Saving to a folder: click the little ▾ next to Save. "Choose a save folder…" picks a folder once; from then on
@@ -544,6 +552,9 @@ Engrave (cut in), and adjust size, depth, spacing, Around and Up/down.
 The text is grouped with its shape; Ungroup to detach it.
 
 Import (top bar, or drop a file on the workplane):
+(OBJ models - e.g. Tinkercad's "Export → .OBJ": import the zip it downloads as it is, or choose the .obj and
+its .mtl file together. Each object in each colour comes in as its own part, in its colour; without the .mtl
+they come in grey. A model made with Y up - lying on its back - is stood up automatically.)
 (Models whose surface has gaps or tangles - common with 3D scans and sculpts - are repaired as they're
 imported: holes filled, twisted and doubled triangles sorted out, touching corners pulled apart - so they
 can be grouped, cut and split. The import message says how many holes were filled. Models already in a
