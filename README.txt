@@ -1,4 +1,4 @@
-MakerShape v7.4
+MakerShape v7.5
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -166,6 +166,10 @@ thickness, the border (0 = exactly the picture's outline) and the shape's colour
 underside too" to put it on the bottom as well, mirrored - lined up exactly under the picture on top, as if
 you could see through the shape, so it always fits the shape's outline. Good for badges, signs, keyrings and fridge
 magnets. Undo takes it all away in one go.
+
+Cone top: a cone has a "Top Ø" in its panel - the diameter across the top. 0 is a point (a normal cone); any
+other size gives a flat-topped cone (a frustum), like a cup, plant pot or lampshade - it can even be wider than the
+bottom. It stays that size when you resize the cone's width.
 
 Open (⌘O) shows a gallery of your designs, with a picture of each (saved designs now keep a small picture of
 themselves inside the file):
