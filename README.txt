@@ -1,4 +1,4 @@
-MakerShape v7.5
+MakerShape v7.6
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -169,7 +169,7 @@ magnets. Undo takes it all away in one go.
 
 Cone top: a cone has a "Top Ø" in its panel - the diameter across the top. 0 is a point (a normal cone); any
 other size gives a flat-topped cone (a frustum), like a cup, plant pot or lampshade - it can even be wider than the
-bottom. It stays that size when you resize the cone's width.
+bottom. It grows and shrinks with the cone when you resize it (handles or typed sizes), keeping its shape.
 
 Open (⌘O) shows a gallery of your designs, with a picture of each (saved designs now keep a small picture of
 themselves inside the file):
