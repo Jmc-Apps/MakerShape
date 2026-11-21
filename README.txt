@@ -1,4 +1,4 @@
-MakerShape v7.6
+MakerShape v7.7
 ===============
 
 To open: double-click index.html (Chrome or Safari). Everything runs offline —
@@ -43,6 +43,14 @@ Keys
 Heraldry - build a coat of arms to print face up, flat back on the bed, multi-colour on the AMS. Everything
 is in one place: Generators > Coat of arms opens a picker with 1 Shield, 2 Divisions, 3 Ordinaries,
 4 Charges and 5 Helm, crest and motto (and the Make coat of arms button).
+- Coat of arms from a picture: "From a picture..." at the top of the Coat of arms picker. Upload a picture
+  of a coat of arms; it opens in the tracer in colours mode. Tick the background colour (usually white) to
+  cut it away and merge shades so each tincture is one colour. In Use it, set the backing thickness and
+  border, the height of the lowest colour and the step between colours, and the order of the colours
+  (Biggest lowest / Lightest on top / Darkest on top, or the up/down arrows). Optional two keyholes on the
+  back (the backing is made at least 5 mm thick for them). It makes one multicolour group: the backing cut
+  to the outline of the arms, and each colour as its own part standing on it at its own height. It's a
+  printable plaque, not editable heraldry; ungroup it to change one colour's height.
 - Shield: Heater, French, Spanish, Swiss, Kite, Round or Lozenge. Face: Flat, Curved (side to side) or
   Domed, with Curve = how much higher the middle is. Rim width / Rim up (0 = no rim). Hanging: a hole,
   a keyhole slot in the back (for a screw head up to 9 mm) or two pockets for 8 x 3 mm magnets.
@@ -166,6 +174,25 @@ thickness, the border (0 = exactly the picture's outline) and the shape's colour
 underside too" to put it on the bottom as well, mirrored - lined up exactly under the picture on top, as if
 you could see through the shape, so it always fits the shape's outline. Good for badges, signs, keyrings and fridge
 magnets. Undo takes it all away in one go.
+
+Sculpt - shape things like clay. Select a shape and click Sculpt on the toolbar (with nothing selected
+it starts from a ball of clay). The shape becomes an even mesh of small triangles ("clay"), and all the
+sculpting tools are in the one Sculpt panel:
+- Brushes: Push / Pull (build up; Option presses in), Grab (drag a blob to stretch it out), Smooth
+  (soften bumps), Relax (even out the triangles without changing the shape), Inflate (puff out; Option
+  shrinks), Pinch / Crease (sharp grooves; Option for a ridge), Flatten (plane an area down).
+  Keys: D G S R I C F pick a brush; hold Shift with any brush to smooth; [ and ] change the brush size.
+- Brush size and Strength sliders. Drag on the clay to sculpt; drag empty space to turn the view.
+- Symmetry (on by default) mirrors every stroke left / right.
+- Clay size: smaller = finer detail but more triangles. Auto-refine (on by default) adds clay wherever a
+  stroke stretches the triangles past the clay size, and merges ones squashed too small, so stretched
+  areas keep enough detail to keep working. "Even out the whole model" re-makes the whole thing as an
+  even mesh at the clay size (it also fixes any place the clay folded through itself).
+- Undo / Redo step back and forward one stroke (also Cmd+Z / Shift+Cmd+Z). Done (or Esc) finishes;
+  the X cancels and leaves the shape as it was.
+After Done the shape is a triangle-mesh model, like an imported STL: move, scale, colour, group, cut
+holes and export it as usual, but its old settings (like a sphere's size fields) are gone. It is checked
+to be a closed, printable solid; if a stroke folded the surface through itself it is repaired.
 
 Cone top: a cone has a "Top Ø" in its panel - the diameter across the top. 0 is a point (a normal cone); any
 other size gives a flat-topped cone (a frustum), like a cup, plant pot or lampshade - it can even be wider than the

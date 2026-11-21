@@ -586,3 +586,20 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .gal-rm { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; border: 0; border-radius: 11px; background: rgba(255,255,255,.9); color: var(--muted); cursor: pointer; opacity: 0; font-size: 15px; line-height: 1; }
 .gal-item:hover .gal-rm { opacity: 1; }
 .gal-empty { grid-column: 1 / -1; text-align: center; padding: 40px 10px; }
+
+/* Sculpt */
+#sculpt-pane { position: absolute; left: 64px; top: 12px; width: 250px; display: none; flex-direction: column; gap: 8px; padding: 10px 12px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 28px rgba(19,49,92,.16); z-index: 20; max-height: calc(100% - 24px); overflow-y: auto; }
+#sculpt-pane.show { display: flex; }
+#sculpt-pane .pp-head { display: flex; align-items: center; justify-content: space-between; }
+#sculpt-pane .nb { width: 26px; height: 24px; border: 1px solid var(--line); background: var(--panel); border-radius: 6px; cursor: pointer; font-size: 12px; padding: 0; color: inherit; }
+#sculpt-pane .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+#sculpt-pane .sc-grid button { font: inherit; font-size: 12px; padding: 6px 4px; border: 1px solid var(--line); background: var(--panel); border-radius: 7px; cursor: pointer; color: inherit; }
+#sculpt-pane .sc-grid button.on { background: var(--teal); border-color: var(--teal); color: #fff; }
+#sculpt-pane .sc-sl { display: grid; grid-template-columns: 74px 1fr 52px; align-items: center; gap: 6px; font-size: 12px; }
+#sculpt-pane .sc-sl input { width: 100%; }
+#sculpt-pane .sc-sl b { font-weight: 600; text-align: right; font-size: 11.5px; }
+#sculpt-pane .sc-ck { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+#sculpt-pane .sc-row { display: flex; gap: 6px; }
+#sculpt-pane .sc-row .btn { flex: 1; margin-top: 0; }
+#sculpt-pane .btn.small { margin-top: 0; }
+body.sculpting #top button:not(#btn-sculpt):not(#btn-undo):not(#btn-redo), body.sculpting #palette, body.sculpting #inspector { pointer-events: none; opacity: .45; }
